@@ -1,0 +1,98 @@
+//  5. Componenets - Forms  ///////////////////////////////////////////////////////////
+
+//  Search Form  ///////////////////////////////////////////////////////////
+.InputAddOn {
+    display: flex;
+    margin-bottom: 0;
+}
+
+.InputAddOn-field {
+    flex: 1;
+}
+
+.InputAddOn-field:not(:first-child) {
+    border-left: 0;
+}
+
+.InputAddOn-field:not(:last-child) {
+    border-right: 0;
+}
+
+.InputAddOn-item {
+    background-color: white;
+    color: $color-body-text;
+    font: inherit;
+    font-weight: normal;
+}
+
+.InputAddOn-field,
+.InputAddOn-item {
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    padding: 10px;
+    font-size: 14px;
+}
+
+.InputAddOn-field:first-child,
+.InputAddOn-item:first-child {
+    border-radius: 2px 0 0 2px;
+}
+
+.InputAddOn-field:last-child,
+.InputAddOn-item:last-child {
+    border-radius: 0 2px 2px 0;
+}
+
+.entry-content .ginput_recaptcha {
+    transform: scale(0.77);
+    transform-origin: 0 0;
+}
+
+//  Form Styles  ///////////////////////////////////////////////////////////
+div.wpforms-container-full,
+.wpforms-container {
+    margin-inline: autos;
+    max-width: 600px;
+    width: 100%;
+
+    .wpforms-field-container {
+        >*+* {
+            margin-top: 24px;
+        }
+
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="email"],
+        input[type="month"],
+        input[type="number"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="text"],
+        select,
+        textarea {
+            background-color: #edf2f7;
+            border-color: #edf2f7;
+            border-radius: 4px;
+            border-style: none;
+            border-width: 0;
+            width: 100%;
+            line-height: 1.25;
+            padding: 12px 16px;
+        }
+
+        &:focus {
+            background-color: white;
+            border-color: #f56565;
+            outline: 1px solid transparent;
+            outline-offset: 1px;
+        }
+
+        label,
+        .wpforms-field-label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+    }
+}
+
+/// Error Styles

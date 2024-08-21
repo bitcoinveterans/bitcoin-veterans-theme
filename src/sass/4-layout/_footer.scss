@@ -1,0 +1,13 @@
+//  4. Layout - Footer  ///////////////////////////////////////////////////////////
+.site-footer {
+    background: $black-4;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 60px 0 40px;
+
+    @include media-query("under-768") {
+        padding: 24px 0;
+    }
+
+}

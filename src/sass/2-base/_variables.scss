@@ -1,0 +1,43 @@
+//  2. Base - Variables  ///////////////////////////////////////////////////////////
+
+$color-1: #d00000;
+$color-2: #A40101;
+$color-3: #261f20;
+$color-4: #2a2a2a;
+
+$black-1: #555555; //body
+$black-2: #070707; //heading
+$black-3: #F5F5F5; //neutral
+$black-4: #333332;
+
+$gray-1: #f8fafe;
+$gray-2: #eeeff1;
+$gray-3: #252424;
+$gray-4: #fcfcff;
+
+$color-heading: $color-2;
+$black-heading: $black-2;
+$color-nav: $black-2;
+$color-body-text: $black-1;
+
+$text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+$transition: all ease-in-out 0.3s;
+
+$border-radius: 4px;
+
+$breakpoints: ("over-481": "(min-width: 481px)",
+    "over-997": "(min-width: 997px)",
+    "over-769": "(min-width: 769px)",
+    "over-1025": "(min-width: 1025px)",
+    "over-1200": "(min-width: 1200px)",
+    "over-1049": "(min-width: 1048px)",
+    "over-1600": "(min-width: 1600px)",
+
+    "under-1048": "(max-width: 1048px)",
+    "under-996": "(max-width: 996px)",
+    "under-768": "(max-width: 768px)",
+    "under-660": "(max-width: 660px)",
+    "under-600": "(max-width: 600px)",
+    "under-360": "(max-width: 360px)",
+    "under-480": "(max-width: 480px)",
+);

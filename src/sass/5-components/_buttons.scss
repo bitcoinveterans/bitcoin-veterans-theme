@@ -1,0 +1,72 @@
+//  5. Componenets - Buttons  ///////////////////////////////////////////////////////////
+.btn {
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-1;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding: 12px 24px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transition: background 600ms ease-in-out, color 600ms ease-in-out; // Added color transition
+    user-select: none;
+    vertical-align: middle;
+    white-space: normal;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: transparent;
+        color: transparent;
+    }
+
+    i {
+        margin-inline-start: 4px
+    }
+}
+
+.button__link,
+.button {
+    @extend .btn;
+    color: #fff;
+    background: $color-2;
+    transition: background 600ms ease-in-out;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: white;
+        background: $color-4;
+    }
+
+    @include media-query("under-768") {
+        font-size: 0.875rem;
+        padding: 8px 16px;
+    }
+}
+
+.button__link-2 {
+    @extend .btn;
+    color: $color-2;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 48px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: white;
+        background-color: $color-2;
+    }
+}
