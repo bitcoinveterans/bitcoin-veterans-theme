@@ -30,6 +30,8 @@ const paths = {
 	customJSWatchFiles: "src/js/custom/*.js",
 	customImagesWatchFiles: "src/img/**/*",
 	projectPHPWatchFiles: "**/*.php",
+    fontsSRC: "src/fonts/**/*",
+    fontsDest: "assets/fonts/",
 	node: "node_modules/",
 	bower: "bower_components/",
 	dev: "src",
@@ -102,11 +104,13 @@ gulp.task("customJS", function() {
         .pipe(gulp.dest(paths.jsCustomDest));
 });
 
-gulp.task("watch", function() {
-    gulp.watch(paths.stylesWatchFiles, gulp.series("styles"));
-    gulp.watch(paths.vendorsJSWatchFiles, gulp.series("vendorsJS"));
-    gulp.watch(paths.customJSWatchFiles, gulp.series("customJS"));
-    gulp.watch(paths.customImagesWatchFiles, gulp.series("images"));
+// Fonts task
+gulp.task("fonts", function() {
+    return gulp
+        .src(paths.fontsSRC)
+        .pipe(plumber({ errorHandler }))
+        .pipe(newer(paths.fontsDest))
+        .pipe(gulp.dest(paths.fontsDest));
 });
 
 // Clean dist
@@ -147,11 +151,20 @@ gulp.task(
     "build",
     gulp.series(
         "cleanDist",
-        gulp.parallel("styles", "images", "vendorsJS", "customJS"),
+        gulp.parallel("styles", "images", "vendorsJS", "customJS", "fonts"),
         "copy",
         "zip"
     )
 );
+
+// Watch task
+gulp.task("watch", function() {
+    gulp.watch(paths.stylesWatchFiles, gulp.series("styles"));
+    gulp.watch(paths.vendorsJSWatchFiles, gulp.series("vendorsJS"));
+    gulp.watch(paths.customJSWatchFiles, gulp.series("customJS"));
+    gulp.watch(paths.customImagesWatchFiles, gulp.series("images"));
+    gulp.watch(paths.fontsSRC, gulp.series("fonts"));
+});
 
 // Default task
 gulp.task("default", gulp.parallel("styles", "images", "vendorsJS", "customJS", "watch"));

@@ -1,19 +1,15 @@
 //  2. Base - Variables  ///////////////////////////////////////////////////////////
 
-$color-1: #d00000;
-$color-2: #A40101;
-$color-3: #261f20;
-$color-4: #2a2a2a;
+$color-1: #FD8D01;
+$color-2: $color-1;
+$color-3: #F8FAFC;
 
-$black-1: #555555; //body
-$black-2: #070707; //heading
-$black-3: #F5F5F5; //neutral
-$black-4: #333332;
+$black-1: #0a0a0a; //body
+$black-2: #0a0a0a; //heading
+$black-3: #404040; //neutral/contrast
 
-$gray-1: #f8fafe;
-$gray-2: #eeeff1;
-$gray-3: #252424;
-$gray-4: #fcfcff;
+$gray-1: #f1f5f9;
+$gray-2: #cbd5e1;
 
 $color-heading: $color-2;
 $black-heading: $black-2;

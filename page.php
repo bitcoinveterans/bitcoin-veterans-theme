@@ -22,6 +22,7 @@
     </section><!-- banner -->
 
     <main class="main-content flex-loop" id="content" role="main">
+        
         <?php get_template_part( 'template-parts/loop', 'flex' ); ?>
     </main>
 

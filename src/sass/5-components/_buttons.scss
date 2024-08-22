@@ -46,7 +46,7 @@
     &:active,
     &:focus {
         color: white;
-        background: $color-4;
+        background: $color-3;
     }
 
     @include media-query("under-768") {
