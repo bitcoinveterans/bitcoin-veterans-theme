@@ -17,16 +17,14 @@ Use a better box model (opinionated).
 }
 
 html {
-    /* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
-    font-family:
-        system-ui,
-        'Segoe UI',
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif,
-        'Apple Color Emoji',
-        'Segoe UI Emoji';
+    /* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */font-family: system-ui,
+'Segoe UI',
+Roboto,
+Helvetica,
+Arial,
+sans-serif,
+'Apple Color Emoji',
+'Segoe UI Emoji';
     line-height: 1.15;
     /* 1. Correct the line height in all browsers. */
     -webkit-text-size-adjust: 100%;
@@ -42,7 +40,6 @@ Sections
 
 body {
     margin: 0;
-    /* Remove the margin in all browsers. */
 }
 
 /*
@@ -78,14 +75,6 @@ pre {
     /* 1 */
     font-size: 1em;
     /* 2 */
-}
-
-/**
-Add the correct font size in all browsers.
-*/
-
-small {
-    font-size: 80%;
 }
 
 /**

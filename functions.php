@@ -29,7 +29,7 @@ require_once CC_STARTER_THEME_DIR . '/inc/theme-setup.php';
 require_once CC_STARTER_THEME_DIR . '/inc/scripts-styles.php';
 
 // include font awesome kit.
-//require_once CC_STARTER_THEME_DIR . '/inc/fa-setup-kit.php';
+require_once CC_STARTER_THEME_DIR . '/inc/fa-setup-kit.php';
 
 // include template-tags.
 require_once CC_STARTER_THEME_DIR . '/inc/template-tags.php';

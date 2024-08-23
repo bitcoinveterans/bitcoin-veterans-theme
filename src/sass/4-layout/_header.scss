@@ -1,17 +1,17 @@
 //  4. Layout - Header  ///////////////////////////////////////////////////////////
 
 .site-header {
-    background: url('../img/bg-header.jpg') 50% 50% no-repeat $color-1;
-    background-size: cover;
-    color: white;
-    padding-block: 1.5rem;
+    background: $white-1;
+    padding-block: 1.563rem;
     text-align: center;
+    position: relative;
 
-    @include media-query("under-1048") {
-        img {
-            width: 100%;
-            max-width: 66%;
-            margin-inline: auto;
-        }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
     }
+
+    @include media-query("under-1048") {}
 }

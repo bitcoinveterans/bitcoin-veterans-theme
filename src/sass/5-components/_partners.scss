@@ -1,0 +1,45 @@
+//  5. Componenets - Partners  ///////////////////////////////////////////////////////////
+.partners {
+    .container {
+        padding: 3rem;
+    }
+
+    .partners-logo-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .partners-logo-list li {
+        margin: 1.875rem;
+    }
+
+    .partner-logo {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .partners-cta {
+        margin-block-start: 1.5rem;
+        text-align: center;
+    }
+
+    .section-title {
+        margin-block-end: 1.5rem;
+    }
+
+    @include media-query("under-768") {
+        .partners-logo-list {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .partners-logo-list li {
+            margin: 1.875rem 0;
+        }
+    }
+}

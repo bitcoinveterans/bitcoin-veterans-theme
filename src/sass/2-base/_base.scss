@@ -1,30 +1,21 @@
 //  2. Base - Base  ///////////////////////////////////////////////////////////
-*,
-*:after,
-*:before {
-    box-sizing: border-box;
-}
-
-body {
-    height: 100%;
-}
-
 html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    color: $color-body-text;
+    font-family: $body-font;
+    font-weight: normal;
+    font-size: 16px;
 }
 
 body {
     background-color: white;
-    color: $color-body-text;
-    font-family: $body-font;
-    font-size: 16px;
-    font-weight: normal;
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+    height: 100%;
 }
 
 p {
@@ -44,7 +35,7 @@ h5,
 h6 {
     color: $black-heading;
     font-family: $heading-font;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0;
     text-transform: none;
 }
@@ -116,10 +107,6 @@ button {
     &:active {
         cursor: pointer;
     }
-}
-
-.flex {
-    display: block;
 }
 
 .screen-reader-text {

@@ -1,0 +1,44 @@
+//  5. Componenets - Founders  ///////////////////////////////////////////////////////////
+.founders {
+    --founder-card-radius: 6px;
+    --founder-card-border: 1px solid #E4E4E5;
+
+    .container {
+        background-color: $gray-1;
+        border-radius: 1.875rem;
+        padding: 3rem;
+    }
+
+    .founders-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+
+
+    }
+
+    .founder-card {
+        background-color: $white-1;
+        border: var(--founder-card-border);
+        border-radius: var(--founder-card-radius);
+        padding: 1rem;
+
+        img {
+            border-radius: var(--founder-card-radius);
+            width: 100%;
+        }
+    }
+
+    .founder-card__name {
+        font-size: 1.25rem;
+        text-align: center;
+        margin-block-start: 0.875rem;
+    }
+
+    // Media query for smaller screens if needed
+    @include media-query("under-768") {
+        .founders-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}

@@ -12,7 +12,7 @@ function cc_starter_enqueue_styles_and_scripts() {
 	// Load the stylesheets
 	wp_enqueue_style( 'cc_starter-style', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'cc_starter-googlefonts', '//fonts.googleapis.com/css?family=Outfit:300,400,500,600|Source+Sans+Pro:400,700' );
+	wp_enqueue_style( 'cc_starter-googlefonts', '//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Phudu:wght@500;700;900&display=swap' );
 
 	wp_enqueue_style( 'cc_starter-master', CC_STARTER_THEME_URI . '/assets/css/main.css' );
 

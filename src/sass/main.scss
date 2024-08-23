@@ -12,12 +12,18 @@
 @import "3-helpers/wp-helpers";
 
 // Layout
-@import "4-layout/grid";
+@import "4-layout/globals";
 @import "4-layout/header";
 @import "4-layout/footer";
 @import "4-layout/sidebar";
 
 // Components
+@import "5-components/hero";
+@import "5-components/founders";
+@import "5-components/partners";
+@import "5-components/content-grid";
+@import "5-components/recent-posts";
+@import "5-components/faqs";
 @import "5-components/accordion";
 @import "5-components/banner";
 @import "5-components/buttons";

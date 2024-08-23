@@ -2,18 +2,18 @@
 .btn {
     background: transparent;
     border: 0;
-    border-radius: 4px;
+    border-radius: $border-radius;
     cursor: pointer;
     color: inherit;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: $font-1;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 0;
     line-height: 1;
-    padding: 12px 24px;
+    padding: 1.25rem 1.875rem;
     text-align: center;
     text-transform: uppercase;
     touch-action: manipulation;
@@ -30,23 +30,24 @@
         color: transparent;
     }
 
+
     i {
-        margin-inline-start: 4px
+        margin-inline-end: 0.625rem;
     }
 }
 
-.button__link,
-.button {
-    @extend .btn;
-    color: #fff;
-    background: $color-2;
+.btn--primary {
+    color: $black-1;
+    background: $color-1;
+    font-weight: 700;
+    letter-spacing: -1px;
     transition: background 600ms ease-in-out;
 
     &:hover,
     &:active,
     &:focus {
         color: white;
-        background: $color-3;
+        background: $black-1;
     }
 
     @include media-query("under-768") {
@@ -55,18 +56,24 @@
     }
 }
 
-.button__link-2 {
-    @extend .btn;
-    color: $color-2;
-    background-color: white;
-    font-size: 20px;
+.btn--secondary {
+    color: $black-2;
+    background-color: $gray-1;
+    font-size: 16px;
     font-weight: bold;
-    padding: 20px 48px;
+    letter-spacing: 1.1px;
+    padding: 0.875rem 1.25rem;
 
     &:hover,
     &:active,
     &:focus {
         color: white;
-        background-color: $color-2;
+        background: $black-1;
+    }
+}
+
+.btn--icon-right {
+    i {
+        margin-inline-start: 0.625rem;
     }
 }

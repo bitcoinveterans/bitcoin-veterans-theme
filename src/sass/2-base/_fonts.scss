@@ -1,9 +1,11 @@
 //  2. Base - Fonts  ///////////////////////////////////////////////////////////
 
-$font-1: Helvetica,
+$font-1: "Open Sans",
+Helvetica,
 Arial,
 sans-serif;
-$font-2: 'Source Sans Pro',
+
+$font-2: 'Phudu',
 Helvetica,
 Arial,
 sans-serif;
@@ -15,6 +17,6 @@ $font-serif: Georgia,
 serif;
 
 $font-family-base: $font-1;
-$nav-font: $font-2;
-$heading-font: $font-1;
+$nav-font: $font-1;
+$heading-font: $font-2;
 $body-font: $font-1;

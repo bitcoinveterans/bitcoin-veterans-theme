@@ -25,21 +25,58 @@
 <body <?php body_class(); ?>>
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'coplan_2023' ); ?></a>
 <?php wp_body_open(); ?>
+	<header class="site-header" role="banner">
+        <div class="container container-996">
+            <a href="<?php echo esc_url( home_url() ); ?>" class="site-header__logo" aria-label="Bitcoin Veterans Home">
+				<img src="<?php bloginfo('template_url');?>/assets/img/logo.png" alt="<?php bloginfo('name');?> logo" class="">
+            </a>
+            <nav class="site-header__nav" role="navigation" aria-label="Main Navigation">
+                <button aria-label="Toggle Main Menu" aria-expanded="false" aria-controls="main-menu" class="site-header__toggle"></button>
+				<?php
+				// wp_nav_menu( array(
+				// 	'theme_location'    => 'primary',
+				// 	'menu_class'        => 'menumain-nav__menu',
+				// 	'container'         => ''
+				// 	) );
+				?>
+                <ul id="main-menu" class="menu">
+                    <li class="menu-item current-menu-item menu-item-has-children">
+                        <a href="#" aria-haspopup="true" aria-expanded="false">About</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-66" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66"><a href="#">Founders</a></li>
+                            <li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item menu-item-46"><a href="#">About the Mission</a></li>
+                            <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 menu-item-has-children">
+                                <a href="#">Join the Mission</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-66" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66"><a href="#">Founders</a></li>
+                                    <li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item menu-item-46"><a href="#">About the Mission</a></li>
+                                    <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="#">Join the Mission</a></li>
+                                    <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="#">Support the Mission</a></li>
+                                    <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="#">BV Authors</a></li>
+                                    <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="#">Our Sponsors</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="#">Support the Mission</a></li>
+                            <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="#">BV Authors</a></li>
+                            <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="#">Our Sponsors</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-41" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41"><a href="#">Resources</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-66" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66"><a href="#">Podcasts</a></li>
+                            <li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="#">BV Blog</a></li>
+                            <li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="#">BV Authors</a></li>
+                            <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="#">Join MeetUps</a></li>
+                            <li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="#">FAQs</a></li>
+                            <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="#">BV Gear</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47"><a href="#">Events</a></li>
+                    <li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48"><a href="#">Podcast</a></li>
+                    <li id="menu-item-50" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50"><a href="#">FAQs</a></li>
+                    <li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51"><a href="#">Contact</a></li>
+                </ul>	
+            </nav>
+        </div>
+    </header>
 
-	<header class="site-header">
-		<div class="module">
-			<div class="site-header__logo"><a href="<?php echo esc_url( home_url() ); ?>"><img src="<?php bloginfo('template_url');?>/assets/img/logo.png" alt="<?php bloginfo('name');?> logo" class=""></a></div>
-			<!--logo-->
-		</div><!--module-->
-	</header>
-
-	<nav class="main-nav">
-		<div class="module">
-            <?php wp_nav_menu( array(
-                'theme_location'    => 'primary',
-                'menu_class'        => 'menumain-nav__menu',
-                'container'         => ''
-                ) );
-            ?>
-		</div><!--module-->
-	</nav>

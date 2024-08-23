@@ -1,0 +1,51 @@
+//  4. Layout - Globals  ///////////////////////////////////////////////////////////\\
+
+// Global Containers ///////////////////////////////////////////////////////////
+.container {
+    padding-inline: 1.5rem;
+}
+
+.container-1360 {
+    max-width: 1360px;
+    margin-inline: auto;
+}
+
+.container-1024 {
+    max-width: 1024px;
+    margin-inline: auto;
+}
+
+.container-996 {
+    max-width: 996px;
+    margin-inline: auto;
+}
+
+.container-768 {
+    max-width: 768px;
+    margin-inline: auto;
+}
+
+// Global Sections ///////////////////////////////////////////////////////////
+.section {
+    padding-block: 2.5rem;
+}
+
+.section-title {
+    margin-block-end: 3.125rem;
+    text-align: center;
+
+    &__headline {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-block: 1.25rem 0;
+    }
+
+    &__description {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    i {
+        font-size: 4.125rem;
+    }
+}

@@ -4,9 +4,10 @@
     // padding-top: 32px;
 }
 
-.main-nav {
-    background: $color-3;
+.site-header__nav {
+    background: $white-1;
     font-family: $nav-font;
+    color: $black-1;
 
     @include media-query("over-769") {
         display: flex;
@@ -30,7 +31,7 @@
 }
 
 // toggles main nav visible with hamburger menu
-.main-nav__open .main-nav {
+.site-header__nav__open .site-header__nav {
     display: block;
     height: 100vh;
     left: 0;
@@ -39,7 +40,14 @@
     width: 100vw;
 }
 
-.main-nav .menu {
+.site-header__nav {
+
+    background-color: #fff9;
+    border-radius: 100rem;
+    box-shadow: 0 0 0 .5px rgba($color: $black-1, $alpha: 0.3);
+}
+
+.site-header__nav .menu {
     @include media-query("over-769") {
         align-items: stretch;
         display: flex;
@@ -55,7 +63,7 @@
         list-style-type: none;
         padding: 0;
         position: relative;
-        text-transform: uppercase;
+        text-transform: none;
         transition-duration: 333ms;
         transition-property: color, background-color, opacity;
         transition-timing-function: ease-in-out;
@@ -81,7 +89,7 @@
     li a {
         display: block;
         position: relative;
-        color: $gray-2;
+        color: inherit;
         cursor: pointer;
         text-decoration: none;
         transition: $transition;
@@ -99,23 +107,6 @@
 
         @include media-query("under-768") {
             padding: 1.25rem 1.5rem;
-        }
-    }
-
-    li.quote>a {
-        color: #fff;
-        border-radius: 4px;
-        font-weight: 300;
-        transition: background 600ms ease-in-out;
-
-        background: $color-3;
-        transition: background 600ms ease-in-out;
-
-        &:hover,
-        &:active,
-        &:focus {
-            color: white;
-            background: $color-2;
         }
     }
 
@@ -138,14 +129,14 @@
     .menu-item-has-children .expand:after {
         color: currentColor;
         content: "\f067";
-        font-family: "Font Awesome 6 Pro";
+        font-family: "Font Awesome 6 Free";
         font-size: inherit;
     }
 
     .menu-item-has-children.expanded>.expand:after {
         color: currentColor;
         content: "\f068";
-        font-family: "Font Awesome 6 Pro";
+        font-family: "Font Awesome 6 Free";
         font-size: inherit;
     }
 
@@ -153,7 +144,7 @@
         background-color: #f9f9f9;
 
         li {
-            text-transform: capitalize;
+            text-transform: none;
         }
 
         @include media-query("under-768") {
@@ -163,11 +154,11 @@
 
     .current-menu-item>a {
         color: $color-1;
-        // text-decoration: underline;
+        font-weight: 700;
     }
 }
 
-.main-nav .menu .menu-item-has-children>a:after {
+.site-header__nav .menu .menu-item-has-children>a:after {
     @include media-query("over-769") {
         content: "\f078";
         font-family: "Font Awesome 6 Free";
@@ -176,8 +167,8 @@
     }
 }
 
-.main-nav__open {
-    .main-nav__toggle {
+.site-header__nav__open {
+    .site-header__toggle {
         &::after {
             content: "\f00d";
         }
@@ -191,13 +182,17 @@
 /******************************************************
     [ Main Nav Submenu ]
 *******************************************************/
-.main-nav .menu ul.sub-menu {
+.site-header__nav .menu ul.sub-menu {
     @include media-query("over-769") {
-        background-color: $color-3;
+        background-color: $white-1;
+        border-radius: 10px;
+        box-shadow: 0 0 0 .5px rgba($color: $black-1, $alpha: 0.3);
         left: 99999px;
         opacity: 0;
+        text-align: left;
         visibility: hidden;
         position: absolute;
+        // overflow: hidden;
         z-index: 30;
         min-width: 210px;
         transition: opacity 600ms ease-in-out;
@@ -210,15 +205,22 @@
             padding-left: 20px;
         }
 
+        @include media-query("over-769") {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+            &:last-of-type {
+                border-bottom: none;
+            }
+        }
+
         a {
             background: transparent;
-            border-radius: 0;
-            color: $gray-2;
+            color: inherit;
             display: block;
             float: none;
-            font-family: $nav-font;
+            font-family: inherit;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: inherit;
             height: auto;
             line-height: 1.5;
             margin: 0;
@@ -231,21 +233,17 @@
                 background: $color-1;
                 color: white;
             }
-
-            @include media-query("over-769") {
-                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-            }
         }
     }
 
     .current-menu-item>a {
-        color: $color-1;
-        font-weight: bold;
-        text-decoration: underline;
+        background: $color-1;
+        color: white;
+        font-weight: 700;
     }
 }
 
-.main-nav .menu .menu-item-has-children>ul.sub-menu {
+.site-header__nav.menu .menu-item-has-children>ul.sub-menu {
     @include media-query("over-769") {}
 }
 
@@ -256,18 +254,18 @@
     right: max(1.5rem, calc(100vw - 88rem) / 2);
 }
 
-.main-nav .menu .menu-item-has-children .expand:after {
+.site-header__nav .menu .menu-item-has-children .expand:after {
     color: currentColor;
     content: "\f067";
     font-family: "Font Awesome 6 Pro";
     font-size: inherit;
 }
 
-.main-nav .menu .menu-item-has-children.expanded>.expand:after {
+.site-header__nav .menu .menu-item-has-children.expanded>.expand:after {
     content: "\f068";
 }
 
-.main-nav .menu li:hover>ul.sub-menu {
+.site-header__nav .menu li:hover>ul.sub-menu {
     @include media-query("over-769") {
         top: 100%;
         left: 0;
@@ -277,23 +275,23 @@
     }
 }
 
-.main-nav .menu ul.sub-menu ul.sub-menu {
+.site-header__nav .menu ul.sub-menu ul.sub-menu {
     @include media-query("over-769") {
         top: 0;
         left: 100%;
     }
 }
 
-.main-nav .menu>.current_page_item>a {
+.site-header__nav .menu>.current_page_item>a {
     color: $color-1;
 }
 
-.main-nav .menu ul.sub-menu li.current_page_item>a {
+.site-header__nav .menu ul.sub-menu li.current_page_item>a {
     background: $color-2;
     color: white;
 }
 
-.main-nav__toggle {
+.site-header__toggle {
     background-color: white;
     z-index: 50;
     border: none;
@@ -324,8 +322,8 @@
     }
 }
 
-.main-nav__open {
-    .main-nav__toggle {
+.site-header__nav__open {
+    .site-header__toggle {
         &::after {
             content: "\f00d";
         }
@@ -337,7 +335,7 @@
 }
 
 // No `body` scrolling when the menu is open.
-.main-nav__open {
+.site-header__nav__open {
     height: 100vh;
     overflow-y: hidden;
 }
