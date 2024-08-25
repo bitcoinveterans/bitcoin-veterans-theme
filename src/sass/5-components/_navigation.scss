@@ -5,18 +5,21 @@
 }
 
 .site-header__nav {
-    background: $white-1;
+    background-color: #fff9;
     font-family: $nav-font;
     color: $black-1;
 
-    @include media-query("over-769") {
+    ul {
+        list-style: none;
+    }
+
+
+    @include media-query("over-768") {
+        border-radius: 100rem;
+        box-shadow: 0 0 0 1px rgba($color: $black-1, $alpha: 0.1);
         display: flex;
         flex-direction: row;
         grid-column: 1/-1;
-    }
-
-    ul {
-        list-style: none;
     }
 
     @include media-query("under-768") {
@@ -30,34 +33,36 @@
     }
 }
 
-// toggles main nav visible with hamburger menu
 .site-header__nav__open .site-header__nav {
     display: block;
     height: 100vh;
     left: 0;
     top: 4px;
     opacity: 1;
-    width: 100vw;
-}
-
-.site-header__nav {
-
-    background-color: #fff9;
-    border-radius: 100rem;
-    box-shadow: 0 0 0 .5px rgba($color: $black-1, $alpha: 0.3);
+    width: 100%;
 }
 
 .site-header__nav .menu {
-    @include media-query("over-769") {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    @include media-query("over-768") {
+        justify-content: space-between;
+    }
+
+    @include media-query("under-768") {
+        flex-direction: column;
         align-items: stretch;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin: 0;
+        margin: 24px 0 0;
     }
 
     >li {
-        font-size: 1rem;
+        flex: 1;
+    }
+
+    >li {
+
         font-weight: 600;
         line-height: 1;
         list-style-type: none;
@@ -68,20 +73,33 @@
         transition-property: color, background-color, opacity;
         transition-timing-function: ease-in-out;
 
-        @include media-query("under-768") {
-            border-bottom: 1px solid #e1e1e1;
+        @include media-query("over-996") {
+            font-size: 1rem;
+            margin: 0;
 
-            &:first-of-type {
-                border-top: 1px solid #e1e1e1;
+            &:last-of-type {
+                margin-right: 0;
             }
         }
 
-        @include media-query("over-769") {
+        @include media-query("under-996") {
+            // font-size: 0.8rem;
+        }
+
+        @include media-query("over-768") {
             display: inline-block;
             margin: 0;
 
             &:last-of-type {
                 margin-right: 0;
+            }
+        }
+
+        @include media-query("under-768") {
+            border-bottom: 1px solid #e1e1e1;
+
+            &:first-of-type {
+                border-top: 1px solid #e1e1e1;
             }
         }
     }
@@ -101,12 +119,12 @@
             transition: background 333ms ease-in-out;
         }
 
-        @include media-query("over-769") {
+        @include media-query("over-996") {
             padding: 1.25rem 1.5rem;
         }
 
-        @include media-query("under-768") {
-            padding: 1.25rem 1.5rem;
+        @include media-query("under-996") {
+            padding: 1rem;
         }
     }
 
@@ -121,7 +139,7 @@
             width: 36px;
         }
 
-        @include media-query("over-769") {
+        @include media-query("over-768") {
             display: none;
         }
     }
@@ -130,6 +148,7 @@
         color: currentColor;
         content: "\f067";
         font-family: "Font Awesome 6 Free";
+        font-weight: 700;
         font-size: inherit;
     }
 
@@ -137,6 +156,7 @@
         color: currentColor;
         content: "\f068";
         font-family: "Font Awesome 6 Free";
+        font-weight: 700;
         font-size: inherit;
     }
 
@@ -159,9 +179,10 @@
 }
 
 .site-header__nav .menu .menu-item-has-children>a:after {
-    @include media-query("over-769") {
+    @include media-query("over-768") {
         content: "\f078";
         font-family: "Font Awesome 6 Free";
+        font-weight: 700;
         font-size: 14px;
         margin-left: 8px;
     }
@@ -183,7 +204,7 @@
     [ Main Nav Submenu ]
 *******************************************************/
 .site-header__nav .menu ul.sub-menu {
-    @include media-query("over-769") {
+    @include media-query("over-768") {
         background-color: $white-1;
         border-radius: 10px;
         box-shadow: 0 0 0 .5px rgba($color: $black-1, $alpha: 0.3);
@@ -205,7 +226,7 @@
             padding-left: 20px;
         }
 
-        @include media-query("over-769") {
+        @include media-query("over-768") {
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
             &:last-of-type {
@@ -244,7 +265,7 @@
 }
 
 .site-header__nav.menu .menu-item-has-children>ul.sub-menu {
-    @include media-query("over-769") {}
+    @include media-query("over-768") {}
 }
 
 .menu-item-has-children .expand {
@@ -257,7 +278,8 @@
 .site-header__nav .menu .menu-item-has-children .expand:after {
     color: currentColor;
     content: "\f067";
-    font-family: "Font Awesome 6 Pro";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 700;
     font-size: inherit;
 }
 
@@ -266,7 +288,7 @@
 }
 
 .site-header__nav .menu li:hover>ul.sub-menu {
-    @include media-query("over-769") {
+    @include media-query("over-768") {
         top: 100%;
         left: 0;
         opacity: 1;
@@ -276,7 +298,7 @@
 }
 
 .site-header__nav .menu ul.sub-menu ul.sub-menu {
-    @include media-query("over-769") {
+    @include media-query("over-768") {
         top: 0;
         left: 100%;
     }
@@ -299,13 +321,13 @@
 
     &::after {
         content: "\f0c9";
-        font-family: "Font Awesome 6 Pro";
-        font-weight: 400;
-        font-size: 1.5rem;
+        font-family: "Font Awesome 6 Free";
+        font-weight: 700;
+        font-size: 2rem;
     }
 
     @include media-query("under-768") {
-        top: 20px;
+        top: 36px;
         right: 20px;
         width: 36px;
         height: 36px;
@@ -317,7 +339,7 @@
 
     @media screen and (max-width: 600px) {}
 
-    @include media-query("over-769") {
+    @include media-query("over-768") {
         display: none;
     }
 }

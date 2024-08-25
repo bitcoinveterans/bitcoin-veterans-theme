@@ -28,6 +28,9 @@ require_once CC_STARTER_THEME_DIR . '/inc/theme-setup.php';
 // include scripts-styles.
 require_once CC_STARTER_THEME_DIR . '/inc/scripts-styles.php';
 
+// include acf.
+require_once CC_STARTER_THEME_DIR . '/inc/acf.php';
+
 // include font awesome kit.
 require_once CC_STARTER_THEME_DIR . '/inc/fa-setup-kit.php';
 

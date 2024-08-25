@@ -32,7 +32,13 @@
         margin-block-end: 1.5rem;
     }
 
+    @include media-query("under-1048") {}
+
     @include media-query("under-768") {
+        .container {
+            padding: 1.875rem;
+        }
+
         .partners-logo-list {
             flex-direction: column;
             align-items: center;
@@ -40,6 +46,12 @@
 
         .partners-logo-list li {
             margin: 1.875rem 0;
+        }
+    }
+
+    @include media-query("under-600") {
+        .container {
+            padding: 1.5rem;
         }
     }
 }

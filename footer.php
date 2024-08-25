@@ -1,5 +1,5 @@
 <footer class="site-footer">
-    <div class="container-1360">
+    <div class="container container-1360">
         <div class="footer-content">
             <div class="footer-content__column footer-content__column--logo">
                 <div class="footer-content__logo">

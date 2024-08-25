@@ -23,12 +23,12 @@ $transition: all ease-in-out 0.3s;
 
 $border-radius: 100px;
 
-$breakpoints: ("over-481": "(min-width: 481px)",
-    "over-997": "(min-width: 997px)",
-    "over-769": "(min-width: 769px)",
+$breakpoints: ("over-480": "(min-width: 481px)",
+    "over-768": "(min-width: 769px)",
+    "over-996": "(min-width: 997px)",
     "over-1025": "(min-width: 1025px)",
     "over-1200": "(min-width: 1200px)",
-    "over-1049": "(min-width: 1048px)",
+    "over-1048": "(min-width: 1048px)",
     "over-1600": "(min-width: 1600px)",
 
     "under-1048": "(max-width: 1048px)",

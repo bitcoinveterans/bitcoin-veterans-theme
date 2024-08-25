@@ -3,15 +3,33 @@
 .site-header {
     background: $white-1;
     padding-block: 1.563rem;
-    text-align: center;
+    // text-align: center;
     position: relative;
 
     .container {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
         align-items: center;
         gap: 1.5rem;
+
+        .site-header__logo {
+            grid-column: span 3;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .site-header__nav {
+            grid-column: span 13;
+        }
+
+        @include media-query("under-768") {
+            display: block;
+        }
     }
 
-    @include media-query("under-1048") {}
+    @include media-query("under-768") {
+        padding-block: 1.5rem 0;
+    }
 }

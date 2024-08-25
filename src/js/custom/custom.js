@@ -51,15 +51,23 @@ jQuery(document).ready(function ($) {
 
 	//Mobile menu
 
-	$(".main-nav__toggle").on("click", function () {
-		$("body").toggleClass("main-nav__open");
+	$(".site-header__toggle").on("click", function () {
+		$("body").toggleClass("site-header__nav__open");
+		// $(".site-header__nav").toggle();
+		
+		// Make the main nav visible when the hamburger menu is clicked
+		// if ($("body").hasClass("site-header__nav__open")) {
+		// 	$(".site-header__nav").css("display", "block");
+		// } else {
+		// 	$(".site-header__nav").css("display", "none");
+		// }
 	});
 
 	const anchorsWithChildren = document.querySelectorAll(
-		".main-nav .menu-item-has-children > a, .main-nav .page_item_has_children > a"
+		".site-header__nav .menu-item-has-children > a, .site-header__nav .page_item_has_children > a"
 	);
 	const anchorsWithChildrenSubmenu = document.querySelectorAll(
-		".main-nav .menu-item-has-children > ul, .main-nav .page_item_has_children > ul"
+		".site-header__nav .menu-item-has-children > ul, .site-header__nav .page_item_has_children > ul"
 	);
 
 	// Add dropdown buttons for mobile menu submenu
@@ -78,7 +86,7 @@ jQuery(document).ready(function ($) {
 
 	mobileMenuDropdownIcons();
 
-	$(".main-nav .expand").on("click", function () {
+	$(".site-header__nav .expand").on("click", function () {
 		$(this).parent().toggleClass("expanded");
 		$(this).next(".sub-menu").toggle("medium");
 	});

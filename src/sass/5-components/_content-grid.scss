@@ -84,13 +84,31 @@
     }
 
 
-
-
-
+    @include media-query("under-1048") {
+        .container {
+            border-radius: 0;
+        }
+    }
 
     @include media-query("under-768") {
+        .container {
+            padding: 1.875rem;
+        }
+
         .content-grid__grid {
             grid-template-columns: 1fr;
         }
+    }
+
+    @include media-query("under-600") {
+        .container {
+            padding: 2rem;
+        }
+    }
+}
+
+.content-grid.section {
+    @include media-query("under-600") {
+        padding-block: 0;
     }
 }
