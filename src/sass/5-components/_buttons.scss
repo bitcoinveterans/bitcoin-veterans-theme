@@ -71,7 +71,14 @@
 }
 
 .btn--icon-right {
+    flex-direction: row-reverse;
+
     i {
         margin-inline-start: 0.625rem;
+        margin-inline-end: 0;
+    }
+
+    .btn-text {
+        order: 0;
     }
 }

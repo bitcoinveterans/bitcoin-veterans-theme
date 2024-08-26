@@ -16,6 +16,7 @@ function cc_starter_enqueue_styles_and_scripts() {
 
 	wp_enqueue_style( 'cc_starter-master', CC_STARTER_THEME_URI . '/assets/css/main.css' );
 
+
 	// Load JS files
 
 	wp_enqueue_script( 'cc_starter-custom', get_template_directory_uri() . '/assets/js/theme.min.js', array('jquery'), '20140125', true );
@@ -30,3 +31,8 @@ function cc_starter_enqueue_styles_and_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'cc_starter_enqueue_styles_and_scripts', 999 );
 
+// Enqueue admin styles
+function cc_starter_enqueue_admin_styles() {
+    wp_enqueue_style('cc_starter-admin-styles', CC_STARTER_THEME_URI . '/assets/css/admin-styles.css');
+}
+add_action('admin_enqueue_scripts', 'cc_starter_enqueue_admin_styles');

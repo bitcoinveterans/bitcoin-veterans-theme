@@ -1,0 +1,51 @@
+{
+    "key": "group_66cbb1f9cc334",
+    "title": "Section Width",
+    "fields": [
+        {
+            "key": "field_66cbb1f93b5fa",
+            "label": "Section Width",
+            "name": "container_width",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "container-1360": "Large",
+                "container-1024": "Standard",
+                "container-768": "Small"
+            },
+            "default_value": "container-1024",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1724626783
+}

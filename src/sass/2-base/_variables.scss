@@ -4,6 +4,12 @@ $color-1: hsl(32, 99%, 50%);
 $color-2: $color-1;
 $color-3: #F8FAFC;
 
+:root {
+    --color-1: #{$color-1};
+    --color-2: #{$color-2};
+    --color-3: #{$color-3};
+}
+
 $black-1: #0a0a0a; //body
 $black-2: #0a0a0a; //heading
 $black-3: #404040; //neutral/contrast

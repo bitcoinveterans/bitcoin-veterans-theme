@@ -295,8 +295,10 @@
             </div>
             <div class="faqs-cta">
                 <a href="#" class="btn btn--secondary btn--icon-right">
+                    <span class="btn__icon" aria-hidden="true">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
                     <span class="btn-text">View All FAQs</span>
-                    <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>

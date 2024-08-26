@@ -17,6 +17,8 @@ const gulp = require("gulp"),
 const paths = {
 	styleSRC: "src/sass/main.scss",
 	styleDest: "assets/css/",
+    adminStyleSRC: 'src/sass/2-base/admin-styles.scss',
+    adminStyleDest: 'assets/css/',
 	imagesSRC: "src/img/**/*.{png,jpg,gif,svg}",
 	imagesDest: "assets/img/",
 	jsVendorsSRC: "src/js/lib/*.js",
@@ -58,6 +60,18 @@ gulp.task("styles", function() {
         .pipe(postcss([cssnano()]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.styleDest));
+});
+
+// Admin Styles task
+gulp.task("adminStyles", function() {
+    return gulp
+        .src(paths.adminStyleSRC)
+        .pipe(plumber({ errorHandler }))
+        .pipe(sourcemaps.init())
+        .pipe(sass().on("error", sass.logError))
+        .pipe(postcss([cssnano()]))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(paths.adminStyleDest));
 });
 
 // Images task
@@ -160,6 +174,7 @@ gulp.task(
 // Watch task
 gulp.task("watch", function() {
     gulp.watch(paths.stylesWatchFiles, gulp.series("styles"));
+    gulp.watch(paths.adminStyleSRC, gulp.series("adminStyles"));
     gulp.watch(paths.vendorsJSWatchFiles, gulp.series("vendorsJS"));
     gulp.watch(paths.customJSWatchFiles, gulp.series("customJS"));
     gulp.watch(paths.customImagesWatchFiles, gulp.series("images"));
@@ -167,4 +182,4 @@ gulp.task("watch", function() {
 });
 
 // Default task
-gulp.task("default", gulp.parallel("styles", "images", "vendorsJS", "customJS", "watch"));
+gulp.task("default", gulp.parallel("styles", "adminStyles", "images", "vendorsJS", "customJS", "watch"));
