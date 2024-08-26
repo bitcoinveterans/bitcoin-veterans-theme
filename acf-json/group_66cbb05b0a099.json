@@ -8,7 +8,7 @@
             "name": "section_heading",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Enter the main title for this section",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -28,7 +28,7 @@
             "name": "section_description",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Provide a brief summary or introduction—this will appear below the heading to give more context.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -48,7 +48,7 @@
             "name": "section_icon",
             "aria-label": "",
             "type": "font-awesome",
-            "instructions": "",
+            "instructions": "Use the search to find and select a Font Awesome icon (e.g., search \"star\").",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -90,5 +90,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724625208
+    "modified": 1724684599
 }

@@ -1,0 +1,110 @@
+{
+    "key": "group_66cc953213068",
+    "title": "Icon Card",
+    "fields": [
+        {
+            "key": "field_66cc953253095",
+            "label": "Icon",
+            "name": "icon_card_icon",
+            "aria-label": "",
+            "type": "font-awesome",
+            "instructions": "Use the search to find and select a Font Awesome icon (e.g., search \"star\").",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "icon_sets": [
+                "solid",
+                "regular",
+                "brands"
+            ],
+            "custom_icon_set": "",
+            "default_label": "",
+            "default_value": "",
+            "save_format": "element",
+            "allow_null": 0,
+            "show_preview": 1,
+            "enqueue_fa": 0,
+            "fa_live_preview": "",
+            "choices": []
+        },
+        {
+            "key": "field_66cc960053096",
+            "label": "Heading",
+            "name": "icon_card_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter the main heading for this card",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 48,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66cc963553097",
+            "label": "Description",
+            "name": "icon_card_description",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Provide a brief summary or introduction—this will appear below the heading to give more context.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 72,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66cc964b53098",
+            "label": "Link",
+            "name": "icon_card_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Set the destination URL for the button—this is where the button will take the user when clicked.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1724684765
+}

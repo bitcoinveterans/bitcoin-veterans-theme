@@ -4,11 +4,11 @@
     "fields": [
         {
             "key": "field_66cbb6d275d69",
-            "label": "Type",
+            "label": "Style Type",
             "name": "button_type",
             "aria-label": "",
             "type": "radio",
-            "instructions": "",
+            "instructions": "Select \"Primary\" for a standout button or \"Secondary\" for a subtler option.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -33,7 +33,7 @@
             "name": "button_color",
             "aria-label": "",
             "type": "button_group",
-            "instructions": "",
+            "instructions": "Pick the button color—select \"Orange\" for a vibrant look or \"Gray\" for a neutral tone.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -56,7 +56,7 @@
             "name": "button_link",
             "aria-label": "",
             "type": "link",
-            "instructions": "",
+            "instructions": "Set the destination URL for the button—this is where the button will take the user when clicked.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -72,7 +72,7 @@
             "name": "button_label",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Enter the text for the button—this will be displayed on the button itself.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -85,6 +85,78 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_66cc9704c8772",
+            "label": "Button Icon Group",
+            "name": "button_icon_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_66cc9775c8773",
+                    "label": "Button Icon",
+                    "name": "button_icon",
+                    "aria-label": "",
+                    "type": "font-awesome",
+                    "instructions": "Use the search to find and select a Font Awesome icon (e.g., search \"star\").",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "brands"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "element",
+                    "allow_null": 0,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_66cc97a1c8774",
+                    "label": "Icon Position",
+                    "name": "icon_position",
+                    "aria-label": "",
+                    "type": "radio",
+                    "instructions": "Choose whether the icon appears on the \"Left\" or \"Right\" of the button text",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "icon-left": "Left",
+                        "icon-right": "Right"
+                    },
+                    "default_value": "",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "layout": "vertical",
+                    "save_other_choice": 0
+                }
+            ]
         }
     ],
     "location": [
@@ -102,8 +174,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724628894
+    "modified": 1724684610
 }

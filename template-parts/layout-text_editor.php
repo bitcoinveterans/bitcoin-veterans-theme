@@ -10,7 +10,7 @@ $args = array(
 	'text_editor' => get_sub_field( 'text_editor' ),
 ); ?>
 
-<section class="acf-text-editor section">
+<section class="acf-text-editor section" aria-label="Text Content">
 	<div class="module">
 		<?php get_template_part( 'template-parts/partials/text_editor', '', $args ); ?>
 	</div>
