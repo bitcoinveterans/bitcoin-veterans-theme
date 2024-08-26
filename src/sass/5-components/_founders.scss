@@ -13,26 +13,64 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
-
-
     }
 
     .founder-card {
         background-color: $white-1;
         border: var(--founder-card-border);
         border-radius: var(--founder-card-radius);
-        padding: 1rem;
+        position: relative;
+        transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+
+        .founder-card__image {
+            overflow: hidden;
+        }
 
         img {
-            border-radius: var(--founder-card-radius);
+            border-radius: var(--founder-card-radius) var(--founder-card-radius) 0 0;
             width: 100%;
+            filter: grayscale(100%);
+            padding: 1rem;
+            transition: filter 0.3s ease-in-out, padding 0.3s ease-in-out, scale 0.3s ease-in-out;
+        }
+
+        &:hover {
+            background-color: $black-1;
+
+            img {
+                filter: grayscale(0%);
+                padding: 0;
+                scale: 1.05;
+            }
         }
     }
 
     .founder-card__name {
         font-size: 1.25rem;
         text-align: center;
-        margin-block-start: 0.875rem;
+        padding: 1rem;
+        transition: margin-block-start 0.3s ease-in-out;
+
+        &:hover {
+            padding: 1rem;
+        }
+    }
+
+    .founder-card__name a {
+        transition: color 0.3s ease-in-out;
+
+        &::after {
+            border-radius: inherit;
+            content: "";
+            cursor: pointer !important;
+            display: flex;
+            inset: 0;
+            position: absolute;
+        }
+
+        &:hover {
+            color: $color-1;
+        }
     }
 
     @include media-query("under-1048") {

@@ -1,0 +1,87 @@
+{
+    "key": "group_66ccd6f5d9b7a",
+    "title": "Partners Logos",
+    "fields": [
+        {
+            "key": "field_66ccd6f6be69c",
+            "label": "Alt Text",
+            "name": "partner_alt_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter a brief description of the logo—this helps with accessibility and provides context if the image fails to load.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66ccd739be69d",
+            "label": "Logo",
+            "name": "partner_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Upload the logo image here—ensure the image is clear and appropriately sized for its use on the site.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66ccd75ebe69e",
+            "label": "URL",
+            "name": "partner_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Provide the link associated with the logo—this is where users will be directed when they click on the logo.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "partner"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1724700626
+}

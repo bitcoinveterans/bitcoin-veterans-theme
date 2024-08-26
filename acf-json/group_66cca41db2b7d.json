@@ -1,0 +1,132 @@
+{
+    "key": "group_66cca41db2b7d",
+    "title": "FAQs Section",
+    "fields": [
+        {
+            "key": "field_66cca41d155be",
+            "label": "Section Heading Group",
+            "name": "section_heading_group",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_66cbb05b0a099"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_66cca45f155bf",
+            "label": "FAQ Options",
+            "name": "faqs_section_options",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "Use the \"Add Accordion\" button to create a new FAQ item. Fill in the Summary with the question and the Details with the answer. Each added FAQ will be displayed in a collapsible format.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_66cca66b9df47",
+                    "label": "Select FAQ Category",
+                    "name": "faq_category",
+                    "aria-label": "",
+                    "type": "taxonomy",
+                    "instructions": "Choose the category of FAQs you want to display—this will filter the FAQs shown to only those in the selected category. If no category is selected in will show most recent from all FAQs",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "faq_category",
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 1,
+                    "return_format": "id",
+                    "field_type": "checkbox",
+                    "bidirectional": 0,
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_66cca7b5682f7",
+                    "label": "Number of FAQs to Display",
+                    "name": "number_of_faqs",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Set the maximum number of FAQs to show on this page—enter the desired number to control the display quantity. Max amount is 10.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": 10,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_66cca803682f8",
+                    "label": "Show 'See All FAQs' Button",
+                    "name": "show_see_all_faqs",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Toggle this option to Yes if you want to include a button that links to the main FAQs page—this button allows users to view all FAQs in one place.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1724695210
+}

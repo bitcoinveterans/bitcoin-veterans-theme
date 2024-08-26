@@ -51,33 +51,43 @@
             </div>
             <div class="founders-grid" role="list">
                 <article class="founder-card" role="listitem">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/alex.jpg" alt="Portrait of Alex" class="founder-card__image">
+                    <div class="founder-card__image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/alex.jpg" alt="Portrait of Alex" class="founder-card__image">
+                    </div>                      
                     <div class="founder-card__content">
-                        <h3 class="founder-card__name">Alex</h3>
+                        <h3 class="founder-card__name"><a href="#">Alex</a></h3>
                     </div>
                 </article>
                 <article class="founder-card" role="listitem">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/gabe.jpg" alt="Portrait of John Doe" class="founder-card__image">
+                    <div class="founder-card__image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/gabe-1.jpg" alt="Portrait of John Doe" class="founder-card__image">
+                    </div>
                     <div class="founder-card__content">
-                        <h3 class="founder-card__name">Gabe</h3>
+                        <h3 class="founder-card__name"><a href="#">Gabe</a></h3>
                     </div>
                 </article>
                 <article class="founder-card" role="listitem">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/jordan.jpg" alt="Portrait of John Doe" class="founder-card__image">
+                    <div class="founder-card__image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/jordan.jpg" alt="Portrait of John Doe" class="founder-card__image">
+                    </div>
                     <div class="founder-card__content">
-                        <h3 class="founder-card__name">Jordan</h3>
+                        <h3 class="founder-card__name"><a href="#">Jordan</a></h3>
                     </div>
                 </article>
                 <article class="founder-card" role="listitem">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/mike.jpg" alt="Portrait of John Doe" class="founder-card__image">
+                    <div class="founder-card__image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/mike.jpg" alt="Portrait of John Doe" class="founder-card__image">
+                    </div>
                     <div class="founder-card__content">
-                        <h3 class="founder-card__name">Mike</h3>
+                        <h3 class="founder-card__name"><a href="#">Mike</a></h3>
                     </div>
                 </article>
                 <article class="founder-card" role="listitem">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shane.jpg" alt="Portrait of John Doe" class="founder-card__image">
+                    <div class="founder-card__image">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shane.jpg" alt="Portrait of John Doe" class="founder-card__image">
+                    </div>
                     <div class="founder-card__content">
-                        <h3 class="founder-card__name">Shane</h3>
+                        <h3 class="founder-card__name"><a href="#">Shane</a></h3>
                     </div>
                 </article>
             </div>
