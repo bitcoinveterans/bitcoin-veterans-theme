@@ -213,7 +213,6 @@
         text-align: left;
         visibility: hidden;
         position: absolute;
-        // overflow: hidden;
         z-index: 30;
         min-width: 210px;
         transition: opacity 600ms ease-in-out;
@@ -254,6 +253,14 @@
                 background: $color-1;
                 color: white;
             }
+        }
+
+        &:first-of-type a {
+            border-radius: 10px 10px 0 0;
+        }
+
+        &:last-of-type a {
+            border-radius: 0 0 10px 10px;
         }
     }
 

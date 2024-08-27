@@ -25,6 +25,7 @@ if ( ! function_exists( 'cc_starter_setup' ) ) :
 		// @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( '300x300', 300, 300, true );
+		add_image_size( '600x560', 600, 560, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(

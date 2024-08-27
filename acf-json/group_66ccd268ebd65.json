@@ -19,14 +19,14 @@
             "layouts": {
                 "layout_66ccd2706d87b": {
                     "key": "layout_66ccd2706d87b",
-                    "name": "hero_sections",
+                    "name": "hero_section",
                     "label": "Hero",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_66ccd2c7441cf",
                             "label": "Hero",
-                            "name": "hero",
+                            "name": "hero_section",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -242,5 +242,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724700149
+    "modified": 1724769200
 }

@@ -3,97 +3,6 @@
 <?php get_header(); ?>
 <main id="content" class="site-main home-content" role="main">
 
-    <section class="hero section" aria-labelledby="hero-title">
-        <div class="container container-1360">
-            <div class="hero__content">
-                <h1 class="hero__title">Your Next Mission:<br>Freedom Through Bitcoin</h1>
-                <p class="hero__description">Join our mission to empower veterans and communities by leveraging the power of Bitcoin.</p>
-                <div class="hero__actions">
-                    <nav aria-label="Additional mission actions">
-                        <ul class="hero__actions-list">
-                            <li class="hero__action-item hero__action-item--primary">
-                                <a href="#join-mission" class="btn btn--primary">
-                                    <span class="btn__icon" aria-hidden="true">
-                                        <i class="fa-solid fa-rocket"></i>
-                                    </span>
-                                    <span class="btn__text">Join the Mission</span>
-                                </a>
-                            </li>
-                            <li class="hero__action-item hero__action-item--secondary">
-                                <a href="#support-mission" class="btn btn--secondary">
-                                    <span class="btn__icon" aria-hidden="true">
-                                    <i class="fa-solid fa-clipboard-check"></i>
-                                    </span>
-                                    <span class="btn__text">Support the Mission</span>
-                                </a>
-                            </li>
-                            <li class="hero__action-item hero__action-item--secondary">
-                                <a href="#about-mission" class="btn btn--secondary">
-                                    <span class="btn__icon" aria-hidden="true">
-                                        <i class="fa-regular fa-comment"></i>
-                                    </span>
-                                    <span class="btn__text">About the Mission</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="founders section" aria-labelledby="founders-title">
-        <div class="container container-1024">
-            <div class="section-title">
-                <i class="fa-solid fa-flag-usa" aria-hidden="true"></i>
-                <h2 class="section-title__headline">Meet Our Founders</h2>
-                <p class="section-title__description">Get to know the visionaries behind it all—meet our founders and their inspiring stories.</p>
-            </div>
-            <div class="founders-grid" role="list">
-                <article class="founder-card" role="listitem">
-                    <div class="founder-card__image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/alex.jpg" alt="Portrait of Alex" class="founder-card__image">
-                    </div>                      
-                    <div class="founder-card__content">
-                        <h3 class="founder-card__name"><a href="#">Alex</a></h3>
-                    </div>
-                </article>
-                <article class="founder-card" role="listitem">
-                    <div class="founder-card__image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/gabe-1.jpg" alt="Portrait of John Doe" class="founder-card__image">
-                    </div>
-                    <div class="founder-card__content">
-                        <h3 class="founder-card__name"><a href="#">Gabe</a></h3>
-                    </div>
-                </article>
-                <article class="founder-card" role="listitem">
-                    <div class="founder-card__image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/jordan.jpg" alt="Portrait of John Doe" class="founder-card__image">
-                    </div>
-                    <div class="founder-card__content">
-                        <h3 class="founder-card__name"><a href="#">Jordan</a></h3>
-                    </div>
-                </article>
-                <article class="founder-card" role="listitem">
-                    <div class="founder-card__image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/mike.jpg" alt="Portrait of John Doe" class="founder-card__image">
-                    </div>
-                    <div class="founder-card__content">
-                        <h3 class="founder-card__name"><a href="#">Mike</a></h3>
-                    </div>
-                </article>
-                <article class="founder-card" role="listitem">
-                    <div class="founder-card__image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shane.jpg" alt="Portrait of John Doe" class="founder-card__image">
-                    </div>
-                    <div class="founder-card__content">
-                        <h3 class="founder-card__name"><a href="#">Shane</a></h3>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <section class="partners section" aria-labelledby="partners-title">
         <div class="container container-1360">
             <div class="section-title">
@@ -243,7 +152,7 @@
                 </article>
             </div>
         </div>
-    </section>
+    </section> 
     <section class="faqs section" aria-labelledby="faqs-title">
         <div class="container container-768">
             <div class="section-title">
@@ -313,7 +222,7 @@
             </div>
         </div>
     </section>
-    <?php //get_template_part( 'template-parts/loop', 'flex' ); ?>
+    <?php get_template_part( 'template-parts/home-loop', 'flex' ); ?>
 </main>
 
 <?php get_footer(); ?>

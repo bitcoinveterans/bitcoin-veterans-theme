@@ -1,0 +1,55 @@
+<?php
+/**
+ * Editor content template partial
+ *
+ * @package adaptdev/base
+ * @since 1.0.0
+ */
+if ( isset( $args['founders_section'] ) ) :
+    [
+        'section_heading' => $section_heading,
+        'section_description' => $section_description,
+        'section_icon' => $section_icon,
+    ] = $args['founders_section'];
+
+    $args = array(
+        'post_type' => 'founder',
+        'posts_per_page' => -1,
+        'orderby' => 'menu_order',
+        'order' => 'ASC'
+    );
+
+    $founder_query = new WP_Query($args);
+
+?>
+
+<div class="section-title">
+    <?php if ($section_icon): ?>
+        <?php echo $section_icon; ?>
+    <?php endif; ?>
+    <?php if ($section_heading): ?>
+        <h2 class="section-title__headline"><?php echo esc_html($section_heading); ?></h2>
+    <?php endif; ?>
+    <?php if ($section_description): ?>
+        <p class="section-title__description"><?php echo esc_html($section_description); ?></p>
+    <?php endif; ?>
+</div>
+<div class="founders-grid" role="list">
+    <?php if ($founder_query->have_posts()) : ?>
+        <?php while ($founder_query->have_posts()) : $founder_query->the_post(); ?>
+            <article class="founder-card" role="listitem">
+                <div class="founder-card__image">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <?php the_post_thumbnail('600x560', array('alt' => 'Portrait of ' . get_the_title())); ?>
+                    <?php endif; ?>
+                </div>                      
+                <div class="founder-card__content">
+                    <h3 class="founder-card__name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                </div>
+            </article>
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
+    <?php endif; ?>
+</div>
+
+<?php endif; ?>

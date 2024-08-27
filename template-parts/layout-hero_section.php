@@ -7,21 +7,21 @@
  */
 
  $hero_section = array(
+    'headline_is_h1' => get_sub_field('headline_is_h1'),
     'headline' => get_sub_field('headline'),
     'description' => get_sub_field('description'),
-    'button' => get_sub_field('button'),
-    'image_1' => get_sub_field('image_1'),
-    'image_2' => get_sub_field('image_2'),
-    'image_3' => get_sub_field('image_3'),
+    'hero_button_1' => get_sub_field('hero_button_1'),
+    'hero_button_2' => get_sub_field('hero_button_2'),
+    'hero_button_3' => get_sub_field('hero_button_3'),
 );
 
 $args = array(
     'hero_section' => $hero_section,
 );
-?>
 
-<section class="hero section">
-    <div class="module">
+?>
+<section class="hero section" aria-labelledby="hero-title">
+    <div class="container container-1360">
         <?php get_template_part( 'template-parts/partials/hero', '', $args ); ?>
     </div>
 </section>
