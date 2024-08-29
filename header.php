@@ -24,7 +24,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'coplan_2023' ); ?></a>
+<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'cc_starter' ); ?></a>
 <?php wp_body_open(); ?>
 	<header class="site-header" role="banner">
         <div class="container container-996">

@@ -24,6 +24,7 @@ if ( ! function_exists( 'cc_starter_setup' ) ) :
 		// Enable support for Post Thumbnails on posts and pages.
 		// @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 		add_theme_support( 'post-thumbnails' );
+		add_image_size( '90x90', 90, 90, true );
 		add_image_size( '300x300', 300, 300, true );
 		add_image_size( '600x560', 600, 560, true );
 

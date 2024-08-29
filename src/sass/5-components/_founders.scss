@@ -1,5 +1,8 @@
 //  5. Componenets - Founders  ///////////////////////////////////////////////////////////
-.founders {
+
+// Founders Content Component
+.founders,
+.founder-archive {
     --founder-card-radius: 6px;
     --founder-card-border: 1px solid #E4E4E5;
 
@@ -16,12 +19,9 @@
     }
 
     .founder-card {
-        background-color: $white-1;
-        border: var(--founder-card-border);
         border-radius: var(--founder-card-radius);
         overflow: hidden;
         position: relative;
-        transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
 
         .founder-card__image {
             overflow: hidden;
@@ -31,12 +31,10 @@
             border-radius: var(--founder-card-radius) var(--founder-card-radius) 0 0;
             width: 100%;
             filter: grayscale(100%);
-            transition: filter 0.3s ease-in-out, scale 0.3s ease-in-out;
+            transition: filter 0.3s ease-in, scale 0.3s ease-in;
         }
 
         &:hover {
-            background-color: $black-1;
-            transition: background-color 0.3s ease-in-out;
 
             img {
                 filter: grayscale(0%);
@@ -45,17 +43,26 @@
         }
     }
 
+    .founder-card__content {
+        background-color: $white-1;
+        transition: background-color 0.3s ease-in;
+
+        &:hover {
+            background-color: $black-1;
+        }
+    }
+
     .founder-card__name {
         font-size: 1.25rem;
         text-align: center;
         padding: 1rem;
-        transition: padding 0.3s ease-in-out;
+        transition: padding 0.3s ease-in;
 
         &:hover {}
     }
 
     .founder-card__name a {
-        transition: color 0.3s ease-in-out;
+        transition: color 0.3s ease-in;
 
         &::after {
             border-radius: inherit;
@@ -98,4 +105,95 @@
     @include media-query("under-600") {
         padding-block: 0;
     }
+}
+
+// Founders Single Template
+.single-founder {
+
+    .founder-content-wrapper {
+        background-color: $white-1;
+        padding: 24px;
+        border-radius: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: grid;
+        grid-template-columns: 4fr 8fr;
+        gap: 24px;
+        align-items: start;
+
+        @include media-query("over-996") {
+            min-height: 600px;
+        }
+
+        .founder-image-column,
+        .founder-info-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+    }
+
+    .founder-image img {
+        border-radius: 12px;
+        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-title {
+        margin-block-end: 1rem;
+        text-align: left;
+    }
+
+    .section-title__headline {
+        margin-block: 0;
+    }
+
+    .founder-social-links {
+        color: $black-3;
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 0;
+        align-items: flex-end;
+
+        &__item {
+            margin-right: 8px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        &__follow {
+            margin-right: 8px;
+        }
+
+        &__link {
+            display: inline-block;
+            color: inherit;
+            transition: color 0.3s ease-in;
+
+            &:hover {
+                color: $color-1;
+            }
+
+            i {
+                font-size: 1.5rem;
+                vertical-align: bottom;
+            }
+        }
+    }
+
+    .entry-content {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid $gray-2;
+
+        p:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+.founder-all-link {
+    margin-block-start: 2rem;
+    text-align: center;
 }

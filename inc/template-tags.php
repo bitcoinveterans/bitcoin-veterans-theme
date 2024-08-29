@@ -7,33 +7,76 @@
  * 
  */
 
- if ( ! function_exists( 'cc_starter_paging_nav' ) ) :
+ if ( ! function_exists( 'cc_starter_post_nav' ) ) :
 	/**
 	 * Display navigation to next/previous set of posts when applicable.
 	 */
-	function cc_starter_paging_nav() {
-		// Don't print empty markup if there's only one page.
-		if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
-			return;
+	function cc_starter_post_nav() {
+		$next_post = get_next_post();
+		$previous_post = get_previous_post();
+
+		if (!$next_post) {
+			$next_post = get_posts(array('posts_per_page' => 1, 'order' => 'ASC', 'post_type' => get_post_type()));
+			$next_post = !empty($next_post) ? $next_post[0] : null;
 		}
+
+		if (!$previous_post) {
+			$previous_post = get_posts(array('posts_per_page' => 1, 'order' => 'DESC', 'post_type' => get_post_type()));
+			$previous_post = !empty($previous_post) ? $previous_post[0] : null;
+		}
+
+		if ($next_post) {
+			$next_post_ID = $next_post->ID;
+			$next_post_title = $next_post->post_title;
+			$next_post_url = get_permalink($next_post->ID);
+			$next_post_thumb = get_the_post_thumbnail($next_post->ID, '90x90');
+		}
+
+		if ($previous_post) {
+			$previous_post_ID = $previous_post->ID;
+			$previous_post_title = $previous_post->post_title;
+			$previous_post_url = get_permalink($previous_post->ID);
+			$previous_post_thumb = get_the_post_thumbnail($previous_post->ID, '90x90');
+		}
+	
 		?>
-		<nav class="navigation paging-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'cc_starter' ); ?></h1>
-			<div class="nav-links">
-	
-				<?php if ( get_next_posts_link() ) : ?>
-				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Next Page', 'cc_starter' ) ); ?></div>
-				<?php endif; ?>
-	
-				<?php if ( get_previous_posts_link() ) : ?>
-				<div class="nav-next"><?php previous_posts_link( __( 'Prev Page <span class="meta-nav">&rarr;</span>', 'cc_starter' ) ); ?></div>
-				<?php endif; ?>
-	
-			</div><!-- .nav-links -->
-		</nav><!-- .navigation -->
 		<?php
+			$nav_items_count = (!empty($next_post_title) ? 1 : 0) + (!empty($previous_post_title) ? 1 : 0);
+			$nav_class = 'post-navigation__links post-navigation__links--' . $nav_items_count;
+
+		?>
+		<nav class="post-navigation" aria-label="Post navigation">
+			<h2 class="post-navigation__heading">Explore More <?php echo ucfirst(get_post_type()); ?> Stories</h2>
+			<div class="<?php echo esc_attr($nav_class); ?>">
+				<?php if ( ! empty( $next_post_title ) ) : ?>
+				<div class="post-navigation__item post-navigation__item--next">
+					<a href="<?php echo esc_url($next_post_url); ?>" class="post-navigation__link" rel="next">
+						<?php if ($next_post_thumb) : ?>
+							<div class="post-navigation__thumbnail">
+								<?php echo $next_post_thumb; ?>
+							</div>
+						<?php endif; ?>
+						<h3 class="post-navigation__title"><?php echo esc_html($next_post_title); ?></h3>
+					</a>
+				</div>
+				<?php endif; ?>
+				<?php if ( ! empty( $previous_post_title ) ) : ?>
+				<div class="post-navigation__item post-navigation__item--previous">
+					<a href="<?php echo esc_url($previous_post_url); ?>" class="post-navigation__link" rel="prev">
+						<?php if ($previous_post_thumb) : ?>
+							<div class="post-navigation__thumbnail">
+								<?php echo $previous_post_thumb; ?>
+							</div>
+						<?php endif; ?>
+						<h3 class="post-navigation__title"><?php echo esc_html($previous_post_title); ?></h3>
+					</a>
+				</div>
+				<?php endif; ?>
+			</div>
+		</nav>
+	<?php
 	}
-	endif;
+endif;
 
 /**
  * Display the post date and author information.

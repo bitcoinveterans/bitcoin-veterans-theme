@@ -5,7 +5,7 @@
  * Include this file in page and post templates where
  * content is rendered via ACF Flexible Content fields.
  *
- * @package adaptdev/base
+ * @package cc_starter
  * @since 1.0.0
  */
 
@@ -23,8 +23,8 @@ if ( have_posts() ) :
             echo '</div>';
 			echo '</div></section>';
         } else {
-			if ( function_exists( 'have_rows' ) && have_rows( 'content_section' ) ) :
-				while ( have_rows( 'content_section' ) ) :
+			if ( function_exists( 'have_rows' ) && have_rows( 'home_page_content_sections' ) ) :
+				while ( have_rows( 'home_page_content_sections' ) ) :
 					the_row();
 					echo "<!-- Loading layouts in loop flex -->";
 					get_template_part( 'template-parts/layout', get_row_layout() );

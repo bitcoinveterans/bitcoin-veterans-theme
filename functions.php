@@ -37,6 +37,9 @@ require_once CC_STARTER_THEME_DIR . '/inc/fa-setup-kit.php';
 // include template-tags.
 require_once CC_STARTER_THEME_DIR . '/inc/template-tags.php';
 
+// include custom excerpt.
+require_once CC_STARTER_THEME_DIR . '/inc/custom-excerpt.php';
+
 // include extras.
 require_once CC_STARTER_THEME_DIR . '/inc/extras.php';
 
@@ -46,10 +49,8 @@ require_once CC_STARTER_THEME_DIR . '/inc/widget-areas.php';
 // include widget areas.
 require_once CC_STARTER_THEME_DIR . '/inc/cc-starter-comments.php';
 
-
-
-
-
+// include spotify.
+require_once CC_STARTER_THEME_DIR . '/inc/spotify.php';
 
 
 

@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
+            "layout": "block",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -46,7 +46,7 @@
                     "custom_icon_set": "",
                     "default_label": "",
                     "default_value": "",
-                    "save_format": "element",
+                    "save_format": "class",
                     "allow_null": 0,
                     "show_preview": 1,
                     "enqueue_fa": 0,
@@ -71,6 +71,27 @@
                     "default_value": "",
                     "placeholder": "",
                     "parent_repeater": "field_66cb86bcdc7ba"
+                },
+                {
+                    "key": "field_66ce5de1e6928",
+                    "label": "Aria Label",
+                    "name": "aria_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66cb86bcdc7ba"
                 }
             ]
         }
@@ -93,5 +114,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724614552
+    "modified": 1724800829
 }

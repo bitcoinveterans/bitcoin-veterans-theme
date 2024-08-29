@@ -27,7 +27,7 @@
                 <?php endif; ?>
             </div><!-- col-1 -->
 
-            <?php coplan_2023_post_nav(); ?>
+            <?php cc_starter_post_nav(); ?>
         </div><!-- module -->
 
     </section><!-- group -->

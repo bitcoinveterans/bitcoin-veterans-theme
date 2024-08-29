@@ -1,29 +1,30 @@
-
 <?php get_header(); ?>
-<?php if ( has_post_thumbnail($post->ID) ) {
+<main id="content" class="site-main page-content" role="main">
 
-    $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'default-header' ); ?>
+    <section class="page section" aria-labelledby="page-title">
+        <div class="container container-1360">
+            <?php
+            $page_title = get_field('page_title');
+            $page_description =  get_field('page_description');
+            $page_title_icon =  get_field('page_title_icon');
 
-    <section class="banner-inner" style="background-image: url(<?php echo $image[0]; ?>);">
-
-
-<?php } else { ?>
-
-    <section class="banner-inner" style="background-image: url(<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/header-default.jpg);">
-
-<?php } ?>
-        <div class="module">
-
-            <div class="page-title-wrap">
-                <h1 class="page-title"><?php the_title(); ?></h1>
+            ?>
+            <div class="section-title">
+                <?php if ($page_title_icon): ?>
+                    <?php echo $page_title_icon; ?>
+                <?php endif; ?>
+                <?php if ($page_title): ?>
+                    <h1 class="section-title__headline"><?php echo esc_html($page_title); ?></h1>
+                <?php endif; ?>
+                <?php if ($page_description): ?>
+                    <p class="section-title__description"><?php echo esc_html($page_description); ?></p>
+                <?php endif; ?>
             </div>
 
-        </div><!--module-->
-    </section><!-- banner -->
+            <?php get_template_part( 'template-parts/loop', 'flex' ); ?>
 
-    <main class="main-content flex-loop" id="content" role="main">
-        
-        <?php get_template_part( 'template-parts/loop', 'flex' ); ?>
-    </main>
+        </div>
+    </section>
+</main>
 
-    <?php get_footer(); ?>
+<?php get_footer(); ?>

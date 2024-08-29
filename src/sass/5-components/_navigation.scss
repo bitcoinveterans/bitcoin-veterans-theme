@@ -4,6 +4,7 @@
     // padding-top: 32px;
 }
 
+// Site Header Nav /////////////////////////////////////////////////////////////
 .site-header__nav {
     background-color: #fff9;
     font-family: $nav-font;
@@ -200,9 +201,8 @@
     }
 }
 
-/******************************************************
-    [ Main Nav Submenu ]
-*******************************************************/
+// Main Nav Submenu /////////////////////////////////////////////////////////////
+
 .site-header__nav .menu ul.sub-menu {
     @include media-query("over-768") {
         background-color: $white-1;
@@ -369,9 +369,8 @@
     overflow-y: hidden;
 }
 
-/******************************************************
-    PAGINATION
-*******************************************************/
+// Pagination /////////////////////////////////////////////////////////////
+
 .paginate .navigation {
     display: flex;
     justify-content: center;
@@ -434,8 +433,7 @@ a:hover.page-numbers {
 }
 
 .site-main .comment-navigation,
-.site-main .paging-navigation,
-.site-main .post-navigation {
+.site-main .paging-navigation {
     margin: 0 0 1.5em;
     overflow: hidden;
 }
@@ -453,4 +451,100 @@ a:hover.page-numbers {
     float: right;
     text-align: right;
     width: 50%;
+}
+
+// Post Nav /////////////////////////////////////////////////////////////
+.post-navigation {
+    background-color: $gray-1;
+    border-radius: 30px;
+    margin-block-start: 2rem;
+    padding: 2rem;
+    text-align: center;
+    max-width: 768px;
+    margin-inline: auto;
+    width: 100%;
+
+    &__links {
+        display: grid;
+    }
+
+    &__links--1 {
+        grid-template-columns: 1fr;
+
+        &__link,
+        &__thumbnail {
+            text-align: center;
+        }
+    }
+
+    &__links--2 {
+        grid-template-columns: 1fr;
+
+        @include media-query("over-768") {
+
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+    }
+
+    &__item {
+        display: flex;
+        margin-bottom: 20px;
+
+        @include media-query("over-768") {
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        font-family: $heading-font;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+
+    &__link {
+        text-align: center;
+    }
+
+    &__heading {
+        font-size: 1.5rem;
+        margin-bottom: 0.875rem;
+    }
+
+    &__item--next {}
+}
+
+.post-navigation__links--1 {
+    .post-navigation__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post-navigation__thumbnail {
+
+        text-align: center;
+    }
+
+    img {
+        margin-inline: auto;
+    }
+}
+
+.post-navigation__item--next {
+    @include media-query("over-768") {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    .post-navigation__thumbnail {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    .post-navigation__title {
+        text-align: right;
+    }
 }

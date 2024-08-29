@@ -56,7 +56,7 @@
                     },
                     "taxonomy": "faq_category",
                     "add_term": 0,
-                    "save_terms": 0,
+                    "save_terms": 1,
                     "load_terms": 1,
                     "return_format": "id",
                     "field_type": "checkbox",
@@ -128,5 +128,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724695210
+    "modified": 1724790174
 }
