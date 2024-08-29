@@ -375,7 +375,7 @@
     display: flex;
     justify-content: center;
     margin: 48px 0 0 0;
-    border-top: 3px dashed rgba($color: $black-3, $alpha: 0.6);
+    // border-top: 3px dashed rgba($color: $black-3, $alpha: 0.6);
     padding: 36px 0 36px;
 }
 
@@ -451,6 +451,19 @@ a:hover.page-numbers {
     float: right;
     text-align: right;
     width: 50%;
+}
+
+// Podcast Pagination /////////////////////////////////////////////////////////////
+.paginate-top {
+    .navigation {
+        padding: 0;
+    }
+}
+
+.paginate .navigation {
+    margin-inline: auto;
+    max-width: 768px;
+    width: 100%;
 }
 
 // Post Nav /////////////////////////////////////////////////////////////

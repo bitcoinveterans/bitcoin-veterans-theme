@@ -21,7 +21,7 @@ $footer_logo_alt = get_post_meta($footer_logo, '_wp_attachment_image_alt', true)
         <div class="footer-content">
             <div class="footer-content__column footer-content__column--logo">
                 <?php if ($footer_logo_url): ?>
-                <div class="footer-content__logo">
+                <div class="footer-content__logo grit">
                     <a href="<?php echo esc_url(home_url()); ?>" class="footer-content__logo-link">
                        <img src="<?php echo esc_url($footer_logo_url); ?>" alt="<?php echo esc_attr($footer_logo_alt); ?>" class="footer-content__logo-image">
                     </a>
@@ -31,7 +31,7 @@ $footer_logo_alt = get_post_meta($footer_logo, '_wp_attachment_image_alt', true)
             <div class="footer-content__column footer-content__column--main">
                 <div class="footer-content__connect">
                     <?php if ($mission_headline): ?>
-                        <h3 class="footer-content__heading"><?php echo esc_html($mission_headline); ?></h3>
+                        <h3 class="footer-content__heading grit"><?php echo esc_html($mission_headline); ?></h3>
                     <?php endif; ?>
                     <?php if (!empty($social_media_accounts) && is_array($social_media_accounts)) : ?>
                     <ul class="footer-content__social-icons">

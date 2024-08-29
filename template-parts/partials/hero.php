@@ -53,7 +53,7 @@ if ( isset( $args['hero_section'] ) ) :
 
     <div class="hero__content">
         <?php if ($headline): ?>
-            <<?php echo esc_attr($tag); ?> class="hero__title"><?php echo $headline; ?></<?php echo esc_attr($tag); ?>>
+            <<?php echo esc_attr($tag); ?> class="hero__title grit"><?php echo $headline; ?></<?php echo esc_attr($tag); ?>>
         <?php endif; ?>
         <?php if ($description): ?>
             <p class="hero__description"><?php echo esc_html($description); ?></p>

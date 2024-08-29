@@ -1,5 +1,6 @@
 //  4. Layout - Globals  ///////////////////////////////////////////////////////////\\
 
+
 // Global Containers ///////////////////////////////////////////////////////////
 .container {
     padding-inline: 1.5rem;
@@ -29,6 +30,12 @@
 .section {
     padding-block: 2.5rem;
 
+    i {
+        mask-image: url('../img/grit_mask.png');
+        mask-repeat: repeat;
+        mask-size: 250px;
+    }
+
     @include media-query("under-600") {
         padding-block: 1.5rem;
     }
@@ -42,6 +49,9 @@
         font-size: 4rem;
         font-weight: 700;
         margin-block: 1.25rem 0;
+        mask-image: url('../img/grit_mask.png');
+        mask-repeat: repeat;
+        mask-size: 350px;
     }
 
     &__description {
@@ -66,4 +76,11 @@
             font-size: 0.875rem;
         }
     }
+}
+
+// Grits ///////////////////////////////////////////////////////////
+.grit {
+    mask-image: url('../img/grit_mask.png');
+    mask-repeat: repeat;
+    mask-size: 250px;
 }

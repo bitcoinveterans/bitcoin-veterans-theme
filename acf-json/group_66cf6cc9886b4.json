@@ -82,9 +82,9 @@
         ],
         [
             {
-                "param": "page_template",
+                "param": "options_page",
                 "operator": "==",
-                "value": "page-podcast.php"
+                "value": "theme-settings"
             }
         ]
     ],
@@ -97,5 +97,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724880937
+    "modified": 1724948755
 }

@@ -28,7 +28,7 @@
 <?php wp_body_open(); ?>
 	<header class="site-header" role="banner">
         <div class="container container-996">
-            <a href="<?php echo esc_url( home_url() ); ?>" class="site-header__logo" aria-label="Bitcoin Veterans Home">
+            <a href="<?php echo esc_url( home_url() ); ?>" class="site-header__logo grit" aria-label="Bitcoin Veterans Home">
 				<img src="<?php bloginfo('template_url');?>/assets/img/logo.png" alt="<?php bloginfo('name');?> logo" class="">
             </a>
             <nav class="site-header__nav" role="navigation" aria-label="Main Navigation">

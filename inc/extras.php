@@ -67,3 +67,34 @@ function cc_starter_setup_author() {
 	}
 }
 add_action( 'wp', 'cc_starter_setup_author' );
+
+/* 
+* Get founders images list
+* @package cc_starter
+ * @since 1.0.0
+*/
+function get_founders_images_list($size = '90x90', $limit = -1) {
+    $founders_query = new WP_Query(array(
+        'post_type' => 'founder',
+        'posts_per_page' => $limit,
+        'orderby' => 'menu_order',
+        'order' => 'ASC'
+    ));
+
+    $output = '';
+    if ($founders_query->have_posts()) {
+        $output .= '<ul class="podcast-episodes__founders">';
+        while ($founders_query->have_posts()) {
+            $founders_query->the_post();
+            if (has_post_thumbnail()) {
+                $output .= '<li class="podcast-episodes__founder">';
+                $output .= get_the_post_thumbnail(null, $size, array('class' => 'podcast-episodes__founder-image'));
+                $output .= '</li>';
+            }
+        }
+        $output .= '</ul>';
+        wp_reset_postdata();
+    }
+
+    return $output;
+}

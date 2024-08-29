@@ -30,7 +30,7 @@ if ( isset( $args['card_grid_section'] ) ) :
         <div class="content-grid__grid">
             <?php foreach ($card_grid_icon_card_group as $card) : ?>
                 <article class="content-grid-card">
-                    <h3 class="content-grid__card-title">
+                    <h3 class="content-grid__card-title grit">
                         <a href="<?php echo esc_url($card['icon_card_link']['url']); ?>" class="content-grid__card-link"<?php echo !empty($card['icon_card_link']['target']) ? ' target="' . esc_attr($card['icon_card_link']['target']) . '"' : ''; ?>>
                             <?php if (!empty($card['icon_card_icon'])) : ?>
                                 <?php echo wp_kses_post($card['icon_card_icon']); ?>
