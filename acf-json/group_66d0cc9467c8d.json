@@ -25,7 +25,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "cc_starter_pomeet-up"
+                "value": "cc_starter_meet-up"
             }
         ]
     ],
@@ -38,5 +38,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724959915
+    "modified": 1724960623
 }

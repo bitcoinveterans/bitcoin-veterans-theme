@@ -1,0 +1,19 @@
+//  6. Pages - Meetups  ///////////////////////////////////////////////////////////
+
+// Meetups /////////////////////////////////////////////////////////////////
+.meetups__list {
+    list-style: none;
+    padding: 0;
+    max-width: 768px;
+    margin-inline: auto;
+
+    >*+* {
+        margin-block-start: 1.25rem;
+    }
+
+    a {
+        &:hover {
+            color: $color-1;
+        }
+    }
+}

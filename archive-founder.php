@@ -2,10 +2,23 @@
 <main id="content" class="site-main founder-archive-content" role="main">
     <section class="founder-archive section" aria-labelledby="founder-archive-title">
         <div class="container container-1024">
+            <?php
+                $archive_founders = get_field('archive_founders', 'option');
+                $page_title = $archive_founders['page_title'];   
+                $page_description = $archive_founders['page_description'];
+                $page_title_icon = $archive_founders['page_title_icon'];
+
+            ?>
             <div class="section-title">
-                <i class="fa-classic fa-solid fa-flag-usa" aria-hidden="true"></i>
-                <h1 id="founder-archive-title" class="section-title__headline">Meet Our Founders</h1>
-                <p class="section-title__description">Get to know the visionaries behind it all—meet our founders and their inspiring stories.</p>
+                <?php if ($page_title_icon): ?>
+                    <?php echo $page_title_icon; ?>
+                <?php endif; ?>
+                <?php if ($page_title): ?>
+                    <h1 class="section-title__headline"><?php echo esc_html($page_title); ?></h1>
+                <?php endif; ?>
+                <?php if ($page_description): ?>
+                    <p class="section-title__description"><?php echo esc_html($page_description); ?></p>
+                <?php endif; ?>
             </div>
 
             <?php 

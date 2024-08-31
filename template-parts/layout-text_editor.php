@@ -11,7 +11,7 @@ $args = array(
 ); ?>
 
 <section class="acf-text-editor section" aria-label="Text Content">
-	<div class="module">
+	<div class="container container-768">
 		<?php get_template_part( 'template-parts/partials/text_editor', '', $args ); ?>
 	</div>
 </section>

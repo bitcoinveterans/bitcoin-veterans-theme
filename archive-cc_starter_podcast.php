@@ -4,10 +4,10 @@
     <section class="page section" aria-labelledby="page-title">
         <div class="container container-1360">
             <?php
-                $archive_podcast = get_field('archive_podcast', 'option');
-                $page_title = $archive_podcast['page_title'];   
-                $page_description = $archive_podcast['page_description'];
-                $page_title_icon = $archive_podcast['page_title_icon'];
+                $archive_podcasts = get_field('archive_podcasts', 'option');
+                $page_title = $archive_podcasts['page_title'];   
+                $page_description = $archive_podcasts['page_description'];
+                $page_title_icon = $archive_podcasts['page_title_icon'];
 
             ?>
             <div class="section-title">

@@ -71,8 +71,8 @@
     "taxonomies": [
         "faq_category"
     ],
-    "has_archive": false,
-    "has_archive_slug": "",
+    "has_archive": true,
+    "has_archive_slug": "faqs",
     "rewrite": {
         "permalink_rewrite": "post_type_key",
         "with_front": "1",
@@ -85,5 +85,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1724791331
+    "modified": 1724962301
 }

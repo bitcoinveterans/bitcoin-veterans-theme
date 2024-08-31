@@ -1,81 +1,17 @@
 //  5. Componenets - Founders  ///////////////////////////////////////////////////////////
+:root {
+    --founder-card-radius: 6px;
+    --founder-card-border: 1px solid #E4E4E5;
+}
 
 // Founders Content Component
 .founders,
 .founder-archive {
-    --founder-card-radius: 6px;
-    --founder-card-border: 1px solid #E4E4E5;
 
     .container {
         background-color: $gray-1;
         border-radius: 1.875rem;
         padding: 3rem;
-    }
-
-    .founders-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-    }
-
-    .founder-card {
-        border-radius: var(--founder-card-radius);
-        overflow: hidden;
-        position: relative;
-
-        .founder-card__image {
-            overflow: hidden;
-        }
-
-        img {
-            border-radius: var(--founder-card-radius) var(--founder-card-radius) 0 0;
-            width: 100%;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease-in, scale 0.3s ease-in;
-        }
-
-        &:hover {
-
-            img {
-                filter: grayscale(0%);
-                scale: 1.2;
-            }
-        }
-    }
-
-    .founder-card__content {
-        background-color: $white-1;
-        transition: background-color 0.3s ease-in;
-
-        &:hover {
-            background-color: $black-1;
-        }
-    }
-
-    .founder-card__name {
-        font-size: 1.25rem;
-        text-align: center;
-        padding: 1rem;
-        transition: padding 0.3s ease-in;
-
-        &:hover {}
-    }
-
-    .founder-card__name a {
-        transition: color 0.3s ease-in;
-
-        &::after {
-            border-radius: inherit;
-            content: "";
-            cursor: pointer !important;
-            display: flex;
-            inset: 0;
-            position: absolute;
-        }
-
-        &:hover {
-            color: $color-1;
-        }
     }
 
     @include media-query("under-1048") {
@@ -104,6 +40,72 @@
 .founders.section {
     @include media-query("under-600") {
         padding-block: 0;
+    }
+}
+
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.founder-card {
+    border-radius: var(--founder-card-radius);
+    overflow: hidden;
+    position: relative;
+
+    .founder-card__image {
+        overflow: hidden;
+    }
+
+    img {
+        border-radius: var(--founder-card-radius) var(--founder-card-radius) 0 0;
+        width: 100%;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease-in, scale 0.3s ease-in;
+    }
+
+    &:hover {
+
+        img {
+            filter: grayscale(0%);
+            scale: 1.2;
+        }
+    }
+}
+
+.founder-card__content {
+    background-color: $white-1;
+    transition: background-color 0.3s ease-in;
+
+    &:hover {
+        background-color: $black-1;
+    }
+}
+
+.founder-card__name {
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 1rem;
+    transition: padding 0.3s ease-in;
+
+    &:hover {}
+}
+
+.founder-card__name a {
+    transition: color 0.3s ease-in;
+
+    &::after {
+        border-radius: inherit;
+        content: "";
+        cursor: pointer !important;
+        display: flex;
+        inset: 0;
+        position: absolute;
+    }
+
+    &:hover {
+        color: $color-1;
     }
 }
 
