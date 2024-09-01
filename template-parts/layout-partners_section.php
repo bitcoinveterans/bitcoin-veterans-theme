@@ -1,6 +1,6 @@
 <?php
 /**
- * Image layout for text editor
+ * Layout for partners section
  *
  * @package adaptdev/base
  * @since 1.0.0

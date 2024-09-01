@@ -1,5 +1,9 @@
 // 5. Components - Billboard  ///////////////////////////////////////////////////////////
-.billboard {}
+.billboard {
+    figure img {
+        border-radius: 4px;
+    }
+}
 
 .billboard__content {
     display: flex;
@@ -40,9 +44,9 @@
         height: 100%;
 
         img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            // width: 100%;
+            // height: 100%;
+            // object-fit: cover;
         }
     }
 }
@@ -54,21 +58,60 @@
     gap: 30px;
     align-items: center;
 
-    .billboard-media,
-    .billboard-content {
+    .billboard__content,
+    .billboard__media {
         max-width: 100%;
+        flex: 1;
+    }
+
+    .billboard__content {
+        order: 1;
+    }
+
+    .billboard__media {
+        order: 2;
+
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .billboard__figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     @include media-query("under-660") {
         grid-template-columns: 1fr;
 
-        .billboard-media,
-        .billboard-content {
+        .billboard__content,
+        .billboard__media {
             max-width: 100%;
         }
 
-        .billboard-media {
-            margin-bottom: 30px;
+        .billboard__media {
+            margin-top: 30px;
+            order: 2;
+        }
+    }
+}
+
+.billboard-traditional.media-left {
+    .billboard__media {
+        order: 1;
+    }
+
+    .billboard__content {
+        order: 2;
+    }
+
+    @include media-query("under-660") {
+        .billboard__media {
+            order: 2;
         }
     }
 }
@@ -105,7 +148,7 @@
     }
 }
 
-.billboard-stacked.reverse {
+.billboard-stacked.media-left {
     .billboard__content {
         grid-column: 6 / -2;
         grid-row: 2 / -2;
@@ -118,7 +161,7 @@
 }
 
 .billboard-stacked,
-.billboard-stacked.reverse {
+.billboard-stacked.media-left {
     @include media-query("under-660") {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
@@ -150,6 +193,18 @@
         }
     }
 
+    @include media-query("under-880") {
+        .billboard__content {
+            border-radius: 4px 0 0 4px;
+        }
+    }
+
+    @include media-query("under-660") {
+        .billboard__content {
+            border-radius: 0;
+        }
+    }
+
     @include media-query("under-480") {
         display: flex;
         flex-direction: column;
@@ -170,10 +225,31 @@
     }
 }
 
-.billboard-stacked.reverse {
+.billboard-stacked.media-left {
+    @include media-query("under-880") {
+        .billboard__content {
+            border-radius: 0 4px 4px 0;
+        }
+    }
+
     @include media-query("under-660") {
+        .billboard__content {
+            border-radius: 0;
+        }
+
         .billboard__media {
             grid-row: 1 / 2;
+        }
+    }
+}
+
+.billboard-stacked.media-left,
+.billboard-stacked {
+    @include media-query("under-660") {
+        gap: 0;
+
+        .billboard__content {
+            padding: 1.5rem;
         }
     }
 }

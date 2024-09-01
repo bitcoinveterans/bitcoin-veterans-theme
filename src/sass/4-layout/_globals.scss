@@ -4,6 +4,10 @@
 // Global Containers ///////////////////////////////////////////////////////////
 .container {
     padding-inline: 1.5rem;
+
+    >.section-title {
+        margin-block-end: 3.125rem;
+    }
 }
 
 .container-1360 {
@@ -39,10 +43,15 @@
     @include media-query("under-600") {
         padding-block: 1.5rem;
     }
+
+}
+
+.site-main>.section:last-of-type {
+    padding-block-end: 5rem;
 }
 
 .section-title {
-    margin-block-end: 3.125rem;
+    // margin-block-end: 3.125rem;
     text-align: center;
 
     &__headline {

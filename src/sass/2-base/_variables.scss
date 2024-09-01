@@ -1,5 +1,6 @@
 //  2. Base - Variables  ///////////////////////////////////////////////////////////
 
+// Colors ///////////////////////////////////////////////////////////
 $color-1: hsl(32, 99%, 50%);
 $color-2: $color-1;
 $color-3: #F8FAFC;
@@ -21,14 +22,21 @@ $gray-3: #E4E4E5;
 
 $color-heading: $color-2;
 $black-heading: $black-2;
+
 $color-nav: $black-2;
 $color-body-text: $black-1;
 
+$color-link: $color-1;
+$color-link-hover: $black-2;
+
+// Shadows ///////////////////////////////////////////////////////////
 $text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 $transition: all ease-in-out 0.3s;
 
+// Border Radius ///////////////////////////////////////////////////////////
 $border-radius: 100px;
 
+// Breakpoints ///////////////////////////////////////////////////////////
 $breakpoints: ("over-480": "(min-width: 481px)",
     "over-768": "(min-width: 769px)",
     "over-996": "(min-width: 997px)",
@@ -39,6 +47,7 @@ $breakpoints: ("over-480": "(min-width: 481px)",
 
     "under-1048": "(max-width: 1048px)",
     "under-996": "(max-width: 996px)",
+    "under-880": "(max-width: 880px)",
     "under-768": "(max-width: 768px)",
     "under-660": "(max-width: 660px)",
     "under-600": "(max-width: 600px)",

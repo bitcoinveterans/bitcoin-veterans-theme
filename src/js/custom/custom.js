@@ -90,4 +90,7 @@ jQuery(document).ready(function ($) {
 		$(this).parent().toggleClass("expanded");
 		$(this).next(".sub-menu").toggle("medium");
 	});
+
 });
+
+

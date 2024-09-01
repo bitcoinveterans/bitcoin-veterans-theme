@@ -11,8 +11,11 @@
     h4,
     h5,
     h6 {
-        color: $color-2;
+        color: $black-heading;
         text-wrap: balance;
+        mask-image: url(../img/grit_mask.png);
+        mask-repeat: repeat;
+        mask-size: 250px;
     }
 
     h2 {
@@ -108,14 +111,14 @@
     }
 
     a {
-        color: $color-2;
+        color: $color-link;
         text-decoration: underline;
         font-weight: bold;
 
         &:hover,
         &:active,
         &:focus {
-            color: $color-3;
+            color: $color-link-hover;
             text-decoration: underline dashed;
         }
     }

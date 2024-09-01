@@ -1,0 +1,92 @@
+{
+    "key": "group_66d3409ab701e",
+    "title": "Billboard Traditional",
+    "fields": [
+        {
+            "key": "field_66d372c706c20",
+            "label": "Content",
+            "name": "content",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_66d371bdc174e"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_66d342541f40e",
+            "label": "Media",
+            "name": "media",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "The visual component of the billboard, displayed on the side. Ideally, use an image that complements the content.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66d3432c1a7a5",
+            "label": "Image Position",
+            "name": "media_position",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toggle to position the image on the left side of the content. By default, the image is on the right.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "about.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1725133547
+}

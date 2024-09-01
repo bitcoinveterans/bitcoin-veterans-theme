@@ -52,12 +52,12 @@
         },
         {
             "key": "field_66cbb87575d6b",
-            "label": "",
+            "label": "Link",
             "name": "button_link",
             "aria-label": "",
             "type": "link",
             "instructions": "Set the destination URL for the button—this is where the button will take the user when clicked.",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -125,7 +125,7 @@
                     "default_label": "",
                     "default_value": "",
                     "save_format": "element",
-                    "allow_null": 0,
+                    "allow_null": 1,
                     "show_preview": 1,
                     "enqueue_fa": 0,
                     "fa_live_preview": "",
@@ -164,7 +164,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "page"
             }
         ]
     ],
@@ -177,5 +177,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724684610
+    "modified": 1725203999
 }

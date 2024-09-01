@@ -5,7 +5,7 @@
 
     <!-- Hero Section -->
     <section class="section-title section" >
-        <div class="container container--1360">
+        <div class="container container-1360">
             <i class="fa-brands fa-bitcoin hero-section__icon" aria-hidden="true"></i>
             <h1 id="hero-title" class="hero-section__title">About Bitcoin Veterans</h1>
             <p class="hero-section__description">Empowering veterans through Bitcoin education, community, and purpose</p>
@@ -14,7 +14,7 @@
     </section>
 
     <!-- Founders Section -->
-    <section class="founders-section section">
+    <section class="founders section">
         <div class="container container-1024">
             <div class="founders-grid" role="list">
                 <article class="founder-card" role="listitem">
@@ -62,80 +62,17 @@
     </section>
 
     <!-- billboard stacked component -->
-    <section class="billboard section">
-        <div class="container container-1360">
-            <div class="billboard-stacked">
-                <div class="billboard__content">
-                    <header>
-                        <h2 class="billboard__title">The Title for Stacked Billboard</h2>
-                        <p class="billboard__subtitle">Subtitle</p>
-                    </header>
-                    <div class="billboard__body">
-                        <p>Nullam aliquam nisi elit, a sodales mauris fringilla sed. Integer nec <strong>aliquet</strong> metus, id aliquet ligula. Sed at diam tempus, consectetur ligula sit amet, pellentesque quam. Donec volutpat.</p>
-                    </div>
-                    <div class="billboard__cta">
-                        <a class="btn btn--primary" href="#link">Learn More</a>
-                    </div>
-                </div>
-                <div class="billboard__media">
-                    <figure class="billboard__figure">
-                        <img decoding="async" src="https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min.jpg" alt="" width="2000" height="1827" class="billboard__image" srcset="https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min.jpg 2000w, https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-300x274.jpg 300w, https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-1024x935.jpg 1024w, https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-768x702.jpg 768w, https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-1536x1403.jpg 1536w" sizes="(max-width: 2000px) 100vw, 2000px" loading="lazy" fetchpriority="low">
-                    </figure>
-                </div>
-               
-            </div>
-        </div>
-    </section>
-
-    <section class="billboard section">
-        <div class="container container-1360">
-            <div class="billboard-stacked reverse">
-                <div class="billboard__content">
-                    <header>
-                        <h2 class="billboard__title">The Title for Stacked Billboard</h2>
-                        <p class="billboard__subtitle">Subtitle</p>
-                    </header>
-                    <div class="billboard__body">
-                        <p>Nullam aliquam nisi elit, a sodales mauris fringilla sed. Integer nec <strong>aliquet</strong> metus, id aliquet ligula. Sed at diam tempus, consectetur ligula sit amet, pellentesque quam. Donec volutpat.</p>
-                    </div>
-                    <div class="billboard__cta">
-                        <a class="btn btn--primary" href="#link">Learn More</a>
-                    </div>
-                </div>
-                <div class="billboard__media">
-                    <figure class="billboard__figure">
-                        <img decoding="async" src="https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-768x702.jpg" alt="" class="billboard__image" >
-                    </figure>
-                </div>
-               
-            </div>
-        </div>
-    </section>
+    <?php get_template_part( 'template-parts/layout-billboard_stacked' ); ?>
 
      <!-- billboard traditional component -->
-     <section class="billboard section">
-        <div class="container container-1360">
-            <div class="billboard-traditional">
-                <div class="billboard__media">
-                    <figure class="billboard__figure">
-                        <img decoding="async" src="https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min.jpg" alt="" width="2000" height="1827" class="billboard__image" srcset="https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min.jpg 2000w, https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-300x274.jpg 300w, https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-1024x935.jpg 1024w, https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-768x702.jpg 768w, https://www.kadencewp.com/kadence-blocks/wp-content/uploads/sites/8/2020/02/daniel-olah-rIEEprjHJUI-unsplash-min-1536x1403.jpg 1536w" sizes="(max-width: 2000px) 100vw, 2000px" loading="lazy" fetchpriority="low">
-                    </figure>
-                </div>
-                <div class="billboard__content">
-                    <header>
-                        <h2 class="billboard__title">The Title for Traditional Billboard</h2>
-                        <p class="billboard__subtitle">Subtitle</p>
-                    </header>
-                    <div class="billboard__body">
-                        <p>Nullam aliquam nisi elit, a sodales mauris fringilla sed. Integer nec <strong>aliquet</strong> metus, id aliquet ligula. Sed at diam tempus, consectetur ligula sit amet, pellentesque quam. Donec volutpat.</p>
-                    </div>
-                    <div class="billboard__cta">
-                        <a class="btn btn--primary" href="#link">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php get_template_part( 'template-parts/layout-billboard' ); ?>
+
+
+    <!-- Cards Grid 2 -->
+    <?php get_template_part( 'template-parts/layout-cards_grid_2' ); ?>
+
+    <!-- Cards Grid 3 -->
+    <?php get_template_part( 'template-parts/layout-cards_grid_3' ); ?>
 
     <!-- Mission and Activities Section -->
     <section class="acf-text-editor section">
