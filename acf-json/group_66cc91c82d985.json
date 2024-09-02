@@ -1,35 +1,13 @@
 {
     "key": "group_66cc91c82d985",
-    "title": "Founders",
+    "title": "Founders Section",
     "fields": [
         {
-            "key": "field_66cc9232f1447",
-            "label": "Section Width",
-            "name": "section_width",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_66cbb1f9cc334"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
-        },
-        {
             "key": "field_66cc91c8e40c9",
-            "label": "Section Headline Group",
-            "name": "section_headline_group",
+            "label": "Founders Section",
+            "name": "founders_section",
             "aria-label": "",
-            "type": "clone",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -38,13 +16,31 @@
                 "class": "",
                 "id": ""
             },
-            "clone": [
-                "group_66cbb05b0a099"
-            ],
-            "display": "seamless",
             "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
+            "sub_fields": [
+                {
+                    "key": "field_66d4acda1c418",
+                    "label": "Section Headline",
+                    "name": "section_headline",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_66cbb05b0a099"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
         }
     ],
     "location": [
@@ -65,5 +61,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724683223
+    "modified": 1725214106
 }

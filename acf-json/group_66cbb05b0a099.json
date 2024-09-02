@@ -48,7 +48,7 @@
             "name": "section_icon",
             "aria-label": "",
             "type": "font-awesome",
-            "instructions": "Use the search to find and select a Font Awesome icon (e.g., search \"star\").",
+            "instructions": "Use the search to find and select a Font Awesome icon (e.g., search \"star\"). You can visit https:\/\/fontawesome.com\/ to view all available Free fonts.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -90,5 +90,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724684599
+    "modified": 1725212554
 }

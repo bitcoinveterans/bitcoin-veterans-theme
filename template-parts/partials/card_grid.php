@@ -1,6 +1,6 @@
 <?php
 /**
- * Image layout for card grid
+ * layout for card grid
  *
  * @package adaptdev/base
  * @since 1.0.0

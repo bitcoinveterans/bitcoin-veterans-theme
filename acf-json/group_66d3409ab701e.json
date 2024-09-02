@@ -1,13 +1,13 @@
 {
     "key": "group_66d3409ab701e",
-    "title": "Billboard Traditional",
+    "title": "Billboard Traditional Group",
     "fields": [
         {
-            "key": "field_66d372c706c20",
-            "label": "Content",
-            "name": "content",
+            "key": "field_66d4cc93e2bce",
+            "label": "Billboard Traditional Group",
+            "name": "billboard_traditional_group",
             "aria-label": "",
-            "type": "clone",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,66 +16,102 @@
                 "class": "",
                 "id": ""
             },
-            "clone": [
-                "group_66d371bdc174e"
-            ],
-            "display": "seamless",
             "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
-        },
-        {
-            "key": "field_66d342541f40e",
-            "label": "Media",
-            "name": "media",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "The visual component of the billboard, displayed on the side. Ideally, use an image that complements the content.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_66d3432c1a7a5",
-            "label": "Image Position",
-            "name": "media_position",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Toggle to position the image on the left side of the content. By default, the image is on the right.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
+            "sub_fields": [
+                {
+                    "key": "field_66d4cca6e2bcf",
+                    "label": "Card Content",
+                    "name": "card_content",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_66d371bdc174e"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                },
+                {
+                    "key": "field_66d4ccf8e2bd0",
+                    "label": "Card Media",
+                    "name": "card_media",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_66d4cd25e2bd1",
+                            "label": "Media",
+                            "name": "media",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "The visual component of the billboard, displayed on the side. Ideally, use an image that complements the content.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_66d4cd4fe2bd2",
+                            "label": "Image Position",
+                            "name": "image_position",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Toggle to position the image on the left side of the content. By default, the image is on the right.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "ui": 1
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "location": [
         [
             {
-                "param": "post_template",
+                "param": "post_type",
                 "operator": "==",
-                "value": "about.php"
+                "value": "page"
             }
         ]
     ],
@@ -85,8 +121,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725133547
+    "modified": 1725222389
 }

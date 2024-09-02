@@ -1,11 +1,11 @@
 {
-    "key": "group_66d48a50d460b",
-    "title": "Editor Button",
+    "key": "group_66d4b6f3e0a4a",
+    "title": "Accordion Group",
     "fields": [
         {
-            "key": "field_66d48a514daa8",
-            "label": "Editor Button",
-            "name": "editor_button",
+            "key": "field_66d4b6f466815",
+            "label": "Accordion Group",
+            "name": "accordion_group",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -19,9 +19,9 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_66d48a634daa9",
-                    "label": "",
-                    "name": "",
+                    "key": "field_66d4b71166816",
+                    "label": "Section Heading",
+                    "name": "section_heading",
                     "aria-label": "",
                     "type": "clone",
                     "instructions": "",
@@ -33,7 +33,29 @@
                         "id": ""
                     },
                     "clone": [
-                        "group_66cbb6d29f092"
+                        "group_66cbb05b0a099"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                },
+                {
+                    "key": "field_66d4b74066817",
+                    "label": "Accordion Clone",
+                    "name": "accordion_list",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "field_66a16113c7189"
                     ],
                     "display": "seamless",
                     "layout": "block",
@@ -58,8 +80,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725205106
+    "modified": 1725218865
 }

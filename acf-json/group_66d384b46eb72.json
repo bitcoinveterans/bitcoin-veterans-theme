@@ -180,9 +180,9 @@
     "location": [
         [
             {
-                "param": "post_template",
+                "param": "post_type",
                 "operator": "==",
-                "value": "about.php"
+                "value": "page"
             }
         ]
     ],
@@ -192,8 +192,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725138622
+    "modified": 1725212098
 }

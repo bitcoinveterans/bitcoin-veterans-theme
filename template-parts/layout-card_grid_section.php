@@ -1,6 +1,6 @@
 <?php
 /**
- * Image layout for text editor
+ * Card grid section layout
  *
  * @package adaptdev/base
  * @since 1.0.0
@@ -16,6 +16,7 @@
 $args = array(
     'card_grid_section' => $card_grid_section,
 );
+
 ?>
 <section class="content-grid section" aria-labelledby="content-grid-title">
 <div class="container container-1360">

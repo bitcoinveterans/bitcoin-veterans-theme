@@ -6,11 +6,10 @@
  * @since 1.0.0
  */
 if ( isset( $args['founders_section'] ) ) :
-    [
-        'section_heading' => $section_heading,
-        'section_description' => $section_description,
-        'section_icon' => $section_icon,
-    ] = $args['founders_section'];
+    $founders_section = $args['founders_section'];
+    $section_heading = $founders_section['founders_section']['section_heading'];
+    $section_description = $founders_section['founders_section']['section_description'];
+    $section_icon = $founders_section['founders_section']['section_icon'];
 
     $args = array(
         'post_type' => 'founder',

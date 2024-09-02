@@ -1,11 +1,11 @@
 {
     "key": "group_66a1611364cb1",
-    "title": "Accordion",
+    "title": "Accordion List",
     "fields": [
         {
             "key": "field_66a16113c7189",
-            "label": "Accordion",
-            "name": "accordion",
+            "label": "Accordion List",
+            "name": "accordion_list",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -16,7 +16,6 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_repeater_stylised_button": 0,
             "layout": "row",
             "pagination": 0,
             "min": 0,
@@ -94,7 +93,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "page"
             }
         ]
     ],
@@ -104,8 +103,8 @@
     "label_placement": "left",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724687870
+    "modified": 1725218182
 }

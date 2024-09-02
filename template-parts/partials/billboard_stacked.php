@@ -6,42 +6,34 @@
  * @since 1.0.0
  */
 
-if ( isset( $args['billboard'] ) && isset( $args['billboard']['billboard_stacked'] ) ) :
-    $billboard_stacked = $args['billboard']['billboard_stacked'];
-    $section_heading = isset($billboard_stacked['section_heading']) ? $billboard_stacked['section_heading'] : '';
-    $section_description = isset($billboard_stacked['section_description']) ? $billboard_stacked['section_description'] : '';
-    $section_icon = isset($billboard_stacked['section_icon']) ? $billboard_stacked['section_icon'] : '';
-
-    $card_image = isset($billboard_stacked['card_image']) ? $billboard_stacked['card_image'] : [];
-    $image_id = isset($card_image['image']) ? $card_image['image'] : '';
-    $image_position = isset($card_image['image_position']) ? $card_image['image_position'] : '';
+if ( isset( $args['billboard_stacked_section'] ) ) :
+    $billboard_stacked_section = $args['billboard_stacked_section'];
     
-    $card = isset($billboard_stacked['card']) ? $billboard_stacked['card'] : [];
-    $card_headline = isset($card['headline']) ? $card['headline'] : '';
-    $card_description = isset($card['description']) ? $card['description'] : '';
-    $card_button = isset($card['button']) ? $card['button'] : '';
-
-    $button_label = '';
-    $button_link = '';
-    $button_target = '';
-    $button_icon = '';
-    $button_icon_position = '';
-
-    if ( $card_button ) :
+    $section_heading = $billboard_stacked_section['section_heading'];
+    $section_description = $billboard_stacked_section['section_description'];
+    $section_icon = $billboard_stacked_section['section_icon'];
+    
+    $card = $billboard_stacked_section['card'];
+    $card_image = $billboard_stacked_section['card_image'];
+    
+    $image_id = $card_image['image'];
+    $image_position = $card_image['image_position'];
+    
+    $card_headline = $card['headline'];
+    $card_description = $card['description'];
+    $card_button = $card['button'];
+    
+    if ($card_button) {
         $button_label = isset($card_button['button_label']) ? $card_button['button_label'] : '';
         $button_link = isset($card_button['button_link']['url']) ? $card_button['button_link']['url'] : '';
         $button_target = isset($card_button['button_link']['target']) ? $card_button['button_link']['target'] : '';
         $button_icon = isset($card_button['button_icon_group']['button_icon']) ? $card_button['button_icon_group']['button_icon'] : '';
         $button_icon_position = isset($card_button['button_icon_group']['icon_position']) ? $card_button['button_icon_group']['icon_position'] : '';
-    endif;
-
-    $icon_position = 'left';
-    if ($card_button && isset($card_button['button_icon_group']['icon_position'])) {
-        $icon_position = $card_button['button_icon_group']['icon_position'] === 'icon-right' ? 'right' : 'left';
     }
-
-    $image_on_left = ($image_position == 1) ? 'media-left' : '';
-
+    
+    $icon_position = 'left';
+    
+    $image_on_left = ($image_position == 1) ? 'media-left' : '';    
 endif;
 ?>
 
@@ -57,6 +49,7 @@ endif;
     <?php endif; ?>
 </div>
 
+
 <div class="billboard-stacked <?php echo $image_on_left ? 'media-left' : ''; ?>">
     <div class="billboard__content">
         <header>
@@ -71,7 +64,7 @@ endif;
         </div>
         <?php if ($card_button) : ?>
             <div class="billboard__cta">
-                <a href="<?php echo esc_url($button_link); ?>" class="btn btn--primary <?php echo $icon_position === 'right' ? 'btn--icon-right' : ''; ?>" 
+                <a href="<?php echo esc_url($button_link); ?>" class="btn btn--primary <?php echo $button_icon_position === 'icon-right' ? 'btn--icon-right' : ''; ?>" 
                     <?php echo $button_target ? 'target="' . esc_attr($button_target) . '"' : ''; ?>>
                     <?php if (!empty($button_icon)): ?>
                         <span class="btn__icon" aria-hidden="true">

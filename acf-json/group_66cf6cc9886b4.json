@@ -8,7 +8,7 @@
             "name": "page_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Enter the main title for this page, if not page name will be used by default.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -28,7 +28,7 @@
             "name": "page_description",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Provide a brief summary or introduction—this will appear below the heading to give more context.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -48,7 +48,7 @@
             "name": "page_title_icon",
             "aria-label": "",
             "type": "font-awesome",
-            "instructions": "",
+            "instructions": "Use the search to find and select a Font Awesome icon (e.g., search \"star\"). You can visit https:\/\/fontawesome.com\/ to view all available Free fonts.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -75,16 +75,9 @@
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "post_type",
                 "operator": "==",
-                "value": "default"
-            }
-        ],
-        [
-            {
-                "param": "options_page",
-                "operator": "==",
-                "value": "theme-settings"
+                "value": "page"
             }
         ]
     ],
@@ -93,9 +86,16 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "author",
+        "format"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724948755
+    "modified": 1725215210
 }

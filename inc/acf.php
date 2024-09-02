@@ -46,30 +46,5 @@ function sort_flexible_content_layouts($field) {
     return $field;
 }
 
-// Add ACF Button to TinyMCE
-function my_custom_tinymce_plugin() {
-    // Check if the user can edit posts or pages
-    if ( !current_user_can( 'edit_posts' ) && !current_user_can( 'edit_pages' ) ) {
-        return;
-    }
-    // Check if the WYSIWYG is enabled
-    if ( get_user_option( 'rich_editing' ) !== 'true' ) {
-        return;
-    }
-    
-    // Enqueue the TinyMCE plugin script
-    add_filter( 'mce_external_plugins', 'add_my_tinymce_plugin' );
-    // Add the button to the TinyMCE editor
-    add_filter( 'mce_buttons', 'register_my_tinymce_button' );
-}
-add_action( 'admin_head', 'my_custom_tinymce_plugin' );
 
-function add_my_tinymce_plugin( $plugin_array ) {
-    $plugin_array['my_custom_button'] = get_template_directory_uri() . '/assets/js/custom-tinymce-plugin.js';
-    return $plugin_array;
-}
 
-function register_my_tinymce_button( $buttons ) {
-    array_push( $buttons, 'my_custom_button' );
-    return $buttons;
-}
