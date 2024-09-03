@@ -22,17 +22,19 @@ if ( isset( $args['founders_section'] ) ) :
 
 ?>
 
-<div class="section-title">
-    <?php if ($section_icon): ?>
-        <?php echo $section_icon; ?>
-    <?php endif; ?>
-    <?php if ($section_heading): ?>
-        <h2 class="section-title__headline"><?php echo esc_html($section_heading); ?></h2>
-    <?php endif; ?>
-    <?php if ($section_description): ?>
-        <p class="section-title__description"><?php echo esc_html($section_description); ?></p>
-    <?php endif; ?>
-</div>
+<?php if (!empty($section_icon) || !empty($section_heading) || !empty($section_description)): ?>
+    <div class="section-title">
+        <?php if (!empty($section_icon)): ?>
+            <?php echo $section_icon; ?>
+        <?php endif; ?>
+        <?php if (!empty($section_heading)): ?>
+            <h2 class="section-title__headline"><?php echo esc_html($section_heading); ?></h2>
+        <?php endif; ?>
+        <?php if (!empty($section_description)): ?>
+            <p class="section-title__description"><?php echo esc_html($section_description); ?></p>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
 <div class="founders-grid" role="list">
     <?php if ($founder_query->have_posts()) : ?>
         <?php while ($founder_query->have_posts()) : $founder_query->the_post(); ?>

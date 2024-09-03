@@ -27,7 +27,7 @@
             "label": "Page Description",
             "name": "page_description",
             "aria-label": "",
-            "type": "text",
+            "type": "textarea",
             "instructions": "Provide a brief summary or introduction—this will appear below the heading to give more context.",
             "required": 0,
             "conditional_logic": 0,
@@ -38,9 +38,10 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
+            "rows": "",
             "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "new_lines": ""
         },
         {
             "key": "field_66cf75e74515c",
@@ -65,9 +66,10 @@
             "default_label": "",
             "default_value": "",
             "save_format": "element",
-            "allow_null": 0,
+            "allow_null": 1,
             "show_preview": 1,
             "enqueue_fa": 0,
+            "allow_in_bindings": 1,
             "fa_live_preview": "",
             "choices": []
         }
@@ -97,5 +99,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725215210
+    "modified": 1725291021
 }

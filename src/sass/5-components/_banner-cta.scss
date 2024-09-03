@@ -1,5 +1,7 @@
 //  5. Componenets - Banner CTA  ///////////////////////////////////////////////////////////
 .banner-cta {
+    background-size: cover;
+    border-radius: $border-radius-small;
     color: $gray-1;
     position: relative;
     overflow: hidden;
@@ -7,7 +9,7 @@
     text-align: center;
 
     &::after {
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.5);
         content: '';
         height: 100%;
         left: 0;
@@ -18,7 +20,7 @@
     }
 
     .banner-cta__content {
-        max-width: 700px;
+        max-width: 80ch;
         margin-inline: auto;
 
         >*+* {
@@ -30,8 +32,19 @@
         color: inherit;
     }
 
+    .banner-cta__description {
+        max-width: 60ch;
+        margin-inline: auto;
+    }
+
     .btn--primary {
         font-size: 1rem;
         padding: 0.875rem 1.25rem;
+    }
+}
+
+.banner-cta.no-overlay {
+    &::after {
+        background: none;
     }
 }

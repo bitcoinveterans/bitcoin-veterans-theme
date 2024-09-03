@@ -50,6 +50,7 @@
 
     @include media-query("over-768") {
         justify-content: space-between;
+        padding-inline-start: 1rem;
     }
 
     @include media-query("under-768") {
@@ -88,7 +89,9 @@
         }
 
         @include media-query("over-768") {
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             margin: 0;
 
             &:last-of-type {
@@ -101,6 +104,21 @@
 
             &:first-of-type {
                 border-top: 1px solid #e1e1e1;
+            }
+        }
+
+        &.btn--nav {
+            color: $black-1;
+            background: $color-1;
+            font-weight: 700;
+            letter-spacing: -1px;
+            transition: background 600ms ease-in-out;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: white;
+                background: $black-1;
             }
         }
     }
@@ -121,7 +139,7 @@
         }
 
         @include media-query("over-996") {
-            padding: 1.25rem 1.5rem;
+            padding: 1.25rem 1rem;
         }
 
         @include media-query("under-996") {
@@ -206,7 +224,7 @@
 .site-header__nav .menu ul.sub-menu {
     @include media-query("over-768") {
         background-color: $white-1;
-        border-radius: 10px;
+        border-radius: $border-radius;
         box-shadow: 0 0 0 .5px rgba($color: $black-1, $alpha: 0.3);
         left: 99999px;
         opacity: 0;
@@ -318,6 +336,33 @@
 .site-header__nav .menu ul.sub-menu li.current_page_item>a {
     background: $color-2;
     color: white;
+}
+
+.site-header__nav .menu>.btn--nav.current_page_item>a {
+    color: $black-1;
+}
+
+.site-header__nav .menu>li.current_page_item.btn--nav:active,
+.site-header__nav .menu>li.current_page_item.btn--nav:focus,
+.site-header__nav .menu>li.current_page_item.btn--nav:hover {
+    color: $white-1;
+}
+
+.site-header__nav .menu>li.current-menu-ancestor,
+.site-header__nav .menu>li.current-menu-parent {
+    >a {
+        color: $color-1;
+    }
+}
+
+.site-header__nav .menu>.btn--nav.current_page_item>a {
+
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $white-1;
+    }
 }
 
 .site-header__toggle {

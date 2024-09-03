@@ -1,6 +1,6 @@
 <?php
 /**
- * Editor content template partial
+ * latest News template
  *
  * @package adaptdev/base
  * @since 1.0.0
@@ -22,9 +22,9 @@ endif;
     $query = new WP_Query($args);
 
 ?>
-<?php if ($section_title) : ?>
+<?php if ($section_title || $section_description || $section_icon) : ?>
     <div class="section-title">
-    <?php if ($section_icon): ?>
+        <?php if ($section_icon): ?>
             <?php echo $section_icon; ?>
         <?php endif; ?>
         <?php if ($section_title) : ?>

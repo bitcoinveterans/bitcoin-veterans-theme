@@ -60,10 +60,12 @@ endif;
     <?php endif; ?>
         <?php if ( $description ) : ?>
             <div class="billboard__body">
-                <?php echo wp_kses_post( $description ); ?>
+                <div class="entry-content">
+                    <?php echo wp_kses_post( $description ); ?>
+                </div>
             </div>
         <?php endif; ?>
-        <?php if ( $button && isset($button['button_link']['url']) && isset($button['button_label']) ) : ?>
+        <?php if ( $button_label && $button_link ) : ?>
             <div class="billboard__cta">
                 <a href="<?php echo esc_url($button['button_link']['url']); ?>" 
                    class="btn btn--primary <?php echo isset($button['button_icon_group']['icon_position']) && $button['button_icon_group']['icon_position'] === 'icon-right' ? 'btn--icon-right' : ''; ?>" 

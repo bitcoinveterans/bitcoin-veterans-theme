@@ -58,13 +58,21 @@
             "type": "link",
             "instructions": "Set the destination URL for the button—this is where the button will take the user when clicked.",
             "required": 1,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66cbb89675d6c",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "allow_in_bindings": 1
         },
         {
             "key": "field_66cbb89675d6c",
@@ -177,5 +185,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725203999
+    "modified": 1725291203
 }

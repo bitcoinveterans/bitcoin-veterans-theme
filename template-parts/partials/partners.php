@@ -11,7 +11,7 @@ if ( isset( $args['partners_section'] ) ) :
         'partner_button' => $partner_button
     ] = $args['partners_section'];
 
-    if ( $partner_button ) :
+    if ( $partner_button && isset($partner_button['button_label']) && isset($partner_button['button_link']) && isset($partner_button['button_icon_group']) ) :
         $partner_button_label = $partner_button['button_label'];
         $partner_button_link = $partner_button['button_link']['url'];
         $partner_button_target = $partner_button['button_link']['target'];
@@ -68,7 +68,7 @@ if ( isset( $args['partners_section'] ) ) :
 </ul>
 <?php endif; ?>
 
-<?php if (!empty($partner_button)): ?>
+<?php if (isset($partner_button) && !empty($partner_button) && isset($partner_button['button_label']) && isset($partner_button['button_link'])) : ?>
     <?php if ($partner_button_link && $partner_button_label): ?>
     <div class="partners-cta">
         <a href="<?php echo esc_url($partner_button_link); ?>" 

@@ -22,15 +22,16 @@ $banner_cta_group = array(
         ),
     ),
     'background_image' => $banner_cta['background_image'],
+    'hide_overlay' => $banner_cta['hide_overlay'],
 );
 
 $args = array(
     'banner_cta_group' => $banner_cta_group,
 );
 if ( isset( $args['banner_cta_group'] ) ) :
-	[
+    [
         'background_image' => $image,
-	] = $args['banner_cta_group']; 
+    ] = $args['banner_cta_group']; 
 endif;
 ?>
 <?php if ( $image ) {
@@ -40,10 +41,10 @@ endif;
         '1200x300' 
     );
 ?>
-    <section class="banner-cta section" style="background-image: url(<?php echo $image[0]; ?>);">
+    <section class="banner-cta section<?php if ($banner_cta['hide_overlay'] == 1) echo ' no-overlay'; ?>" style="background-image: url(<?php echo $image[0]; ?>);">
 
 <?php } else { ?>
-    <section class="banner-cta section">
+    <section class="banner-cta section<?php if ($banner_cta['hide_overlay'] == 1) echo ' no-overlay'; ?>">
 <?php } ?>
 
     <div class="container container-1360">

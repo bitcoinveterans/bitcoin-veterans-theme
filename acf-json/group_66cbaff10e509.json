@@ -1,13 +1,13 @@
 {
     "key": "group_66cbaff10e509",
-    "title": "Text Editor",
+    "title": "Text Editor Group",
     "fields": [
         {
-            "key": "field_66cbaff17b150",
-            "label": "Text Editor",
-            "name": "text_editor",
+            "key": "field_66d61f7afa35b",
+            "label": "Text Editor Group",
+            "name": "text_editor_group",
             "aria-label": "",
-            "type": "wysiwyg",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,11 +16,52 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_66d61f8bfa35c",
+                    "label": "Section Headline",
+                    "name": "section_headline",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_66cbb05b0a099"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                },
+                {
+                    "key": "field_66d61fd1fa35d",
+                    "label": "Text Editor",
+                    "name": "text_editor",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ]
         }
     ],
     "location": [
@@ -41,5 +82,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724624940
+    "modified": 1725308951
 }

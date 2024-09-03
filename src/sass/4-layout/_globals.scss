@@ -1,5 +1,8 @@
 //  4. Layout - Globals  ///////////////////////////////////////////////////////////\\
 
+// * {
+    //     border: 1px solid red;
+    // }
 
 // Global Containers ///////////////////////////////////////////////////////////
 .container {
@@ -44,6 +47,10 @@
         padding-block: 1.5rem;
     }
 
+    &:first-of-type {
+        padding-block-start: 0;
+    }
+
 }
 
 .site-main>.section:last-of-type {
@@ -51,12 +58,18 @@
 }
 
 .section-title {
-    // margin-block-end: 3.125rem;
+    max-width: 700px;
+    margin-inline: auto;
     text-align: center;
+
+    >*+* {
+        margin-top: 1.5rem;
+    }
 
     &__headline {
         font-size: 4rem;
         font-weight: 700;
+        line-height: 1;
         margin-block: 1.25rem 0;
         mask-image: url('../img/grit_mask.png');
         mask-repeat: repeat;

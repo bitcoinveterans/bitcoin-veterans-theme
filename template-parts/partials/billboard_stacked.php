@@ -37,17 +37,19 @@ if ( isset( $args['billboard_stacked_section'] ) ) :
 endif;
 ?>
 
-<div class="section-title">
-    <?php if (!empty($section_icon)) : ?>
-        <?php echo $section_icon; ?>
-    <?php endif; ?>
-    <?php if (!empty($section_heading)) : ?>
-        <h2 class="section-title__headline"><?php echo esc_html($section_heading); ?></h2>
-    <?php endif; ?>
-    <?php if (!empty($section_description)) : ?>
-        <p class="section-title__description"><?php echo esc_html($section_description); ?></p>
-    <?php endif; ?>
-</div>
+<?php if (!empty($section_icon) || !empty($section_heading) || !empty($section_description)) : ?>
+    <div class="section-title">
+        <?php if (!empty($section_icon)) : ?>
+            <?php echo $section_icon; ?>
+        <?php endif; ?>
+        <?php if (!empty($section_heading)) : ?>
+            <h2 class="section-title__headline"><?php echo esc_html($section_heading); ?></h2>
+        <?php endif; ?>
+        <?php if (!empty($section_description)) : ?>
+            <p class="section-title__description"><?php echo esc_html($section_description); ?></p>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
 
 
 <div class="billboard-stacked <?php echo $image_on_left ? 'media-left' : ''; ?>">
@@ -59,10 +61,12 @@ endif;
         </header>
         <div class="billboard__body">
             <?php if (!empty($card_description)) : ?>
-                <?php echo wp_kses_post($card_description); ?>
+               <div class="entry-content">
+               <?php echo wp_kses_post($card_description); ?>
+               </div>
             <?php endif; ?>
         </div>
-        <?php if ($card_button) : ?>
+        <?php if ($card_button && !empty($button_label) && !empty($button_link)) : ?>
             <div class="billboard__cta">
                 <a href="<?php echo esc_url($button_link); ?>" class="btn btn--primary <?php echo $button_icon_position === 'icon-right' ? 'btn--icon-right' : ''; ?>" 
                     <?php echo $button_target ? 'target="' . esc_attr($button_target) . '"' : ''; ?>>

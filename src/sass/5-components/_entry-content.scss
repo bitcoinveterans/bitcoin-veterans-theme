@@ -4,6 +4,8 @@
     font-weight: normal;
     line-height: 1.5;
     overflow: hidden;
+    margin-inline: auto;
+    max-width: 70ch;
 
     h1,
     h2,
@@ -81,7 +83,7 @@
     ol {
         padding: 0 0 0 30px;
 
-        ol {
+        >ol {
             padding: 16px 0 0 20px;
         }
 
@@ -93,7 +95,7 @@
     ul {
         padding: 0 0 0 30px;
 
-        ul {
+        >ul {
             padding: 16px 0 0 20px;
         }
 
@@ -141,14 +143,13 @@
     }
 
     .wp-caption-text {
-        // font-size: 18px;
         font-style: normal;
         padding: 0.5rem 0.3rem;
     }
 
     @include media-query("under-600") {
         *+* {
-            margin-top: 20px;
+            margin-top: 1rem;
         }
 
         p,
@@ -163,6 +164,6 @@
     }
 
     >*+* {
-        margin-top: 30px;
+        margin-top: 1.25rem;
     }
 }

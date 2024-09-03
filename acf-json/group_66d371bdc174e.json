@@ -47,7 +47,7 @@
             "label": "Description",
             "name": "description",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "A detailed text area for explaining the key message or offering more information. Keep it clear and informative.",
             "required": 0,
             "conditional_logic": 0,
@@ -57,10 +57,11 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
+            "allow_in_bindings": 1,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_66d3729b4805d",
@@ -105,5 +106,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725133632
+    "modified": 1725390115
 }

@@ -97,7 +97,6 @@
         padding: 1.25em 2em;
         min-height: unset;
         color: $color-body-text;
-        max-width: 760px;
         margin: 0;
 
         @include media-query("under-768") {

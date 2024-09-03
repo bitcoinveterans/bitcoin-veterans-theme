@@ -108,3 +108,40 @@
         }
     }
 }
+
+// BV Authors ///////////////////////////////////////////////////////////
+.bv-authors {
+    .recent-posts .post-card:hover {
+        background: $color-1;
+    }
+
+    .recent-posts .post-card:hover .post-card__author,
+    .recent-posts .post-card:hover .post-card__author-link,
+    .recent-posts .post-card:hover .post-card__excerpt,
+    .recent-posts .post-card:hover .post-card__read-more,
+    .recent-posts .post-card:hover .post-card__title,
+    .recent-posts .post-card:hover i {
+        color: inherit;
+    }
+
+    .recent-posts .recent-posts__grid {
+        gap: 1.5rem 2rem;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .author-pages {
+        margin-block-start: 30px;
+
+        h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            font-weight: 700;
+
+            &:hover {
+                color: $white-1;
+            }
+        }
+    }
+}

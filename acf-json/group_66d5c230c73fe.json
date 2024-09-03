@@ -106,6 +106,27 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium"
+                },
+                {
+                    "key": "field_66d5ded810d7c",
+                    "label": "Hide Overlay",
+                    "name": "hide_overlay",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Toggle to turn off the color overlay. By default, the overlay is on.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
                 }
             ]
         }
@@ -128,5 +149,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725286011
+    "modified": 1725292429
 }

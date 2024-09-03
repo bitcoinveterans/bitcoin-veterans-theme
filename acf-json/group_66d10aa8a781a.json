@@ -17,9 +17,10 @@
                 "id": ""
             },
             "default_value": "",
+            "allow_in_bindings": 0,
             "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
+            "toolbar": "basic",
+            "media_upload": 0,
             "delay": 0
         },
         {
@@ -46,8 +47,8 @@
             "sub_fields": [
                 {
                     "key": "field_66d10af4b0e6b",
-                    "label": "",
-                    "name": "",
+                    "label": "BV Author LInk",
+                    "name": "bv_author_link",
                     "aria-label": "",
                     "type": "link",
                     "instructions": "",
@@ -59,6 +60,7 @@
                         "id": ""
                     },
                     "return_format": "array",
+                    "allow_in_bindings": 1,
                     "parent_repeater": "field_66d10accb0e6a"
                 }
             ]
@@ -78,9 +80,11 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "revisions"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724975984
+    "modified": 1725381566
 }
