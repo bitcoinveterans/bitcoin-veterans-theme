@@ -1,7 +1,7 @@
 //  4. Layout - Footer  ///////////////////////////////////////////////////////////
 .site-footer {
     .container {
-        background: $black-1;
+        background-color: $black-1;
         border-radius: 30px;
         color: white;
         font-size: 16px;
@@ -10,6 +10,11 @@
         padding: 3.75rem 3rem;
         position: relative;
         overflow: hidden;
+
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
 
         &::before {
             content: '';
@@ -24,6 +29,7 @@
             pointer-events: none;
             filter: brightness(0) invert(1);
             opacity: 0.1;
+            z-index: -1;
         }
     }
 
@@ -158,6 +164,10 @@
                 }
             }
         }
+    }
+
+    .entry-content {
+        margin: 0;
     }
 
     @include media-query("under-1048") {

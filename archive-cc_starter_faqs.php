@@ -25,13 +25,13 @@
                 $faq_categories = get_terms(array(
                     'taxonomy' => 'faq_category',
                     'hide_empty' => true,
-                    'orderby' => 'name', // You can change this to 'term_id', 'slug', or 'term_order'
-                    'order' => 'ASC' // You can change this to 'DESC' for descending order
+                    'orderby' => 'name', 
+                    'order' => 'ASC'
                 ));
 
                 foreach ($faq_categories as $category) {
                     // Skip the "Home Page" category
-                    if ($category->slug === 'home-page') {
+                    if ($category->slug === 'home-page' || $category->slug === '101-page') {
                         continue;
                     }
 

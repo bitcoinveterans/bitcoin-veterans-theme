@@ -17,7 +17,7 @@
         <footer class="post-card__footer">
             <ul class="bv_author_link">
                 <?php foreach ($author_pages as $page): ?>
-                    <li><a class="btn btn--icon-right" href="<?php echo $page['bv_author_link']['url']; ?>" target="<?php echo $page['bv_author_link']['target']; ?>">
+                    <li><a class="btn btn--icon-right grit" href="<?php echo $page['bv_author_link']['url']; ?>" target="<?php echo $page['bv_author_link']['target']; ?>">
                         <i class="fa-solid fa-link"></i>
                         <?php echo $page['bv_author_link']['title']; ?>
                     </a></li>

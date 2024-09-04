@@ -19,7 +19,7 @@
         <?php if ($episode_date): ?>
             <small class="podcast-episodes__date"><?php echo esc_html($episode_date); ?></small>
         <?php endif; ?>
-        <h3 class="podcast-episodes__title">
+        <h3 class="podcast-episodes__title grit">
             <?php if ($spotify_url): ?>
                 <a href="<?php echo esc_url($spotify_url); ?>" class="podcast-episodes__play-button" target="_blank" aria-label="Play Episode: <?php the_title(); ?>"><?php the_title(); ?></a>
             <?php else: ?>

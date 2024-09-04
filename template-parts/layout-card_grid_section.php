@@ -19,7 +19,7 @@ $args = array(
 
 ?>
 <section class="content-grid section" aria-labelledby="content-grid-title">
-<div class="container container-1360">
+<div class="container container-1360 gradient-noise">
         <?php get_template_part( 'template-parts/partials/card_grid', '', $args ); ?>
     </div>
 </section>

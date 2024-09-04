@@ -12,6 +12,7 @@
         background-color: $gray-1;
         border-radius: 1.875rem;
         padding: 3rem;
+        // background-image: url('../img/grit5.svg');
     }
 
     @include media-query("under-1048") {

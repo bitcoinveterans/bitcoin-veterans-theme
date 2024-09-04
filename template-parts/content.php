@@ -11,7 +11,7 @@
         </div>
     </header>
     <div class="post-card__content">
-        <h3 class="post-card__title"><?php the_title(); ?></h3>
+        <h3 class="post-card__title grit"><?php the_title(); ?></h3>
         <div class="post-card__excerpt">
             <?php echo cc_get_excerpt(); ?>
         </div>

@@ -1,8 +1,13 @@
 //  4. Layout - Globals  ///////////////////////////////////////////////////////////\\
 
 // * {
-    //     border: 1px solid red;
-    // }
+//     border: 1px solid red;
+// }
+
+.site-main {
+    background-color: $white-1;
+    background-image: url('../img/grit5.svg');
+}
 
 // Global Containers ///////////////////////////////////////////////////////////
 .container {
@@ -58,7 +63,7 @@
 }
 
 .section-title {
-    max-width: 700px;
+    max-width: 92ch;
     margin-inline: auto;
     text-align: center;
 
@@ -100,9 +105,17 @@
     }
 }
 
+// Sections ///////////////////////////////////////////////////////////
+
 // Grits ///////////////////////////////////////////////////////////
 .grit {
     mask-image: url('../img/grit_mask.png');
     mask-repeat: repeat;
     mask-size: 250px;
+}
+
+.gradient-noise {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
 }

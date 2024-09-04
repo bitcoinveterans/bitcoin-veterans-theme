@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <main id="content" class="site-main page-content" role="main">
 
-    <section class="page section" aria-labelledby="page-title">
+    <section class="page" aria-labelledby="page-title">
         <div class="container container-1360">
             <?php
                 $page_title = get_field('page_title');
