@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up PHP 8.1 (matches server)
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: none
+          coverage: none
+
+      - name: Lint PHP
+        run: |
+          set -euo pipefail
+          find . -path ./.git -prune -o -type f -name '*.php' -print0 \
+            | xargs -0 -n1 -P4 php -l > /tmp/lint.log 2>&1 || { cat /tmp/lint.log; exit 1; }
+          echo "Linted $(grep -c 'No syntax errors' /tmp/lint.log) PHP files."
