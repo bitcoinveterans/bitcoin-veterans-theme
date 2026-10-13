@@ -26,7 +26,7 @@
     <div class="entry-right">
         <h2 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <div class="entry-content">
-            <?php wpe_excerpt('wpe_excerptlength_big', 'wpe_excerptmore'); ?>
+            <?php echo cc_get_excerpt( null, 'cc_excerpt_length_long' ); ?>
             <div class="learn-more"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'cc_non' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">read more <span><i class="fa fa-arrow-right"></i></span></a></div>
         </div><!-- .entry-content -->
     </div>
