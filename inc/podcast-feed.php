@@ -9,6 +9,8 @@
  * - De-duplicates by feed guid (post meta `podcast_guid`), falling back to a
  *   normalized title match for posts imported before guids were stored. A title
  *   match never creates a new post; it backfills the guid / episode URLs instead.
+ * - Never trashes or deletes posts; a feed error / empty feed writes nothing, and
+ *   a run that would create more than BV_PODCAST_MAX_CREATES posts aborts.
  *
  * The feed URL can be overridden in wp-config.php:
  *   define( 'BV_PODCAST_FEED_URL', 'https://example.com/feed.xml' );
@@ -30,17 +32,26 @@ define( 'BV_PODCAST_POST_TYPE', 'cc_starter_podcast' );
 /** Cron hook for the daily import. */
 define( 'BV_PODCAST_CRON_HOOK', 'bv_import_podcast_episodes_hook' );
 
-/** Legacy Spotify cron hook, cleared once on upgrade. */
+/** Legacy Spotify cron hook, cleared whenever it is found scheduled. */
 define( 'BV_PODCAST_LEGACY_CRON_HOOK', 'import_spotify_episodes_hook' );
-
-/** Option flag recording that the legacy Spotify schedule has been cleared. */
-define( 'BV_PODCAST_MIGRATED_OPTION', 'bv_podcast_feed_migrated' );
 
 /** Option used as an import lock. */
 define( 'BV_PODCAST_LOCK_OPTION', 'bv_podcast_import_lock' );
 
 /** Seconds after which a lock is considered stale (crashed run). */
 define( 'BV_PODCAST_LOCK_TTL', 15 * MINUTE_IN_SECONDS );
+
+/**
+ * Safety valve: if a single run would create more posts than this, nothing is
+ * written and an error is logged (e.g. the feed host changed every guid AND the
+ * titles, or the feed URL now points at a different show). A weekly podcast
+ * never legitimately needs more than a handful per day. Override in
+ * wp-config.php with BV_PODCAST_MAX_CREATES, or per run with
+ * `wp bv podcast-import --max-create=<n>`.
+ */
+if ( ! defined( 'BV_PODCAST_MAX_CREATES' ) ) {
+	define( 'BV_PODCAST_MAX_CREATES', 5 );
+}
 
 /**
  * Get the feed URL (constant override, else the Fountain default).
@@ -149,8 +160,20 @@ function bv_podcast_description_to_text( $html ) {
  * @param SimplePie $feed Feed object (passed by reference via do_action_ref_array).
  */
 function bv_podcast_disable_feed_cache( $feed ) {
-	if ( is_object( $feed ) && method_exists( $feed, 'enable_cache' ) ) {
+	if ( ! is_object( $feed ) ) {
+		return;
+	}
+	if ( method_exists( $feed, 'enable_cache' ) ) {
 		$feed->enable_cache( false );
+	}
+	// Only ever fetch the configured URL: no HTML <link rel="alternate"> autodiscovery
+	// (0 === SimplePie LOCATOR_NONE).
+	if ( method_exists( $feed, 'set_autodiscovery_level' ) ) {
+		$feed->set_autodiscovery_level( 0 );
+	}
+	// ~700 KB feed on shared hosting: allow more than SimplePie's 10s default.
+	if ( method_exists( $feed, 'set_timeout' ) ) {
+		$feed->set_timeout( 30 );
 	}
 }
 
@@ -181,18 +204,21 @@ function bv_podcast_fetch_episodes() {
 		}
 
 		$enclosure = $item->get_enclosure();
-		$audio_url = $enclosure ? (string) $enclosure->get_link() : '';
+		$audio_url = $enclosure ? esc_url_raw( (string) $enclosure->get_link() ) : '';
 		$timestamp = $item->get_date( 'U' );
 
 		$episodes[] = array(
 			'guid'        => $guid,
 			'title'       => $title,
-			'link'        => (string) $item->get_permalink(),
+			'link'        => esc_url_raw( (string) $item->get_permalink() ),
 			'audio_url'   => $audio_url,
 			'timestamp'   => $timestamp ? (int) $timestamp : null,
 			'description' => bv_podcast_description_to_text( (string) $item->get_description( true ) ),
 		);
 	}
+
+	// Free SimplePie's parsed tree before the DB work.
+	unset( $feed, $item, $enclosure );
 
 	// Oldest first, so new posts are created in chronological order.
 	return array_reverse( $episodes );
@@ -250,22 +276,26 @@ function bv_podcast_existing_index() {
 /**
  * Acquire the import lock atomically (INSERT IGNORE on the unique option_name).
  *
- * @return bool True if acquired.
+ * The value is "<unix time>:<random token>" so that release only deletes our
+ * own lock, never one taken over by a later run after ours went stale.
+ *
+ * @return string|false Lock token if acquired, false otherwise.
  */
 function bv_podcast_acquire_lock() {
 	global $wpdb;
 
 	for ( $attempt = 0; $attempt < 2; $attempt++ ) {
+		$token    = time() . ':' . wp_generate_password( 16, false );
 		$inserted = $wpdb->query(
 			$wpdb->prepare(
 				"INSERT IGNORE INTO {$wpdb->options} (option_name, option_value, autoload) VALUES (%s, %s, 'off')",
 				BV_PODCAST_LOCK_OPTION,
-				(string) time()
+				$token
 			)
 		);
 		if ( 1 === $inserted ) {
 			wp_cache_delete( BV_PODCAST_LOCK_OPTION, 'options' );
-			return true;
+			return $token;
 		}
 
 		// Lock held: break it only if stale (previous run crashed).
@@ -275,6 +305,7 @@ function bv_podcast_acquire_lock() {
 		if ( null === $locked_at || (int) $locked_at > time() - BV_PODCAST_LOCK_TTL ) {
 			return false;
 		}
+		// Compare-and-delete: only removes the exact stale value we just read.
 		$wpdb->query(
 			$wpdb->prepare(
 				"DELETE FROM {$wpdb->options} WHERE option_name = %s AND option_value = %s",
@@ -287,11 +318,19 @@ function bv_podcast_acquire_lock() {
 }
 
 /**
- * Release the import lock.
+ * Release the import lock (only if it is still ours).
+ *
+ * @param string $token Token returned by bv_podcast_acquire_lock().
  */
-function bv_podcast_release_lock() {
+function bv_podcast_release_lock( $token ) {
 	global $wpdb;
-	$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name = %s", BV_PODCAST_LOCK_OPTION ) );
+	$wpdb->query(
+		$wpdb->prepare(
+			"DELETE FROM {$wpdb->options} WHERE option_name = %s AND option_value = %s",
+			BV_PODCAST_LOCK_OPTION,
+			(string) $token
+		)
+	);
 	wp_cache_delete( BV_PODCAST_LOCK_OPTION, 'options' );
 }
 
@@ -325,7 +364,8 @@ function bv_podcast_missing_meta( $post_id, $episode ) {
  */
 function bv_podcast_create_post( $episode ) {
 	$timestamp = $episode['timestamp'] ? $episode['timestamp'] : time();
-	$date_gmt  = gmdate( 'Y-m-d H:i:s', $timestamp );
+	// Never let WordPress turn a "publish" into "future" (pubDate ahead of our clock).
+	$date_gmt = gmdate( 'Y-m-d H:i:s', min( $timestamp, time() ) );
 
 	$post_id = wp_insert_post(
 		wp_slash(
@@ -375,9 +415,11 @@ function bv_podcast_loose_title( $norm ) {
  * original (Spotify) import, e.g. a "SITREP:" prefix added or a typo fixed.
  *
  * A candidate must be an existing title no feed item matched exactly, have an
- * episode_date within 2 days of the item's pubDate, and either contain / be
- * contained in the item title (ignoring punctuation, min 20 chars) or be at
- * least 85% similar. Exactly one candidate must qualify, otherwise no match.
+ * episode_date within 2 days of the item's pubDate, contain the same numbers
+ * (if both titles contain any), and either contain / be contained in the item
+ * title (ignoring punctuation; shorter side >= 20 chars and >= half the longer)
+ * or be at least 85% similar. Exactly one candidate must qualify, otherwise no
+ * match. The caller additionally rejects a candidate wanted by two feed items.
  *
  * @param array               $episode Episode data.
  * @param array<string,int[]> $orphans Normalized title => post IDs.
@@ -407,10 +449,31 @@ function bv_podcast_fuzzy_match( $episode, $orphans ) {
 		}
 
 		$candidate = bv_podcast_loose_title( $norm );
-		$shorter   = strlen( $candidate ) < strlen( $item ) ? $candidate : $item;
-		$longer    = $shorter === $candidate ? $item : $candidate;
+		if ( '' === $candidate || '' === $item ) {
+			continue;
+		}
+
+		// Different numbers ("Ep 277" vs "Ep 278", "Top 5" vs "Top 6") mean different
+		// episodes, however similar the rest of the title is.
+		preg_match_all( '/\d+/', $item, $item_nums );
+		preg_match_all( '/\d+/', $candidate, $cand_nums );
+		$item_nums = array_map( 'intval', $item_nums[0] );
+		$cand_nums = array_map( 'intval', $cand_nums[0] );
+		sort( $item_nums );
+		sort( $cand_nums );
+		if ( $item_nums && $cand_nums && $item_nums !== $cand_nums ) {
+			continue;
+		}
+
+		$shorter = strlen( $candidate ) < strlen( $item ) ? $candidate : $item;
+		$longer  = $shorter === $candidate ? $item : $candidate;
+		// Containment only counts if the shorter title is substantial, both absolutely
+		// and relative to the longer one (a short generic title must not swallow others).
+		$contained = strlen( $shorter ) >= 20
+			&& strlen( $shorter ) * 2 >= strlen( $longer )
+			&& false !== strpos( $longer, $shorter );
 		similar_text( $item, $candidate, $percent );
-		if ( ( strlen( $shorter ) >= 20 && false !== strpos( $longer, $shorter ) ) || $percent >= 85 ) {
+		if ( $contained || $percent >= 85 ) {
 			$found[] = $norm;
 		}
 	}
@@ -442,10 +505,14 @@ function bv_import_podcast_episodes( $dry_run = false ) {
 		'errors'         => array(),
 	);
 
-	if ( ! $dry_run && ! bv_podcast_acquire_lock() ) {
-		$summary['errors'][] = 'Import already running (lock held); skipped.';
-		error_log( 'BV podcast import: another import is running; skipped.' );
-		return $summary;
+	$lock = false;
+	if ( ! $dry_run ) {
+		$lock = bv_podcast_acquire_lock();
+		if ( false === $lock ) {
+			$summary['errors'][] = 'Import already running (lock held); skipped.';
+			error_log( 'BV podcast import: another import is running; skipped.' );
+			return $summary;
+		}
 	}
 
 	try {
@@ -480,73 +547,116 @@ function bv_import_podcast_episodes( $dry_run = false ) {
 
 		// Pass 2: for still-unmatched items, try a conservative fuzzy match against
 		// existing titles that no feed item claimed (titles edited after import).
-		$orphans = array_diff_key( $index['title'], $claimed );
+		// An existing title wanted by more than one feed item is ambiguous: none of
+		// those items is matched OR created; they are reported for a human to check.
+		$orphans   = array_diff_key( $index['title'], $claimed );
+		$fuzzy     = array();
+		$wanted_by = array();
 		foreach ( $episodes as $i => $episode ) {
 			if ( isset( $resolved[ $i ] ) || ! $orphans ) {
 				continue;
 			}
 			$match = bv_podcast_fuzzy_match( $episode, $orphans );
 			if ( null !== $match ) {
-				$resolved[ $i ]             = $orphans[ $match ];
-				$summary['fuzzy_matched'][] = sprintf( '%s => %s', $episode['title'], $index['raw'][ $orphans[ $match ][0] ] );
-				unset( $orphans[ $match ] );
+				$fuzzy[ $i ]                     = $match;
+				$wanted_by[ (string) $match ][] = $i;
 			}
 		}
-
-		// Pass 3: backfill matched posts, create the rest.
-		foreach ( $episodes as $i => $episode ) {
-			if ( isset( $resolved[ $i ] ) ) {
-				$changed = false;
-				foreach ( $resolved[ $i ] as $post_id ) {
-					$missing = bv_podcast_missing_meta( $post_id, $episode );
-					if ( ! $missing ) {
-						continue;
-					}
-					$changed = true;
-					if ( ! $dry_run ) {
-						foreach ( $missing as $key => $value ) {
-							update_post_meta( $post_id, $key, $value );
-						}
-					}
-				}
-				if ( $changed ) {
-					$summary['would_backfill'][] = $episode['title'];
-				} else {
-					++$summary['skipped'];
-				}
+		$ambiguous = array();
+		foreach ( $fuzzy as $i => $match ) {
+			if ( count( $wanted_by[ (string) $match ] ) > 1 ) {
+				$ambiguous[ $i ]     = true;
+				$summary['errors'][] = sprintf(
+					'Ambiguous fuzzy match: "%s" and %d other feed item(s) all resemble existing "%s"; neither matched nor created.',
+					$episodes[ $i ]['title'],
+					count( $wanted_by[ (string) $match ] ) - 1,
+					$index['raw'][ $orphans[ $match ][0] ]
+				);
 				continue;
 			}
+			$resolved[ $i ]             = $orphans[ $match ];
+			$summary['fuzzy_matched'][] = sprintf( '%s => %s', $episodes[ $i ]['title'], $index['raw'][ $orphans[ $match ][0] ] );
+		}
 
-			// Guard against duplicate titles/guids later in the same feed.
+		// Decide what to create (deduping guids/titles repeated within the feed).
+		$to_create  = array();
+		$seen_guid  = array();
+		$seen_title = array();
+		foreach ( $episodes as $i => $episode ) {
+			if ( isset( $resolved[ $i ] ) || isset( $ambiguous[ $i ] ) ) {
+				continue;
+			}
 			$norm = bv_podcast_normalize_title( $episode['title'] );
-			if ( isset( $index['guid'][ $episode['guid'] ] ) || ! empty( $index['title'][ $norm ] ) ) {
+			if ( isset( $seen_guid[ $episode['guid'] ] ) || isset( $seen_title[ $norm ] ) ) {
 				++$summary['skipped'];
 				continue;
 			}
+			$seen_guid[ $episode['guid'] ] = true;
+			$seen_title[ $norm ]           = true;
+			$to_create[]                   = $i;
+		}
 
+		$max_creates = (int) apply_filters( 'bv_podcast_max_creates', BV_PODCAST_MAX_CREATES );
+		if ( count( $to_create ) > $max_creates ) {
+			foreach ( $to_create as $i ) {
+				$summary['would_create'][] = $episodes[ $i ]['title'];
+			}
+			$message             = sprintf(
+				'Refusing to run: %d posts would be created (limit %d). Check the feed/matching, then run `wp bv podcast-import --dry-run --verbose` and `--max-create=<n>` if intended. Nothing was written.',
+				count( $to_create ),
+				$max_creates
+			);
+			$summary['errors'][] = $message;
+			error_log( 'BV podcast import: ' . $message );
+			return $summary;
+		}
+
+		// Pass 3: backfill matched posts.
+		foreach ( $episodes as $i => $episode ) {
+			if ( ! isset( $resolved[ $i ] ) ) {
+				continue;
+			}
+			$changed = false;
+			foreach ( $resolved[ $i ] as $post_id ) {
+				$missing = bv_podcast_missing_meta( $post_id, $episode );
+				if ( ! $missing ) {
+					continue;
+				}
+				$changed = true;
+				if ( ! $dry_run ) {
+					foreach ( $missing as $key => $value ) {
+						update_post_meta( $post_id, $key, wp_slash( $value ) );
+					}
+				}
+			}
+			if ( $changed ) {
+				$summary['would_backfill'][] = $episode['title'];
+			} else {
+				++$summary['skipped'];
+			}
+		}
+
+		// Pass 4: create the rest (oldest first).
+		foreach ( $to_create as $i ) {
+			$episode                   = $episodes[ $i ];
 			$summary['would_create'][] = $episode['title'];
 			if ( $dry_run ) {
-				$index['guid'][ $episode['guid'] ] = 0;
-				$index['title'][ $norm ][]         = 0;
 				continue;
 			}
 
 			$post_id = bv_podcast_create_post( $episode );
-			if ( is_wp_error( $post_id ) ) {
+			if ( is_wp_error( $post_id ) || ! $post_id ) {
 				array_pop( $summary['would_create'] );
-				$message             = sprintf( 'Failed to create "%s": %s', $episode['title'], $post_id->get_error_message() );
+				$message             = sprintf( 'Failed to create "%s": %s', $episode['title'], is_wp_error( $post_id ) ? $post_id->get_error_message() : 'unknown error' );
 				$summary['errors'][] = $message;
 				error_log( 'BV podcast import: ' . $message );
 				continue;
 			}
-
-			$index['guid'][ $episode['guid'] ] = $post_id;
-			$index['title'][ $norm ][]         = $post_id;
 			error_log( sprintf( 'BV podcast import: created post %d for "%s".', $post_id, $episode['title'] ) );
 		}
 	} finally {
-		if ( ! $dry_run ) {
-			bv_podcast_release_lock();
+		if ( false !== $lock ) {
+			bv_podcast_release_lock( $lock );
 		}
 	}
 
@@ -562,17 +672,45 @@ function bv_podcast_cron_import() {
 add_action( BV_PODCAST_CRON_HOOK, 'bv_podcast_cron_import' );
 
 /**
- * Clear the legacy Spotify cron event once and make sure the daily import is
- * scheduled. Cheap: reads the autoloaded cron/option values only.
+ * Count scheduled events for a hook (any args). Reads the autoloaded cron array.
+ *
+ * @param string $hook Hook name.
+ * @return int
+ */
+function bv_podcast_count_scheduled( $hook ) {
+	$count = 0;
+	$crons = function_exists( '_get_cron_array' ) ? _get_cron_array() : array();
+	foreach ( (array) $crons as $events ) {
+		if ( isset( $events[ $hook ] ) && is_array( $events[ $hook ] ) ) {
+			$count += count( $events[ $hook ] );
+		}
+	}
+	return $count;
+}
+
+/**
+ * Clear the legacy Spotify cron event if present and make sure the daily import
+ * is scheduled exactly once. Cheap: only reads the autoloaded `cron` option;
+ * writes happen only when something actually needs changing.
+ *
+ * The legacy hook is checked on every request (not just once) so that a request
+ * still running the old theme code during the deploy, which could re-schedule
+ * it, cannot leave it behind.
  */
 function bv_podcast_maybe_schedule() {
-	if ( ! get_option( BV_PODCAST_MIGRATED_OPTION ) ) {
+	if ( wp_next_scheduled( BV_PODCAST_LEGACY_CRON_HOOK ) ) {
 		wp_clear_scheduled_hook( BV_PODCAST_LEGACY_CRON_HOOK );
-		update_option( BV_PODCAST_MIGRATED_OPTION, time(), false );
 	}
-	if ( ! wp_next_scheduled( BV_PODCAST_CRON_HOOK ) ) {
-		wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', BV_PODCAST_CRON_HOOK );
+
+	$count = bv_podcast_count_scheduled( BV_PODCAST_CRON_HOOK );
+	if ( 1 === $count ) {
+		return;
 	}
+	if ( $count > 1 ) {
+		// Two first requests raced and both scheduled; collapse to one.
+		wp_clear_scheduled_hook( BV_PODCAST_CRON_HOOK );
+	}
+	wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', BV_PODCAST_CRON_HOOK );
 }
 add_action( 'init', 'bv_podcast_maybe_schedule' );
 
@@ -596,9 +734,13 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	 * [--verbose]
 	 * : List affected episode titles.
 	 *
+	 * [--max-create=<n>]
+	 * : Abort without writing if more than this many posts would be created.
+	 * Defaults to BV_PODCAST_MAX_CREATES (5).
+	 *
 	 * ## EXAMPLES
 	 *
-	 *     wp bv podcast-import --dry-run
+	 *     wp bv podcast-import --dry-run --verbose
 	 *     wp bv podcast-import
 	 *
 	 * @param array $args       Positional args (unused).
@@ -607,6 +749,18 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	function bv_podcast_cli_import( $args, $assoc_args ) {
 		$dry_run = (bool) \WP_CLI\Utils\get_flag_value( $assoc_args, 'dry-run', false );
 		$verbose = (bool) \WP_CLI\Utils\get_flag_value( $assoc_args, 'verbose', false );
+		if ( isset( $assoc_args['max-create'] ) ) {
+			if ( ! is_numeric( $assoc_args['max-create'] ) || (int) $assoc_args['max-create'] < 0 ) {
+				WP_CLI::error( '--max-create must be a non-negative integer.' );
+			}
+			$max = (int) $assoc_args['max-create'];
+			add_filter(
+				'bv_podcast_max_creates',
+				function () use ( $max ) {
+					return $max;
+				}
+			);
+		}
 		$summary = bv_import_podcast_episodes( $dry_run );
 		$verb    = $dry_run ? 'Would ' : '';
 
