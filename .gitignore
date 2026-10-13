@@ -4,6 +4,9 @@
 # track this file .gitignore (i.e. do NOT ignore it)
 !.gitignore
 
+# track GitHub Actions workflows (i.e. do NOT ignore .github)
+!.github/
+
 # track .editorconfig file (i.e. do NOT ignore it)
 !.editorconfig
 
