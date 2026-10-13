@@ -5,9 +5,18 @@
  * @package cc_starter
  * @since 1.0.0
  */
+/**
+ * Credentials live in wp-config.php, never in the theme:
+ *   define( 'SPOTIFY_CLIENT_ID', '...' );
+ *   define( 'SPOTIFY_CLIENT_SECRET', '...' );
+ */
 function get_spotify_access_token() {
-    $client_id = 'REDACTED_SPOTIFY_CLIENT_ID';
-    $client_secret = 'REDACTED_SPOTIFY_CLIENT_SECRET';
+    if ( ! defined( 'SPOTIFY_CLIENT_ID' ) || ! defined( 'SPOTIFY_CLIENT_SECRET' ) ) {
+        error_log( 'Spotify credentials missing: define SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET in wp-config.php' );
+        return null;
+    }
+    $client_id     = SPOTIFY_CLIENT_ID;
+    $client_secret = SPOTIFY_CLIENT_SECRET;
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://accounts.spotify.com/api/token');
@@ -21,20 +30,9 @@ function get_spotify_access_token() {
     $response = curl_exec($ch);
     curl_close($ch);
     $json = json_decode($response);
-    
-    return $json->access_token;
-}
 
-function test_spotify_access_token() {
-    $token = get_spotify_access_token();
-    
-    if ($token) {
-        return 'Spotify Access Token: ' . esc_html($token);
-    } else {
-        return 'Failed to retrieve access token.';
-    }
+    return isset( $json->access_token ) ? $json->access_token : null;
 }
-add_shortcode('test_spotify_token', 'test_spotify_access_token');
 
 
 // Import from Spotify to CPT ////////////////////////////////////////////////////////
