@@ -1,0 +1,137 @@
+name: Deploy branch to staging
+
+# STAGING ONLY. Manual trigger. Never deploys to production (see deploy.yml for that).
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch, tag or SHA to preview on staging'
+        required: true
+        default: master
+
+permissions:
+  contents: read
+
+# Never run two staging deploys at once. Separate from the production group on purpose.
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+env:
+  DEPLOY_HOST: 62.72.54.195
+  DEPLOY_PORT: '65002'
+  DEPLOY_USER: u759530778
+  DEPLOY_PATH: domains/bitcoinveterans.org/public_html/staging/wp-content/themes/bitcoin-veterans/
+  SITE_URL: https://staging.bitcoinveterans.org/
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Refuse anything but the staging theme path
+        run: |
+          case "$DEPLOY_PATH" in
+            domains/bitcoinveterans.org/public_html/staging/wp-content/themes/bitcoin-veterans/) ;;
+            *) echo "::error::Refusing to deploy to unexpected path: $DEPLOY_PATH"; exit 1 ;;
+          esac
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+          persist-credentials: false
+
+      - name: Show what is being deployed
+        run: git log -1 --format='Deploying %H (%s) to STAGING'
+
+      - name: Set up PHP 8.5 (matches server)
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          tools: none
+          coverage: none
+
+      - name: Lint PHP
+        run: |
+          set -euo pipefail
+          find . -path ./.git -prune -o -type f -name '*.php' -print0 \
+            | xargs -0 -n1 -P4 php -l > /tmp/lint.log 2>&1 || { cat /tmp/lint.log; exit 1; }
+          echo "Linted $(grep -c 'No syntax errors' /tmp/lint.log) PHP files."
+
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.BV_WEBSITE_DEPLOY_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # Pinned host keys (from ssh-keyscan, verified against an existing trusted known_hosts entry).
+          # ED25519 SHA256:oc6lOlMRuKvFmV0Qb6wfwvTjNojjaP+oi7ouh2sVP5k
+          cat > ~/.ssh/known_hosts <<'EOF'
+          [62.72.54.195]:65002 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAz8xABX6G4ECx2XJXxbDLcn4A0rUEu4Ej5cwEb8CZ7R
+          [62.72.54.195]:65002 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBFSP+bQvDS6loS5kYfcC3MF+/cvO8a5iSigkoYrBvdgmSeE7hdgS7Wnqm1z7u/bBSiMTa745tejy1bHXk///SY=
+          [62.72.54.195]:65002 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqLeXuRihYIJaXsSk6bdHpMUb8bszeqS4J/21lkKiOGLXxCRC9Xm+zwuzPKu5h62HluMi5nqBM152qvLJX/PcEX3IZ2Bn+tlMPr1Y/Bzm84ZzSEGyXqvBeFN/P8ifNYDWgNNweSIs1QF2+8+gQ9659b1BJF8Mi4MGrJDk/ojR2ll+5sF6OftXN2cCQ+tDzOOW5Ph4KLSP1XUgD+915C91bsrFNq4LsxVzyzvxmbhO0h2VzFOz3sBAyYgDqSCDfkqq5un56epJ9ODH/Czd69oiTClMxVzdYGUtZZqOMmVGF+5h9cTyHXFpNpoH2hj0lAxgFtvGy0jZdpF+AWZo9n4p+qc1E+w/Qy1kumL9+y+0E4K1xRDPjxEB+Mz0bDr4B19FTqOrI2mrG+PgB+dnnBDDACntODVxN71D+o4iA6C3TFmQDtoyGL1igf7VJEJ0BBL0n1YTkJdBYgjX9zcQpfvJaZKuRh7eTieB4J4MJgRcEq7mFtK95AFF2lY8ClnqG0vE=
+          EOF
+          sed -i 's/^ *//' ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Rsync theme to staging (mirror; --delete is safe here)
+        run: |
+          set -euo pipefail
+          # --delete mirrors the chosen ref onto the STAGING theme dir only (excluded files are never deleted).
+          # -c: compare by checksum (checkout mtimes are always "now").
+          rsync -rlcpz --delete --chmod=D755,F644 --itemize-changes \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='.editorconfig' \
+            --exclude='.DS_Store' \
+            --exclude='._*' \
+            --exclude='.sass-cache/' \
+            --exclude='node_modules/' \
+            --exclude='src/' \
+            --exclude='package.json' \
+            --exclude='package-lock.json' \
+            --exclude='gulpfile.js' \
+            --exclude='*.md' \
+            --exclude='*.map' \
+            --exclude='*.code-workspace' \
+            -e "ssh -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts -p $DEPLOY_PORT" \
+            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+
+      - name: Health check - staging must be protected (expects HTTP 401 without credentials)
+        run: |
+          set -euo pipefail
+          code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "${SITE_URL}?deploy=${GITHUB_SHA}" || true)
+          if [ "$code" != "401" ]; then
+            echo "::error::Expected HTTP 401 from $SITE_URL without credentials, got $code. Staging may be unprotected or down."
+            exit 1
+          fi
+          echo "Staging is Basic-Auth protected (HTTP 401)."
+
+      - name: Health check - site renders (Basic Auth)
+        env:
+          STAGING_BASIC_AUTH: ${{ secrets.STAGING_BASIC_AUTH }}
+        run: |
+          set -euo pipefail
+          if [ -z "$STAGING_BASIC_AUTH" ]; then
+            echo "::warning::STAGING_BASIC_AUTH secret is not set; skipping the authenticated render check."
+            exit 0
+          fi
+          for attempt in 1 2 3; do
+            code=$(curl -s -o /tmp/staging.html -w '%{http_code}' -u "$STAGING_BASIC_AUTH" --max-time 30 "${SITE_URL}?deploy=${GITHUB_SHA}-${attempt}" || true)
+            if [ "$code" = "200" ] && ! grep -qiE 'critical error|Fatal error' /tmp/staging.html; then
+              echo "Staging OK (HTTP $code)."
+              exit 0
+            fi
+            echo "Attempt $attempt: HTTP $code"
+            sleep 10
+          done
+          echo "::error::Authenticated health check failed for $SITE_URL"
+          exit 1
+
+      - name: Remove SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
