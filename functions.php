@@ -49,8 +49,8 @@ require_once CC_STARTER_THEME_DIR . '/inc/extras.php';
 // include widget areas.
 require_once CC_STARTER_THEME_DIR . '/inc/cc-starter-comments.php';
 
-// include spotify.
-require_once CC_STARTER_THEME_DIR . '/inc/spotify.php';
+// include podcast RSS feed importer.
+require_once CC_STARTER_THEME_DIR . '/inc/podcast-feed.php';
 
 // include ajax.
 require_once CC_STARTER_THEME_DIR . '/inc/ajax.php';
