@@ -23,27 +23,41 @@
             </div>
 
             <?php
+                $selected_state = isset($_GET['state']) ? sanitize_text_field($_GET['state']) : '';
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $args = array(
                     'post_type' => 'cc_starter_meet-up',
                     'paged' => $paged,
                     'orderby' => 'title',
                     'order' => 'ASC',
-                    'posts_per_page' => 20
+                    'posts_per_page' => -1
                 );
-                query_posts($args);
-                $page_var = get_query_var('paged');
+                // If a state is selected, add taxonomy query
+                if ($selected_state && $selected_state !== 'all') {
+                    $args['tax_query'] = array(
+                        array(
+                            'taxonomy' => 'meetup-state',
+                            'field' => 'name',
+                            'terms' => $selected_state,
+                        ),
+                    );
+                }
+
+                $query = new WP_Query($args);
             ?>
-            <?php if(function_exists('cc_starter_paging_nav')): ?>
-            <div class="paginate paginate-top">
-                <?php cc_starter_paging_nav(); ?>
+            <!-- State Filter Input -->
+            <div class="meetup-filter">
+                <label for="state-search">Filter by State:</label>
+                <select id="state-select" class="select">
+                    <option value="">Select a state...</option>
+                </select>
             </div>
-            <?php endif; ?>
+            
             <?php
-                if ( have_posts() ) :
+                if ( $query->have_posts() ) :
             ?>
-            <ul class="meetups__list">
-            <?php while (have_posts()) : the_post(); ?>
+            <ul id="meetup-list" class="meetups__list meetups__grid">
+            <?php while ($query->have_posts()) : $query->the_post(); ?>
                 <?php get_template_part( 'template-parts/content', 'meetups' ); ?>
             <?php endwhile; ?>
             </ul>
@@ -51,7 +65,7 @@
 
             <?php if(function_exists('cc_starter_paging_nav')): ?>
             <div class="paginate paginate-bottom">
-                <?php cc_starter_paging_nav(); ?>
+                <?php //cc_starter_paging_nav(); ?>
             </div>
             <?php endif; ?>
 

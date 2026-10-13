@@ -78,6 +78,12 @@ $footer_logo_alt = get_post_meta($footer_logo, '_wp_attachment_image_alt', true)
         </div>
     </div>
 </footer>
+
+<?php if (is_front_page()) : ?>
+<div class="basement">
+    <a href="https://coplancreativeconsulting.com/" target="_blank" referrerpolicy="origin" rel="nofollow">Custom WordPress Themes by Coplan Consulting</a>
+</div>
+<?php endif; ?>
 <?php wp_footer(); ?>
 
 </body>

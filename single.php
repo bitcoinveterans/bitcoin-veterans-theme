@@ -1,34 +1,34 @@
 <?php get_header(); ?>
-<section class="banner-inner" style="background-image: url(<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/header-default.jpg);">
-    <div class="module">
+<main id="content" class="site-main page-content" role="main">
 
-        <div class="page-title-wrap">
-            <h2 class="page-title">What's New</h2>
-            <p>Discover the newest happenings and developments.</p>
-        </div>
+    <section class="page" aria-labelledby="page-title">
+        <div class="container container-1360">
 
-    </div><!--module-->
-</section><!-- banner -->
-    <section class="page-one-cols">
+            <!-- <div class="section-title">
+                <i class="fa-classic fa-regular fa-comments" aria-hidden="true"></i>     
+                <h2 class="section-title__headline">What's New</h2>
+            </div> -->
+            
+            <?php if (have_posts()):  while (have_posts()): the_post(); ?>
 
-        <div class="module">
+            <div class="entry-content">
 
-            <div class="col-1">
-                <?php if (have_posts()):  while (have_posts()): the_post(); ?>
                 <div class="section-title-wrap">
                     <h1 class="page-title"><?php the_title(); ?></h1>
                 </div>
-                
 
-                <div class="entry-content">
-                    <?php the_content(); ?>
-                </div><!-- entry-content -->
-                <?php endwhile; ?>
-                <?php endif; ?>
-            </div><!-- col-1 -->
+                <?php the_content(); ?>
 
-            <?php cc_starter_post_nav(); ?>
-        </div><!-- module -->
+            </div><!-- entry-content -->
 
-    </section><!-- group -->
-    <?php get_footer(); ?>
+            <?php endwhile; ?>
+            <?php endif; ?>
+
+        </div><!-- container -->
+
+    </section><!-- page -->
+
+<?php get_footer(); ?>
+
+
+ 

@@ -44,7 +44,7 @@ require_once CC_STARTER_THEME_DIR . '/inc/custom-excerpt.php';
 require_once CC_STARTER_THEME_DIR . '/inc/extras.php';
 
 // include widget areas.
-require_once CC_STARTER_THEME_DIR . '/inc/widget-areas.php';
+//require_once CC_STARTER_THEME_DIR . '/inc/widget-areas.php';
 
 // include widget areas.
 require_once CC_STARTER_THEME_DIR . '/inc/cc-starter-comments.php';
@@ -52,5 +52,5 @@ require_once CC_STARTER_THEME_DIR . '/inc/cc-starter-comments.php';
 // include spotify.
 require_once CC_STARTER_THEME_DIR . '/inc/spotify.php';
 
-
-
+// include ajax.
+require_once CC_STARTER_THEME_DIR . '/inc/ajax.php';

@@ -136,7 +136,7 @@ add_action('wp', 'schedule_spotify_episode_import');
 add_action('import_spotify_episodes_hook', 'import_spotify_episodes');
 
 // Run import manually (you can remove this after initial import)
-// add_action('init', 'import_spotify_episodes');
+add_action('init', 'import_spotify_episodes');
 
 
 

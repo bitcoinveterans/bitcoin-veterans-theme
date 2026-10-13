@@ -19,4 +19,4 @@ if (! function_exists('fa_custom_setup_kit') ) {
 	}
   }
 
-  fa_custom_setup_kit('https://kit.fontawesome.com/ff0c3dcff8.js');
+  fa_custom_setup_kit('https://kit.fontawesome.com/023ca203ba.js');
