@@ -862,7 +862,7 @@
             "name": "contact_name",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Name of the sponsorship contact shown on the last slide, e.g. Rick Rodgers.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -882,7 +882,7 @@
             "name": "contact_org",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Organisation or role shown under the name.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -902,7 +902,7 @@
             "name": "contact_email",
             "aria-label": "",
             "type": "email",
-            "instructions": "",
+            "instructions": "Email address sponsors should write to. Shown as a button that opens their email app. If empty, the built-in address is used.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -981,6 +981,26 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_bv_deck_contact_hide_photo",
+            "label": "Hide contact photo",
+            "name": "contact_hide_photo",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Turn on to remove the contact photo from the deck.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_bv_deck_team_heading",
             "label": "Team heading",
             "name": "team_heading",
@@ -1006,7 +1026,7 @@
             "name": "team_email",
             "aria-label": "",
             "type": "email",
-            "instructions": "",
+            "instructions": "Shared team inbox shown next to the team text. If empty, the built-in address is used.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1142,5 +1162,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1791918250
+    "modified": 1791925000
 }

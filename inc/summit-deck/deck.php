@@ -174,8 +174,9 @@ function cc_starter_deck_data( $post_id ) {
 		$paragraphs = array_values( array_filter( array_map( 'cc_starter_deck_text', $paragraphs ? $paragraphs : array() ), 'strlen' ) );
 		$audience   = array_map( 'cc_starter_deck_text', cc_starter_deck_lines( $f( 'audience' ) ) );
 
-		$photo_id = cc_starter_deck_attachment_id( $f( 'contact_photo' ) );
-		$photo    = $photo_id ? wp_get_attachment_image_url( $photo_id, 'medium' ) : '';
+		$hide_photo = (bool) $f( 'contact_hide_photo' );
+		$photo_id   = cc_starter_deck_attachment_id( $f( 'contact_photo' ) );
+		$photo      = $photo_id ? wp_get_attachment_image_url( $photo_id, 'medium' ) : '';
 		$share_id = cc_starter_deck_attachment_id( $f( 'share_image' ) );
 		$share    = $share_id ? wp_get_attachment_image_src( $share_id, 'full' ) : false;
 		if ( $share ) {
@@ -207,7 +208,7 @@ function cc_starter_deck_data( $post_id ) {
 				'emailSubject' => cc_starter_deck_text( $s( 'contact_email_subject', $d['contact']['emailSubject'] ) ),
 				// No fallback: an empty Signal handle hides the Signal button.
 				'signal'       => cc_starter_deck_text( $f( 'contact_signal' ) ),
-				'photo'        => $photo ? $photo : $d['contact']['photo'],
+				'photo'        => $hide_photo ? '' : ( $photo ? $photo : $d['contact']['photo'] ),
 				'teamHeading'  => cc_starter_deck_text( $s( 'team_heading', $d['contact']['teamHeading'] ) ),
 				'teamEmail'    => sanitize_email( $s( 'team_email', $d['contact']['teamEmail'] ) ),
 				'teamText'     => cc_starter_deck_text( $s( 'team_text', $d['contact']['teamText'] ) ),

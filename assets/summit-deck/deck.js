@@ -36,7 +36,7 @@ function useCountUp(target, active, ms=900){
 function useToast(){
   const [msg,setMsg]=useState('');
   const show=(m)=>{ setMsg(m); setTimeout(()=>setMsg(''),1800); };
-  const node = html`<${AnimatePresence}>${msg && html`<${M.div} className="toast" role="status" aria-live="polite" key="t" initial=${{opacity:0,y:16}} animate=${{opacity:1,y:0}} exit=${{opacity:0,y:16}} transition=${{duration:.25}}>${msg}<//>`}<//>`;
+  const node = html`<${React.Fragment}><div className="screen-reader-text" role="status" aria-live="polite">${msg}</div><${AnimatePresence}>${msg && html`<${M.div} className="toast" aria-hidden="true" key="t" initial=${{opacity:0,y:16}} animate=${{opacity:1,y:0}} exit=${{opacity:0,y:16}} transition=${{duration:.25}}>${msg}<//>`}<//><//>`;
   return [show,node];
 }
 function Bg({i}){ return html`<div className="bg"><img src=${IMG.bg[i%IMG.bg.length]} alt="" loading="lazy"/><div className="shade"></div><div className="tint"></div></div>`; }

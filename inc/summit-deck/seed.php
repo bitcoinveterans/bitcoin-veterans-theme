@@ -83,6 +83,7 @@ $values = array(
 	'contact_email'         => $d['contact']['email'],
 	'contact_email_subject' => $d['contact']['emailSubject'],
 	'contact_signal'        => $d['contact']['signal'],
+	'contact_hide_photo'    => 0,
 	'team_heading'          => $d['contact']['teamHeading'],
 	'team_email'            => $d['contact']['teamEmail'],
 	'team_text'             => $d['contact']['teamText'],
