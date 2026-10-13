@@ -12,9 +12,6 @@ $cards_grid_2 = array(
 $args = array(
     'cards_grid_2' => $cards_grid_2,
 );
-echo '<pre>cards_grid_2 ';
-	print_r($cards_grid_2);
-echo '</pre>';
 
 ?>
 <section class="cards-grid-2 section">
