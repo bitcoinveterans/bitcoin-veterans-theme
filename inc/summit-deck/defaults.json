@@ -1,0 +1,319 @@
+{
+  "form": "https://forms.gle/nyvgBwH58FG1m8MZ6",
+  "summitPage": "/summit2026/",
+  "event": {
+    "dates": "9–10 NOV 2026",
+    "venue": "Bitcoin Park",
+    "city": "Nashville, TN"
+  },
+  "cover": {
+    "lede": "Nine ways to put your brand in front of veterans and Bitcoiners at the third annual Bitcoin Veterans Summit at Bitcoin Park, Nashville. **Two tiers are already gone.**"
+  },
+  "mission": {
+    "paragraphs": [
+      "In 2024, Bitcoin Veterans came together for the first time IRL during the Bitcoin Conference in Nashville. What followed can only be described as a **groundswell of interest and participation**. We have worked to spread the word of Bitcoin and Freedom Tech to our fellow Veterans, and sought to enrich our communities through lessons learned and knowledge gained.",
+      "On November 9th and 10th we return to Nashville to hone our skills, expand our knowledge, share our expertise, and discuss the next steps in our journey. We would be honored and grateful if you would consider sponsoring our mission."
+    ],
+    "stats": [
+      {
+        "value": 3,
+        "suffix": "rd",
+        "label": "Annual gathering"
+      },
+      {
+        "value": 2,
+        "suffix": "",
+        "label": "Days · conference + range"
+      },
+      {
+        "value": 9,
+        "suffix": "",
+        "label": "Sponsorship tiers"
+      },
+      {
+        "value": 200,
+        "suffix": "",
+        "label": "Veteran seats to sponsor"
+      }
+    ],
+    "audience": [
+      "Veterans seeking purpose, autonomy, and community",
+      "Bitcoiners of all experience levels",
+      "Builders, educators, freedom-lovers",
+      "You do not need to be a veteran to participate"
+    ]
+  },
+  "tiers": [
+    {
+      "name": "Flagship",
+      "price": 7000,
+      "priceMax": null,
+      "status": "open",
+      "remaining": null,
+      "slotsTotal": null,
+      "tagline": "The headline slot",
+      "intro": "",
+      "benefits": [
+        "Logo on LED board behind stage",
+        "8x Summit tickets ($1,600 value)",
+        "Logo on Summit t-shirt",
+        "Logo on standing banners x2 (side of stage)",
+        "Logo on event banner",
+        "Inclusion on Summit landing page",
+        "Inclusion on sponsor page",
+        "Inclusion of materials in swag bags",
+        "Mentions on Summit emails",
+        "Announcement on social media",
+        "2x weekly mentions on X Spaces"
+      ],
+      "ticketsIncluded": 8,
+      "compare": [
+        "led",
+        "shirt",
+        "ban",
+        "evb",
+        "land",
+        "spon",
+        "swag",
+        "mail",
+        "soc",
+        "spaces"
+      ],
+      "badge": "bv",
+      "feature": ""
+    },
+    {
+      "name": "On The Mission",
+      "price": 5000,
+      "priceMax": null,
+      "status": "low",
+      "remaining": 2,
+      "slotsTotal": 3,
+      "tagline": "One purchased, only two remain",
+      "intro": "",
+      "benefits": [
+        "4x Summit tickets ($800 value)",
+        "Logo on standing banners x2 (side of stage)",
+        "Logo on event banner",
+        "Inclusion on Summit landing page",
+        "Inclusion on sponsor page",
+        "Inclusion of materials in swag bags",
+        "Mentions on Summit emails",
+        "Announcement on social media"
+      ],
+      "ticketsIncluded": 4,
+      "compare": [
+        "ban",
+        "evb",
+        "land",
+        "spon",
+        "swag",
+        "mail",
+        "soc"
+      ],
+      "badge": "bv",
+      "feature": ""
+    },
+    {
+      "name": "Telehash",
+      "price": 5000,
+      "priceMax": null,
+      "status": "open",
+      "remaining": null,
+      "slotsTotal": null,
+      "tagline": "Headline the Telehash",
+      "intro": "Be part of history as Operation Bitcoin runs the Telehash live at the Bitcoin Veterans Summit: hashrate on stage, pointed at the mission. The Telehash is one of the most unique activations in the Bitcoin conference world, and your brand headlines it.",
+      "benefits": [
+        "Headline sponsorship on all Telehash promotional materials",
+        "Logo on the Operation Bitcoin website",
+        "Recognition during the live Telehash"
+      ],
+      "ticketsIncluded": null,
+      "compare": [
+        "telehash"
+      ],
+      "badge": "ob",
+      "feature": "telehash"
+    },
+    {
+      "name": "Fist Bump",
+      "price": 3000,
+      "priceMax": null,
+      "status": "open",
+      "remaining": null,
+      "slotsTotal": null,
+      "tagline": "Stage presence at a mid tier",
+      "intro": "",
+      "benefits": [
+        "2x Summit tickets ($400 value)",
+        "Logo on standing banners x2 (side of stage)",
+        "Logo on event banner",
+        "Inclusion on sponsor page",
+        "Inclusion of materials in swag bags",
+        "Mentions on Summit emails"
+      ],
+      "ticketsIncluded": 2,
+      "compare": [
+        "ban",
+        "evb",
+        "spon",
+        "swag",
+        "mail"
+      ],
+      "badge": "bv",
+      "feature": ""
+    },
+    {
+      "name": "Swag Bag",
+      "price": 2500,
+      "priceMax": null,
+      "status": "open",
+      "remaining": null,
+      "slotsTotal": null,
+      "tagline": "In every attendee’s hands",
+      "intro": "Your brand in the hands of every attendee from the moment they walk in the door.",
+      "benefits": [
+        "Branded swag bag for all attendees",
+        "Logo on standing banners x2 (side of stage)",
+        "Logo on event banner"
+      ],
+      "ticketsIncluded": null,
+      "compare": [
+        "ban",
+        "evb",
+        "bag"
+      ],
+      "badge": "bv",
+      "feature": ""
+    },
+    {
+      "name": "Lanyard",
+      "price": 1500,
+      "priceMax": null,
+      "status": "sold",
+      "remaining": null,
+      "slotsTotal": null,
+      "tagline": "Purchased",
+      "intro": "Your brand worn around every attendee’s neck all day.",
+      "benefits": [
+        "1x Summit ticket",
+        "Inclusion on sponsor page",
+        "Inclusion of materials in swag bags"
+      ],
+      "ticketsIncluded": 1,
+      "compare": [
+        "spon",
+        "swag"
+      ],
+      "badge": "bv",
+      "feature": ""
+    },
+    {
+      "name": "Badge",
+      "price": 1500,
+      "priceMax": null,
+      "status": "sold",
+      "remaining": null,
+      "slotsTotal": null,
+      "tagline": "Purchased",
+      "intro": "Your brand on every attendee’s credential.",
+      "benefits": [
+        "1x Summit ticket",
+        "Inclusion on sponsor page",
+        "Inclusion of materials in swag bags"
+      ],
+      "ticketsIncluded": 1,
+      "compare": [
+        "spon",
+        "swag"
+      ],
+      "badge": "bv",
+      "feature": ""
+    },
+    {
+      "name": "General",
+      "price": 1000,
+      "priceMax": null,
+      "status": "open",
+      "remaining": null,
+      "slotsTotal": null,
+      "tagline": "Get on the sponsor page",
+      "intro": "",
+      "benefits": [
+        "1x Summit ticket",
+        "Inclusion on sponsor page",
+        "Inclusion of materials in swag bags"
+      ],
+      "ticketsIncluded": 1,
+      "compare": [
+        "spon",
+        "swag"
+      ],
+      "badge": "bv",
+      "feature": ""
+    },
+    {
+      "name": "Sponsor a Veteran",
+      "price": 200,
+      "priceMax": 40000,
+      "status": "open",
+      "remaining": null,
+      "slotsTotal": null,
+      "tagline": "1 to 200 available · No man left behind",
+      "intro": "Every veteran who wants to attend should be able to. Sponsoring a veteran covers their ticket so no one is left out for financial reasons.",
+      "benefits": [
+        "Special thank-you on the Bitcoin Veterans website",
+        "Recognition on social media"
+      ],
+      "ticketsIncluded": null,
+      "compare": [
+        "thanks",
+        "soc"
+      ],
+      "badge": "bv",
+      "feature": "veteran"
+    }
+  ],
+  "tickets": [
+    {
+      "day": "Day 1 · 9 Nov",
+      "title": "Conference & Workshops",
+      "price": "$99",
+      "url": "https://pay.zaprite.com/pl_p5S1FrTD8i",
+      "text": "Speakers, panels and hands-on workshops at Bitcoin Park.",
+      "best": false
+    },
+    {
+      "day": "Both days",
+      "title": "Full Summit",
+      "price": "$200",
+      "url": "https://pay.zaprite.com/pl_WUWwZ6Tmtu",
+      "text": "Conference and range day together. Best deal.",
+      "best": true
+    },
+    {
+      "day": "Day 2 · 10 Nov",
+      "title": "Range Day",
+      "price": "$150",
+      "url": "https://pay.zaprite.com/pl_A1jGTNqexh",
+      "text": "The BV Range Games at the 7 Echo Training Grounds, Dover, TN.",
+      "best": false
+    }
+  ],
+  "ticketsNote": "Tickets via Zaprite · event details at bitcoinveterans.org/summit2026",
+  "contact": {
+    "heading": "Sponsorship · Media · Logistics",
+    "name": "Rick Thomas",
+    "org": "Bitcoin Veterans",
+    "email": "rick@bitcoinveterans.org",
+    "emailSubject": "Summit 2026 Sponsorship",
+    "signal": "Montani.21",
+    "photo": "img/contact-rick.webp",
+    "teamHeading": "Summit team",
+    "teamEmail": "summit2026@bitcoinveterans.org",
+    "teamText": "Speakers, workshop leads, sponsors, and volunteers all apply through the Summit form. If you are passionate about Bitcoin, freedom tech, privacy, or veteran empowerment, we want to hear from you."
+  },
+  "footer": "Bitcoin Veterans Summit 2026 · Bitcoin Park, Nashville · 9–10 NOV 2026 · Telehash by Operation Bitcoin",
+  "metaDescription": "Nine ways to sponsor the Bitcoin Veterans Summit 2026 (9–10 Nov, Bitcoin Park, Nashville): tiers, benefits, tickets and contacts.",
+  "shareImage": "img/summit-banner.jpg"
+}

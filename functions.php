@@ -54,3 +54,9 @@ require_once CC_STARTER_THEME_DIR . '/inc/podcast-feed.php';
 
 // include ajax.
 require_once CC_STARTER_THEME_DIR . '/inc/ajax.php';
+
+// include sponsor deck.
+require_once CC_STARTER_THEME_DIR . '/inc/summit-deck/deck.php';
+
+// include redirects.
+require_once CC_STARTER_THEME_DIR . '/inc/redirects.php';
