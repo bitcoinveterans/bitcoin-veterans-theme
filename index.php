@@ -1,10 +1,10 @@
 
 <?php get_header(); ?>
-<?php if ( has_post_thumbnail($post->ID) ) {
+<?php
+$image = has_post_thumbnail($post->ID) ? wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'default-header' ) : false;
+if ( $image ) { ?>
 
-    $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'default-header' ); ?>
-
-    <section class="banner-inner" style="background-image: url(<?php echo $image[0]; ?>);">
+    <section class="banner-inner" style="background-image: url(<?php echo esc_url( $image[0] ); ?>);">
 
 
 <?php } else { ?>

@@ -34,17 +34,15 @@ if ( isset( $args['banner_cta_group'] ) ) :
     ] = $args['banner_cta_group']; 
 endif;
 ?>
-<?php if ( $image ) {
-
-    $image = wp_get_attachment_image_src( 
-        $image, 
-        '1200x300' 
-    );
+<?php
+$image = $image ? wp_get_attachment_image_src( $image, '1200x300' ) : false;
+$hide_overlay = ( $banner_cta['hide_overlay'] ?? 0 ) == 1;
+if ( $image ) {
 ?>
-    <section class="banner-cta section<?php if ($banner_cta['hide_overlay'] == 1) echo ' no-overlay'; ?>" style="background-image: url(<?php echo $image[0]; ?>);">
+    <section class="banner-cta section<?php if ($hide_overlay) echo ' no-overlay'; ?>" style="background-image: url(<?php echo esc_url( $image[0] ); ?>);">
 
 <?php } else { ?>
-    <section class="banner-cta section<?php if ($banner_cta['hide_overlay'] == 1) echo ' no-overlay'; ?>">
+    <section class="banner-cta section<?php if ($hide_overlay) echo ' no-overlay'; ?>">
 <?php } ?>
 
     <div class="container container-1360">

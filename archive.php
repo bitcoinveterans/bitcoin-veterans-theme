@@ -43,7 +43,7 @@
     							</header>
 
                                 <div class="entry-content">
-                                    <?php wpe_excerpt('wpe_excerptlength_small', 'wpe_excerptmore'); ?>
+                                    <?php echo cc_get_excerpt( null, 'cc_excerpt_length_short' ); ?>
                                 </div>
 
                                 <div class="learn-more"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'cc_2024' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">continue reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
