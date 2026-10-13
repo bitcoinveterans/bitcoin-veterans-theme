@@ -15,28 +15,30 @@ if ( isset( $args['cards_grid_2'] ) ) :
     $section_icon = isset($cards_grid_2['section_icon']) ? $cards_grid_2['section_icon'] : '';
 
     // Function to process card data
-    function process_card_data_2($card) {
-        $processed = [
-            'image' => isset($card['media']) ? $card['media'] : '',
-            'headline' => isset($card['headline']) ? $card['headline'] : '',
-            'description' => isset($card['description']) ? $card['description'] : '',
-            'button' => isset($card['button']) ? $card['button'] : '',
-            'icon_position' => 'left'
-        ];
+    if ( ! function_exists( 'process_card_data_2' ) ) {
+        function process_card_data_2($card) {
+            $processed = [
+                'image' => isset($card['media']) ? $card['media'] : '',
+                'headline' => isset($card['headline']) ? $card['headline'] : '',
+                'description' => isset($card['description']) ? $card['description'] : '',
+                'button' => isset($card['button']) ? $card['button'] : '',
+                'icon_position' => 'left'
+            ];
 
-        if ($processed['button']) {
-            $processed['button_label'] = isset($processed['button']['button_label']) ? $processed['button']['button_label'] : '';
-            $processed['button_link'] = isset($processed['button']['button_link']['url']) ? $processed['button']['button_link']['url'] : '';
-            $processed['button_target'] = isset($processed['button']['button_link']['target']) ? $processed['button']['button_link']['target'] : '';
-            $processed['button_icon'] = isset($processed['button']['button_icon_group']['button_icon']) ? $processed['button']['button_icon_group']['button_icon'] : '';
-            $processed['button_icon_position'] = isset($processed['button']['button_icon_group']['icon_position']) ? $processed['button']['button_icon_group']['icon_position'] : '';
+            if ($processed['button']) {
+                $processed['button_label'] = isset($processed['button']['button_label']) ? $processed['button']['button_label'] : '';
+                $processed['button_link'] = isset($processed['button']['button_link']['url']) ? $processed['button']['button_link']['url'] : '';
+                $processed['button_target'] = isset($processed['button']['button_link']['target']) ? $processed['button']['button_link']['target'] : '';
+                $processed['button_icon'] = isset($processed['button']['button_icon_group']['button_icon']) ? $processed['button']['button_icon_group']['button_icon'] : '';
+                $processed['button_icon_position'] = isset($processed['button']['button_icon_group']['icon_position']) ? $processed['button']['button_icon_group']['icon_position'] : '';
 
-            if (isset($processed['button']['button_icon_group']['icon_position'])) {
-                $processed['icon_position'] = $processed['button']['button_icon_group']['icon_position'] === 'icon-right' ? 'right' : 'left';
+                if (isset($processed['button']['button_icon_group']['icon_position'])) {
+                    $processed['icon_position'] = $processed['button']['button_icon_group']['icon_position'] === 'icon-right' ? 'right' : 'left';
+                }
             }
-        }
 
-        return $processed;
+            return $processed;
+        }
     }
     // Process two cards
     $card_1 = isset($cards_grid_2['card_1']) ? process_card_data_2($cards_grid_2['card_1']) : [];
