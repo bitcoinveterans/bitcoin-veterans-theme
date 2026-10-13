@@ -62,7 +62,9 @@ add_filter('the_content', 'cc_starter_remove_img_ptags');
 
 // Disable the theme editor functionality
 function disable_theme_editor() {
-    define('DISALLOW_FILE_EDIT', true);
+    if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
+        define('DISALLOW_FILE_EDIT', true);
+    }
 }
 add_action('init', 'disable_theme_editor');
 function remove_menus_appearance_patterns(){  
