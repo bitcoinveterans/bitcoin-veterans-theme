@@ -62,7 +62,7 @@
                 				wp_pagenavi();
                 			}
                 			else {
-                				cc_2024_paging_nav();
+                				cc_starter_paging_nav();
                 			}
                 		?>
                     </div>
