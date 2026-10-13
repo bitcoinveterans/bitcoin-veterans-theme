@@ -2,8 +2,10 @@
 // Get all ACF fields
     $episode_date = get_field('episode_date');
     if ($episode_date) {
-        $episode_date = DateTime::createFromFormat('d/m/Y', $episode_date);
-        $episode_date = $episode_date->format('F j, Y');
+        $episode_date_obj = DateTime::createFromFormat('d/m/Y', $episode_date);
+        if ($episode_date_obj) {
+            $episode_date = $episode_date_obj->format('F j, Y');
+        }
     }
     $episode_description = get_field('description');
     $episode_number = get_field('episode_number');
