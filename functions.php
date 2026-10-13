@@ -54,3 +54,6 @@ require_once CC_STARTER_THEME_DIR . '/inc/podcast-feed.php';
 
 // include ajax.
 require_once CC_STARTER_THEME_DIR . '/inc/ajax.php';
+
+// include security hardening.
+require_once CC_STARTER_THEME_DIR . '/inc/security.php';
