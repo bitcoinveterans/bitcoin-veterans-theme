@@ -1213,15 +1213,17 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	 * [--no-media]
 	 * : Skip cover-image sideloading (media is on by default).
 	 *
-	 * [--relay=<wss://…>]
-	 * : Use this comma-separated relay list instead of the configured default.
+	 * [--relay=<relay-list>]
+	 * : Use this comma-separated relay list (wss://…,wss://…) instead of the
+	 *   configured default.
 	 *
 	 * [--status=<publish|draft>]
 	 * : Post status for created posts. Default publish.
 	 *
-	 * [--file=<events.ndjson>]
-	 * : Import from a local ndjson fixture instead of the relays (offline
-	 *   import / test vectors). Each line is a raw event or ["EVENT",…].
+	 * [--file=<events-file>]
+	 * : Import from a local ndjson fixture (e.g. dib-test-vector.ndjson)
+	 *   instead of the relays (offline import / test vectors). Each line is a
+	 *   raw event or ["EVENT",…].
 	 *
 	 * ## EXAMPLES
 	 *
