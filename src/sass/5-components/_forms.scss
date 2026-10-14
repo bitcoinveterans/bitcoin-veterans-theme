@@ -1,0 +1,148 @@
+//  5. Componenets - Forms  ///////////////////////////////////////////////////////////
+
+//  Search Form  ///////////////////////////////////////////////////////////
+.InputAddOn {
+    display: flex;
+    margin-bottom: 0;
+}
+
+.InputAddOn-field {
+    flex: 1;
+}
+
+.InputAddOn-field:not(:first-child) {
+    border-left: 0;
+}
+
+.InputAddOn-field:not(:last-child) {
+    border-right: 0;
+}
+
+.InputAddOn-item {
+    background-color: white;
+    color: $color-body-text;
+    font: inherit;
+    font-weight: normal;
+}
+
+.InputAddOn-field,
+.InputAddOn-item {
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    padding: 10px;
+    font-size: 14px;
+}
+
+.InputAddOn-field:first-child,
+.InputAddOn-item:first-child {
+    border-radius: 2px 0 0 2px;
+}
+
+.InputAddOn-field:last-child,
+.InputAddOn-item:last-child {
+    border-radius: 0 2px 2px 0;
+}
+
+.entry-content .ginput_recaptcha {
+    transform: scale(0.77);
+    transform-origin: 0 0;
+}
+
+//  Form Styles  ///////////////////////////////////////////////////////////
+div.wpforms-container-full,
+.wpforms-form {
+    margin-inline: 0;
+    max-width: 60ch;
+    width: 100%;
+
+    .wpforms-field-container {
+        >*+* {
+            margin-top: 24px;
+        }
+
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="email"],
+        input[type="month"],
+        input[type="number"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="text"],
+        select,
+        textarea {
+            background-color: #edf2f7;
+            border-color: #edf2f7;
+            border-radius: 4px;
+            border-style: none;
+            border-width: 0;
+            width: 100%;
+            line-height: 1.25;
+            padding: 12px 16px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        &:focus {
+            background-color: white;
+            border-color: #f56565;
+            outline: 1px solid transparent;
+            outline-offset: 1px;
+        }
+
+        label,
+        .wpforms-field-label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .wpforms-field-row-block {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .wpforms-field-row-block input[type="checkbox"] {
+            margin-right: 5px;
+        }
+    }
+
+    .wpforms-submit-container {
+        margin-block-start: 1.5rem;
+
+        .wpforms-submit {
+            border: 0;
+            border-radius: $border-radius;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: $font-1;
+            font-size: 1rem;
+            line-height: 1;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            touch-action: manipulation;
+            transition: background 600ms ease-in-out, color 600ms ease-in-out; // Added color transition
+            user-select: none;
+            vertical-align: middle;
+            white-space: normal;
+            text-decoration: none;
+
+            color: $black-1;
+            background: $color-1;
+            font-weight: 700;
+            letter-spacing: -1px;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: white;
+                background: $black-1;
+            }
+        }
+    }
+}
+
+/// Error Styles

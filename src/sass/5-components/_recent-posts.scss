@@ -1,0 +1,148 @@
+//  5. Componenets - Recent Posts  ///////////////////////////////////////////////////////////
+.recent-posts {
+    .container {
+        padding: 3rem;
+    }
+
+    .recent-posts__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 1.5rem 2rem;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .post-card {
+        background-color: $color-1;
+        background-image: url('../img/grit5.svg');
+        border-radius: 30px;
+        padding: 1.5rem;
+        color: $black-1;
+        position: relative;
+        transition: background-color 0.3s ease;
+
+        &__header,
+        &__content,
+        &__footer {
+            margin-bottom: 1rem;
+        }
+
+        &__author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        &__author-link {
+            color: $black-1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &__title {
+            font-family: $heading-font;
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        &__title-link {
+            color: $black-1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &__excerpt {
+            font-size: 1rem;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        &__read-more {
+            color: $black-1;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: color 0.3s ease;
+
+            &:hover {}
+
+            &::after {
+                border-radius: inherit;
+                content: "";
+                cursor: pointer !important;
+                display: flex;
+                inset: 0;
+                position: absolute;
+            }
+        }
+
+        &:hover {
+            background-color: $black-1;
+
+            .post-card__author,
+            .post-card__read-more,
+            .post-card__title,
+            .post-card__excerpt,
+            .post-card__read-more,
+            .post-card__author-link,
+            i {
+                color: $white-1;
+            }
+        }
+    }
+
+    @include media-query("under-768") {
+        .recent-posts__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+// BV Authors ///////////////////////////////////////////////////////////
+.bv-authors {
+    .recent-posts .post-card:hover {
+        background: $color-1;
+    }
+
+    .recent-posts .post-card:hover .post-card__author,
+    .recent-posts .post-card:hover .post-card__author-link,
+    .recent-posts .post-card:hover .post-card__excerpt,
+    .recent-posts .post-card:hover .post-card__read-more,
+    .recent-posts .post-card:hover .post-card__title,
+    .recent-posts .post-card:hover i {
+        color: inherit;
+    }
+
+    .recent-posts .recent-posts__grid {
+        gap: 1.5rem 2rem;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .author-pages {
+        margin-block-start: 30px;
+
+        h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            font-weight: 700;
+
+            &:hover {
+                color: $white-1;
+            }
+        }
+    }
+}

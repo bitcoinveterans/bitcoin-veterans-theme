@@ -1,0 +1,38 @@
+//  5. Componenets - FAQs  ///////////////////////////////////////////////////////////
+.faqs {
+    .faqs-cta {
+        text-align: center;
+        margin-block-start: 3rem;
+    }
+}
+
+// Archive FAQs ///////////////////////////////////////////////////////////
+.faqs-archive-content {
+
+    .accordion,
+    .faq-category-wrapper {
+        max-width: 70ch;
+        margin-inline: auto;
+    }
+
+    .faq-category-wrapper {
+        margin-block-start: 2rem;
+        border-bottom: 2px dashed rgba($color: $black-3, $alpha: 0.6);
+        padding-block-end: 2rem;
+
+        &:last-of-type {
+            border-bottom: none;
+            padding-block-end: 0;
+        }
+    }
+
+    .faq-category-title {
+        margin-block-end: 1rem;
+        font-size: 2.25rem;
+        padding-inline-start: 1rem;
+    }
+
+    .faq-category-title.grit {
+        mask-size: 150px;
+    }
+}

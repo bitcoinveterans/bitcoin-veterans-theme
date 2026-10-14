@@ -1,0 +1,98 @@
+//  2. Base - Variables  ///////////////////////////////////////////////////////////
+
+// Colors ///////////////////////////////////////////////////////////
+$color-1: hsl(32, 99%, 50%);
+$color-2: $color-1;
+$color-3: #F8FAFC;
+
+$black-1: #0a0a0a; //body
+$black-2: #0a0a0a; //heading
+$black-3: #404040; //neutral/contrast
+
+$white-1: #fff;
+$gray-1: #f1f5f9;
+$gray-2: #cbd5e1;
+$gray-3: #E4E4E5;
+
+$color-heading: $color-2;
+$black-heading: $black-2;
+
+$color-nav: $black-2;
+$color-body-text: $black-1;
+
+$color-link: $color-1;
+$color-link-hover: $black-2;
+
+// Font Sizes ///////////////////////////////////////////////////////////
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 1.75rem;
+$font-size-3xl: 2.25rem;
+$font-size-4xl: 3rem;
+$font-size-5xl: 4rem;
+
+
+// Shadows ///////////////////////////////////////////////////////////
+$text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+$transition: all ease-in-out 0.3s;
+
+// Border Radius ///////////////////////////////////////////////////////////
+$border-radius-large: 30px;
+$border-radius: 10px;
+$border-radius-small: 4px;
+
+// Breakpoints ///////////////////////////////////////////////////////////
+$breakpoints: ("over-480": "(min-width: 481px)",
+    "over-768": "(min-width: 769px)",
+    "over-996": "(min-width: 997px)",
+    "over-1025": "(min-width: 1025px)",
+    "over-1200": "(min-width: 1200px)",
+    "over-1048": "(min-width: 1048px)",
+    "over-1600": "(min-width: 1600px)",
+
+    "under-1048": "(max-width: 1048px)",
+    "under-996": "(max-width: 996px)",
+    "under-880": "(max-width: 880px)",
+    "under-768": "(max-width: 768px)",
+    "under-660": "(max-width: 660px)",
+    "under-600": "(max-width: 600px)",
+    "under-360": "(max-width: 360px)",
+    "under-480": "(max-width: 480px)",
+);
+
+// Root Variables ///////////////////////////////////////////////////////////
+:root {
+    --color-1: #{$color-1};
+    --color-2: #{$color-2};
+    --color-3: #{$color-3};
+    --black-1: #{$black-1};
+    --black-2: #{$black-2};
+    --black-3: #{$black-3};
+    --white-1: #{$white-1};
+    --gray-1: #{$gray-1};
+    --gray-2: #{$gray-2};
+    --gray-3: #{$gray-3};
+    --color-heading: #{$color-heading};
+    --black-heading: #{$black-heading};
+    --color-nav: #{$color-nav};
+    --color-body-text: #{$color-body-text};
+    --color-link: #{$color-link};
+    --color-link-hover: #{$color-link-hover};
+    --font-size-xs: #{$font-size-xs};
+    --font-size-sm: #{$font-size-sm};
+    --font-size-md: #{$font-size-md};
+    --font-size-lg: #{$font-size-lg};
+    --font-size-xl: #{$font-size-xl};
+    --font-size-2xl: #{$font-size-2xl};
+    --font-size-3xl: #{$font-size-3xl};
+    --font-size-4xl: #{$font-size-4xl};
+    --font-size-5xl: #{$font-size-5xl};
+    --text-shadow: #{$text-shadow};
+    --transition: #{$transition};
+    --border-radius-large: #{$border-radius-large};
+    --border-radius: #{$border-radius};
+    --border-radius-small: #{$border-radius-small};
+}
