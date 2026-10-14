@@ -58,6 +58,49 @@
     transform-origin: 0 0;
 }
 
+//  Search Form (searchform.php)  //////////////////////////////////////////////
+// Spec Phase 6: input per the §3.5 form rules (char background, khaki-2 border,
+// bone text, khaki placeholder, radius 0, 44px minimum height); the submit
+// button is .btn.btn--primary in the markup.
+.search-form {
+    align-items: stretch;
+    display: flex;
+    margin-inline: auto;
+    max-width: 60ch;
+
+    .search-field {
+        appearance: none;
+        background-color: var(--color-bg-alt);
+        border: 1px solid var(--color-border-input);
+        border-radius: 0;
+        color: var(--color-text);
+        flex: 1;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        line-height: 1.25;
+        min-height: 44px;
+        min-width: 0;
+        padding: 10px 16px;
+
+        &::placeholder {
+            color: var(--color-text-subtle);
+        }
+
+        &:focus {
+            border-color: var(--color-accent);
+            outline: var(--focus-ring);
+            outline-offset: 1px;
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .btn {
+        flex: none;
+        margin-inline-start: -1px;
+    }
+}
+
 //  Formidable Form Styles  ///////////////////////////////////////////////////////////
 // Container: panel background, rule border, padding 1.5rem (spec Phase 5 forms).
 .frm_style_formidable-style.with_frm_style {
