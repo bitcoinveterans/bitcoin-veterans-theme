@@ -15,7 +15,7 @@
                     <?php echo $page_title_icon; ?>
                 <?php endif; ?>
                 <?php if ($page_title): ?>
-                    <h1 class="section-title__headline"><?php echo esc_html($page_title); ?></h1>
+                    <h1 class="section-title__headline" id="page-title"><?php echo esc_html($page_title); ?></h1>
                 <?php endif; ?>
                 <?php if ($page_description): ?>
                     <p class="section-title__description"><?php echo esc_html($page_description); ?></p>
@@ -47,7 +47,7 @@
             ?>
             <!-- State Filter Input -->
             <div class="meetup-filter">
-                <label for="state-search">Filter by State:</label>
+                <label for="state-select">Filter by State:</label>
                 <select id="state-select" class="select">
                     <option value="">Select a state...</option>
                 </select>
