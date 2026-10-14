@@ -51,17 +51,24 @@ jQuery(document).ready(function ($) {
 
 	//Mobile menu
 
-	$(".site-header__toggle").on("click", function () {
-		$("body").toggleClass("site-header__nav__open");
-		// $(".site-header__nav").toggle();
-		
-		// Make the main nav visible when the hamburger menu is clicked
-		// if ($("body").hasClass("site-header__nav__open")) {
-		// 	$(".site-header__nav").css("display", "block");
-		// } else {
-		// 	$(".site-header__nav").css("display", "none");
-		// }
-	});
+	// Only bind the click handler once, even if this file is enqueued twice.
+	if (!$(".site-header__toggle").data("initialized")) {
+		$(".site-header__toggle").data("initialized", true);
+
+		$(".site-header__toggle").on("click", function () {
+			console.log("Hamburger menu clicked");
+			$("body").toggleClass("site-header__nav__open");
+			console.log("Body class after toggle:", $("body").attr("class"));
+			$(".site-header__nav").toggle();
+
+			// Make the main nav visible when the hamburger menu is clicked
+			if ($("body").hasClass("site-header__nav__open")) {
+				$(".site-header__nav").css("display", "block");
+			} else {
+				$(".site-header__nav").css("display", "none");
+			}
+		});
+	}
 
 	const anchorsWithChildren = document.querySelectorAll(
 		".site-header__nav .menu-item-has-children > a, .site-header__nav .page_item_has_children > a"
@@ -86,11 +93,46 @@ jQuery(document).ready(function ($) {
 
 	mobileMenuDropdownIcons();
 
-	$(".site-header__nav .expand").on("click", function () {
+	$(".site-header__nav").off("click", ".expand").on("click", ".expand", function (e) {
+		e.preventDefault();
+		e.stopPropagation();
+		console.log("Expand button clicked");
 		$(this).parent().toggleClass("expanded");
-		$(this).next(".sub-menu").toggle("medium");
+		console.log("Parent class after toggle:", $(this).parent().attr("class"));
+		$(this).next(".sub-menu").toggle("medium", function () {
+			console.log("Sub-menu visibility:", $(this).css("display"));
+		});
 	});
 
+	// Meetups state filter: populate the state select from the server.
+	$.ajax({
+		url: ajax_url.ajax_url,
+		method: "GET",
+		data: { action: "get_all_meetup_state_terms" },
+		success: function (response) {
+			let stateSelect = $("#state-select");
+			stateSelect.empty();
+			stateSelect.append('<option value="">Select a state...</option>');
+			stateSelect.append('<option value="all">Show All</option>');
+
+			if (response.success) {
+				$.each(response.data, function (index, state) {
+					stateSelect.append('<option value="' + state + '">' + state + "</option>");
+				});
+			}
+		},
+		error: function (xhr, status, error) {
+			console.log("AJAX Error:", error);
+		},
+	});
+
+	$("#state-select").on("change", function () {
+		var selectedState = $(this).val();
+
+		if (selectedState === "all") {
+			window.location.href = "/meetups/";
+		} else if (selectedState) {
+			window.location.href = "/meetups/?state=" + encodeURIComponent(selectedState);
+		}
+	});
 });
-
-
