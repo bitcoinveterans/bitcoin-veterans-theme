@@ -229,10 +229,30 @@ select {
 // Print: always black on white (spec §3.5); the packing list keeps its own print rules.
 @media print {
 
+    // White page boxes: under `color-scheme: dark` Chrome otherwise paints
+    // @page margins with the dark UA canvas (#121212).
+    @page {
+        margin: .5in;
+        background: #fff;
+    }
+
     html,
     body,
     .site-main {
         background: #fff !important;
+        color: #000 !important;
+    }
+
+    // Element rules (h1..h6/strong use bone --color-text) beat the inherited
+    // #000 above, so they must be reset explicitly.
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
         color: #000 !important;
     }
 
