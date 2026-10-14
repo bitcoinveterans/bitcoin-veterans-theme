@@ -34,6 +34,7 @@
 @import "5-components/billboard";
 @import "5-components/cards-grid";
 @import "5-components/banner-cta";
+@import "5-components/content-compat"; // Phase 5: legacy .bvs-*/.bvpl-* content islands
 
 // Pages
 @import "6-pages/front";
