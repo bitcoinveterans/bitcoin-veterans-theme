@@ -39,7 +39,7 @@ endif;
 <?php if ($query->have_posts()) : ?>
     <ul class="recent-posts__grid">
         <?php while ($query->have_posts()) : $query->the_post(); ?>
-            <li id="post-<?php the_ID(); ?>" <?php post_class('post-card'); ?> role="article">
+            <li id="post-<?php the_ID(); ?>" <?php post_class('post-card'); ?>>
                 <header class="post-card__header">
                     <div class="post-card__author">
                         <i class="fa-solid fa-user" aria-hidden="true"></i>
