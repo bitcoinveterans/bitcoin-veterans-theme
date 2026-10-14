@@ -45,12 +45,12 @@
 
 .InputAddOn-field:first-child,
 .InputAddOn-item:first-child {
-    border-radius: 2px 0 0 2px;
+    border-radius: 0;
 }
 
 .InputAddOn-field:last-child,
 .InputAddOn-item:last-child {
-    border-radius: 0 2px 2px 0;
+    border-radius: 0;
 }
 
 .entry-content .ginput_recaptcha {
@@ -59,9 +59,11 @@
 }
 
 //  Formidable Form Styles  ///////////////////////////////////////////////////////////
+// Container: panel background, rule border, padding 1.5rem (spec Phase 5 forms).
 .frm_style_formidable-style.with_frm_style {
     background-color: var(--color-surface);
-    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    border-radius: 0;
     margin-inline: 0;
     max-width: 60ch;
     padding: 1.5rem;
