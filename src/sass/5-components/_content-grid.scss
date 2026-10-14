@@ -1,18 +1,14 @@
 //  5. Componenets - Content Grid  ///////////////////////////////////////////////////////////
+// card_grid layout (spec Phase 5): full-width char band with top/bottom rules,
+// cards per §3.5 (panel, 1px rule border, radius 0, whole card clickable via the
+// .content-grid__card-link::after overlay).
 .content-grid {
+    background-color: var(--color-bg-alt);
+    border-block: 1px solid var(--color-border);
+
     .container {
-        background-color: var(--color-bg-alt);
-        border-radius: 30px;
+        background-image: none; // drop the old grit-grid texture (spec: drop the rounded box and grid)
         padding: 3.75rem 4.25rem;
-    }
-
-    .section-title,
-    .section-title__headline {
-        color: var(--color-accent);
-    }
-
-    .section-title__description {
-        color: var(--color-text);
     }
 
     .content-grid__grid {
@@ -25,21 +21,24 @@
 
     .content-grid-card {
         background-color: var(--color-surface);
-        border-radius: 15px;
+        border: 1px solid var(--color-border);
+        border-radius: 0;
         color: var(--color-text);
         position: relative;
         width: 100%;
-        transition: background-color 0.3s ease;
-        padding: 2rem;
+        transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+        padding: var(--space-5);
 
+        // The whole card is a link (via .content-grid__card-link::after below),
+        // so the card itself gets the linked-card hover from §3.5.
         &:hover {
-            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+        }
 
-            .content-grid__card-title,
-            .content-grid__card-description,
-            .content-grid__card-link,
-            i {
-                color: var(--color-on-accent);
+        @media (prefers-reduced-motion: reduce) {
+            &:hover {
+                transform: none;
             }
         }
 
@@ -50,30 +49,38 @@
 
     .content-grid__card-title {
         color: var(--color-text);
-        font-size: 2.25rem;
-        transition: color 0.3s ease;
-        color: currentColor;
+        font-family: var(--font-cond);
+        font-size: 1.375rem;
+        font-weight: 700;
+        letter-spacing: .04em;
+        line-height: 1.15;
+        text-transform: uppercase;
+        transition: color var(--dur-fast) var(--ease);
 
         i {
             color: var(--color-accent);
             display: block;
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-block-end: 0.625rem;
-            transition: color 0.3s ease;
-        }
-
-        .content-grid__card-description {
-            font-size: 1.25rem;
-            line-height: 1.2;
         }
     }
 
+    .content-grid__card-description {
+        color: var(--color-text-muted);
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
     .content-grid__card-link {
-        color: var(--color-text);
+        color: inherit;
         display: block;
 
+        &:hover,
+        &:focus {
+            color: inherit;
+        }
+
         &::after {
-            border-radius: inherit;
             content: "";
             cursor: pointer !important;
             display: flex;
@@ -82,12 +89,6 @@
         }
     }
 
-
-    @include media-query("under-1048") {
-        .container {
-            border-radius: 0;
-        }
-    }
 
     @include media-query("under-768") {
         .container {
@@ -106,6 +107,8 @@
     }
 }
 
+// Keep the section padding for the band's interior rhythm on mobile
+// (container provides it, section adds none).
 .content-grid.section {
     @include media-query("under-600") {
         padding-block: 0;
