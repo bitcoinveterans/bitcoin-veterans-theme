@@ -1,193 +1,56 @@
 //  6. Pages - Blog  ///////////////////////////////////////////////////////////
 
-.single-post {
+// Single post (single.php renders posts and the podcast / meet-up / bv-author
+// CPT singles that have no dedicated template) ////////////////////////////////
+// Spec Phase 6: h1 at display scale (base h1), meta as a khaki eyebrow label,
+// content column max-width 72ch, prev/next navigation as secondary buttons.
+.single-article {
+
+    .post-header {
+        margin-block-end: 2rem;
+    }
+
+    // Eyebrow meta: khaki cond 600 uppercase (spec §3.4 eyebrow/label).
+    .post-meta {
+        color: var(--color-text-subtle);
+        font-family: var(--font-cond);
+        font-size: .875rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+        text-transform: uppercase;
+
+        &__sep {
+            color: var(--color-decor);
+            margin-inline: .5rem;
+        }
+    }
+
     .section-title-wrap {
         text-align: left;
     }
-}
 
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(auto, 300px));
-    grid-template-rows: 1fr;
-    gap: 24px 26px;
-    list-style: none;
-    justify-content: center;
-
-    @include media-query("over-996") {}
-
-    @include media-query("under-996") {
-        grid-template-columns: 1fr 1fr;
+    .page-title {
+        margin: 0;
     }
 
-    @include media-query("under-480") {
-        grid-template-columns: 1fr;
+    .entry-content {
+        max-width: 72ch;
     }
 }
 
-
-
-.card-post {
-    background: var(--color-surface);
-    box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.06);
-    border-radius: var(--border-radius);
+.post-prev-next {
+    border-top: 1px solid var(--color-border);
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    transition: $transition;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-block-start: 3rem;
+    max-width: 72ch;
+    padding-block-start: 2rem;
 
-    header a {
-        display: block;
-    }
-
-    header img {
-        display: block;
-        border-radius: var(--border-radius) var(--border-radius) 0 0;
-        width: 100%;
-    }
-
-    .card-body {
-        padding: 1.25rem 1.25rem 0 1.25rem;
-    }
-
-    .post-title {
-        font-size: 1.625rem;
-        line-height: 1.15;
-
-        @include media-query("under-768") {
-            font-size: 1.25rem;
-        }
-
-        @include media-query("under-600") {}
-    }
-
-    footer {
-        padding: 1.5rem 1.25rem;
-        margin-top: auto;
-    }
-
-    .button {
-        font-size: 13px;
-        padding: 8px 16px;
-    }
-
-    @include media-query("under-996") {
-        .post-heading {
-            font-size: 30px;
-        }
-
-        .button {
-            font-size: 12px;
-            padding: 8px 16px;
-        }
-    }
-
-    @include media-query("under-480") {
-        .post-heading {
-            font-size: 20px;
-        }
-    }
-}
-
-//  Blog post Navigation  ///////////////////////////////////////////////////////////
-.single-post .post-previous-next {
-    background-color: var(--color-surface);
-    border-top: 3px dashed var(--color-border);
-    margin: 0;
-    padding: 30px;
-
-    @include media-query("under-768") {}
-
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 100%;
-    }
-
-    .nav-links .grid-item {
-        background-color: var(--color-surface);
-        box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.06);
-        border-radius: $border-radius;
-        padding: 1.5rem 1.25rem;
-        transition: $transition;
-
-        width: 47%;
-
-        @include media-query("under-480") {
-            width: 100%;
-        }
-    }
-
-    .nav-link-prev {
-        text-align: left;
-
-        @include media-query("under-480") {
-            margin-bottom: 24px;
-        }
-    }
-
-    .grid-item-inner {
-        display: flex;
-        overflow: hidden;
-    }
-
-    a {
-        color: var(--color-accent);
-        position: relative;
-        text-decoration: underline;
-        font-weight: bold;
-
-        &:hover,
-        &:active,
-        &:focus {
-            color: var(--color-accent-hover);
-            text-decoration: underline dashed;
-        }
-    }
-
-    .grid-item-inner .item-featured {
-        max-width: 90px;
-        flex: none;
-
-        a {
-            display: block;
-            position: relative;
-        }
-    }
-
-    .nav-link-prev .item-featured {
-        margin-right: 20px;
-    }
-
-    .item-featured img {
-        width: 100%;
-    }
-
-    .grid-item-inner .item-holder {
-        margin-top: -3px;
-    }
-
-    .grid-item-inner .item-holder span {
-        font-size: 13px;
-        color: var(--color-text);
-    }
-
-    .grid-item-inner .item-holder .item-title {
-        font-size: 15px;
-        line-height: 24px;
-        margin-bottom: 0;
-    }
-
-    .nav-link-next {
-        text-align: right;
-    }
-
-    .nav-link-next .grid-item-inner {
-        justify-content: flex-end;
-    }
-
-    .nav-link-next .item-featured {
-        margin-left: 20px;
+    &__cell--next {
+        margin-inline-start: auto;
     }
 }
