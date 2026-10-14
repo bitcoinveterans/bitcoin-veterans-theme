@@ -1,0 +1,68 @@
+//  5. Componenets - Hero  ///////////////////////////////////////////////////////////
+.hero {
+    text-align: center;
+
+    .hero__title {
+        font-size: 5.625rem;
+        font-weight: 900;
+        line-height: 1;
+        margin-block-end: 0.313rem;
+    }
+
+    .hero__description {
+        font-size: 1.25rem;
+    }
+
+    .hero__actions {
+        margin-block-start: 3rem;
+    }
+
+    .hero__actions-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .hero__action-item--primary {
+        width: 100%;
+    }
+
+    .hero__action-item--secondary {
+        display: inline-block;
+    }
+
+    li {
+        line-height: 1;
+    }
+
+    @include media-query("under-996") {
+        .hero__title {
+            font-size: 4rem;
+            margin-block-end: 1rem;
+        }
+    }
+
+    @include media-query("under-600") {
+        text-align: left;
+
+        .hero__title {
+            font-size: 2.4rem;
+        }
+
+        .hero__description {
+            font-size: 1rem;
+        }
+
+        .hero__actions {
+            margin-block-start: 1.5rem;
+        }
+
+        .hero__actions-list {
+            justify-content: flex-start;
+        }
+    }
+}

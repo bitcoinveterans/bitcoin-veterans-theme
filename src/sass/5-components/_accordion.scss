@@ -1,0 +1,150 @@
+//  5. Componenets - Accordion  ///////////////////////////////////////////////////////////
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.accordion-section {
+    margin-bottom: 30px;
+
+    &:last-of-type {}
+}
+
+.accordion-item {
+    border: 1px solid shade($gray-1, 10%);
+    border-radius: 100px 100px 100px 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 0 1rem;
+    max-width: 100%;
+    overflow: hidden;
+    transition: border 0.3s ease-in-out;
+    will-change: height;
+
+    &:last-of-type {}
+
+    .accordion-header {
+        background-color: $gray-1;
+        font-family: inherit;
+
+        &::marker,
+        &::-webkit-details-marker {
+            content: "";
+            display: none;
+        }
+
+        &:focus {
+            outline-color: $color-1;
+        }
+    }
+
+    .heading,
+    .summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: $body-font;
+        font-size: 1.25rem;
+        font-weight: 700;
+        background-color: inherit;
+        color: $black-1;
+        cursor: pointer;
+        z-index: 2;
+        position: relative;
+        padding: 1rem 3.5rem 1rem 1.75rem;
+        margin: 0;
+        text-transform: none;
+        /* border-radius: 4px; */
+        transition-duration: 0.3s;
+        transition-property: color, border-radius;
+        transition-timing-function: ease-in-out;
+
+        &::after {
+            content: "\f063";
+            font-family: "font awesome\ 6 free";
+            color: inherit;
+            font-size: inherit;
+            font-weight: 900;
+            line-height: 0.5;
+            transition-duration: 0.2s;
+            transition-property: transform, color;
+            transition-timing-function: ease-in-out;
+            position: absolute;
+            right: 20px;
+        }
+
+        @include media-query("under-768") {
+            font-size: 1rem;
+            padding: 1rem 2rem;
+        }
+
+        @include media-query("under-600") {
+            font-size: 0.875rem;
+            padding: 1rem 1.25rem;
+        }
+    }
+
+    .details {
+        font-size: 1.25rem;
+        padding: 16px;
+        background-color: inherit;
+        line-height: 1.5;
+        will-change: display;
+    }
+
+    .entry-content {
+        padding: 1.25em 2em;
+        min-height: unset;
+        color: $color-body-text;
+        margin: 0;
+
+        @include media-query("under-768") {
+            padding: 1rem;
+        }
+    }
+
+    &[open] {
+        border-radius: 12px;
+
+        summary~* {
+            animation: fade-in 0.8s ease-in-out;
+        }
+
+        .heading,
+        .summary {
+            color: $color-body-text;
+            background-color: inherit;
+            font-weight: 500;
+            border-bottom: 1px solid shade($gray-1, 10%);
+
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &::after {
+                color: $color-body-text;
+                transform: rotate(180deg);
+                margin-top: -2px;
+            }
+
+            @include media-query("under-768") {
+                padding: 1rem 2rem 1rem 1rem;
+            }
+        }
+    }
+
+    .details__content {
+        background: white;
+    }
+}
+
+.layout--accordion {
+    .section-heading-wrap {
+        margin: 24px 0;
+    }
+}
