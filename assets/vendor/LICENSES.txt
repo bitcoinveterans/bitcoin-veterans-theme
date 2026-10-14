@@ -1,0 +1,23 @@
+Third-party libraries used by the Summit sponsor deck (template-sponsor-deck.php).
+Files are byte-for-byte copies of the upstream production builds. No build step.
+
+react-18.3.1.production.min.js
+  React 18.3.1 - MIT License - Copyright (c) Meta Platforms, Inc. and affiliates
+  https://unpkg.com/react@18.3.1/umd/react.production.min.js
+  md5 e91b2616629791b375867c298dc846cc
+
+react-dom-18.3.1.production.min.js
+  ReactDOM 18.3.1 - MIT License - Copyright (c) Meta Platforms, Inc. and affiliates
+  https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js
+  md5 7d4842a904e5d5d1b19240075998b111
+
+framer-motion-11.11.17.js
+  framer-motion 11.11.17 (dist/framer-motion.js, UMD build, as served by jsDelivr's auto-minify endpoint) - MIT License - Copyright (c) 2018 Framer B.V.
+  https://cdn.jsdelivr.net/npm/framer-motion@11.11.17/dist/framer-motion.min.js
+  (the unminified dist/framer-motion.js on npm/unpkg has a different md5)
+  md5 274471dd02140fe9630ad5568f37cda0
+
+htm-3.1.1.umd.js
+  htm 3.1.1 (UMD build) - Apache License 2.0 - Copyright 2018 Google Inc.
+  https://unpkg.com/htm@3.1.1/dist/htm.umd.js
+  md5 90ebae9ed8cd617722f093a88868d0e0
