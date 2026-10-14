@@ -6,23 +6,6 @@
  * @since 1.0.0
  */
 
- // Handle the AJAX request for searching state terms
-function enqueue_custom_js() {
-    wp_enqueue_script(
-        'custom-js',
-        get_template_directory_uri() . '/assets/js/theme.min.js',
-        array('jquery'),
-        null,
-        true
-    );
-
-    // Localize the ajax_url for use in custom.js
-    wp_localize_script('custom-js', 'ajax_url', array(
-        'ajax_url' => admin_url('admin-ajax.php')
-    ));
-}
-add_action('wp_enqueue_scripts', 'enqueue_custom_js');
-
 // Register AJAX actions
 add_action('wp_ajax_get_all_meetup_state_terms', 'retrieve_meetup_state_terms');
 add_action('wp_ajax_nopriv_get_all_meetup_state_terms', 'retrieve_meetup_state_terms');
