@@ -1,18 +1,36 @@
 //  5. Componenets - Partners  ///////////////////////////////////////////////////////////
+// Spec Phase 5: every partner logo sits inside a .logo-plate (bone background,
+// padding 1rem, 1px rule border) in a grid of 2/3/4 columns at 375/768/1280.
+// CTA is a secondary button.
 .partners {
 
     .partners-logo-list {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
         list-style: none;
         padding: 0;
         margin: 0;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (min-width: 1200px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
     }
 
-    .partners-logo-list li {
-        margin-inline: 1.25rem;
+    // Deliberate light plate for partner logos (spec §3.1); whitelist for the
+    // light-surface detector.
+    .partners-logo-list .logo-plate {
+        align-items: center;
+        background-color: var(--bone);
+        border: 1px solid var(--color-border);
+        border-radius: 0;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
     }
 
     .partner-logo {
@@ -24,8 +42,6 @@
         margin-block-start: 1.5rem;
         text-align: center;
     }
-
-    .section-title {}
 
     .container {
         padding: 3rem;
@@ -39,20 +55,9 @@
         }
     }
 
-    @include media-query("under-1048") {}
-
     @include media-query("under-768") {
         .container {
             padding: 1.875rem;
-        }
-
-        .partners-logo-list {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .partners-logo-list li {
-            margin: 1.875rem 0;
         }
     }
 

@@ -1,6 +1,8 @@
 //  5. Componenets - Founders  ///////////////////////////////////////////////////////////
+// Spec Phase 5: photos square with a rule-2 border, grayscale(.2) -> none on
+// hover; name cond 700 uppercase; role khaki.
 :root {
-    --founder-card-radius: 6px;
+    --founder-card-radius: 0;
     --founder-card-border: 1px solid var(--color-border);
 }
 
@@ -50,46 +52,68 @@
 }
 
 .founder-card {
+    border: var(--founder-card-border);
     border-radius: var(--founder-card-radius);
     overflow: hidden;
     position: relative;
+    transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+
+    &:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-4px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &:hover {
+            transform: none;
+        }
+    }
 
     .founder-card__image {
         overflow: hidden;
     }
 
     img {
-        border-radius: var(--founder-card-radius) var(--founder-card-radius) 0 0;
+        border-radius: 0;
         width: 100%;
-        filter: grayscale(100%);
-        transition: filter 0.3s ease-in, scale 0.3s ease-in;
+        filter: grayscale(.2);
+        transition: filter var(--dur-fast) var(--ease);
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none; // spec: no transition under reduced motion
+        }
     }
 
     &:hover {
 
         img {
-            filter: grayscale(0%);
-            scale: 1.2;
+            filter: grayscale(0);
         }
     }
 }
 
 .founder-card__content {
     background-color: var(--color-surface);
-    transition: background-color 0.3s ease-in;
-
-    &:hover {
-        background-color: var(--color-bg-alt);
-    }
 }
 
 .founder-card__name {
+    font-family: var(--font-cond);
     font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .06em;
     text-align: center;
+    text-transform: uppercase;
     padding: 1rem;
-    transition: padding 0.3s ease-in;
+}
 
-    &:hover {}
+// (rendered inside the name on some founder records)
+.founder-card__role {
+    color: var(--color-text-subtle);
+    font-family: var(--font-cond);
+    font-size: .875rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
 }
 
 .founder-card__name a {
@@ -134,9 +158,20 @@
         }
     }
 
+    // Photo treatment per Phase 5 founders bullet
     .founder-image img {
-        border-radius: 12px;
-        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--color-border-strong);
+        border-radius: 0;
+        filter: grayscale(.2);
+        transition: filter var(--dur-fast) var(--ease);
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &:hover {
+            filter: grayscale(0);
+        }
     }
 
     .section-title {

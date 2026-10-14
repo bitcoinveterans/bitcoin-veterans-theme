@@ -1,13 +1,19 @@
 //  5. Componenets - Banner CTA  ///////////////////////////////////////////////////////////
+// Spec Phase 5: char background with --tint-accent, a rule top and bottom,
+// display headline, lede, primary CTA.
 .banner-cta {
+    background-color: var(--color-bg-alt);
+    background-image: var(--tint-accent);
     background-size: cover;
-    border-radius: $border-radius-small;
+    border-block: 1px solid var(--color-border);
+    border-radius: 0;
     color: var(--color-text);
     position: relative;
     overflow: hidden;
     z-index: 1;
     text-align: center;
 
+    // The dark scrim only makes sense over a background photo (inline style).
     &::after {
         background: rgba(0, 0, 0, 0.5);
         content: '';
@@ -17,6 +23,10 @@
         top: 0;
         width: 100%;
         z-index: -1;
+    }
+
+    &:not([style*="background-image"])::after {
+        content: none;
     }
 
     .banner-cta__content {
@@ -33,6 +43,9 @@
     }
 
     .banner-cta__description {
+        color: var(--color-text-muted);
+        font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+        line-height: 1.6;
         max-width: 64ch;
         margin-inline: auto;
     }
