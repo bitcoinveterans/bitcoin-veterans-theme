@@ -1,6 +1,10 @@
 //  6. Pages - Podcasts  ///////////////////////////////////////////////////////////
 
 // podcast Episodes /////////////////////////////////////////////////////////////////
+// Spec Phase 6: episodes are panel rows with a 1px rule border (hover: border btc).
+// The big episode number stays decorative (--color-decor, display, >= 3rem,
+// aria-hidden in the markup). Title cond 700 uppercase bone (no grit), date
+// eyebrow khaki, play icon btc.
 .podcast-episodes__list {
     list-style: none;
     padding: 0;
@@ -14,12 +18,13 @@
     li.podcast-episodes__item {
         list-style: none;
         background-color: var(--color-surface);
-        border-radius: 1rem;
+        border: 1px solid var(--color-border);
+        border-radius: 0;
         position: relative;
         overflow: hidden;
         padding: 2rem 10rem 2rem 4rem;
         width: 100%;
-        transition: background-color 0.3s ease;
+        transition: border-color var(--dur-fast) var(--ease);
         min-height: 290px;
         display: flex;
         flex-direction: column;
@@ -33,23 +38,11 @@
         .podcast-episodes__title,
         .podcast-episodes__description,
         .podcast-episodes__play-button {
-            transition: color 0.3s ease;
             z-index: 2;
         }
 
         &:hover {
-            background-color: var(--color-bg-alt);
-
-            .podcast-episodes__date,
-            .podcast-episodes__title,
-            .podcast-episodes__description,
-            .podcast-episodes__play-button {
-                color: var(--color-text);
-            }
-
-            .podcast-episodes__play-icon {
-                color: var(--color-accent);
-            }
+            border-color: var(--color-accent);
         }
     }
 
@@ -73,12 +66,10 @@
         right: 0;
         color: var(--color-decor);
         transform: translate(6.9%, -22%);
-        --max-font-size: 10.5rem;
-        --ideal-font-size: 45cqw;
         font-family: $heading-font;
         font-weight: 400;
-        font-size: max(1.5rem, min(45cqw, 10rem));
-        font-size: max(1.5rem, min(var(--ideal-font-size), var(--max-font-size)));
+        // Decorative numeral: never below 3rem (spec Phase 6).
+        font-size: max(3rem, min(45cqw, 10.5rem));
 
         @include media-query("under-600") {
             font-size: 136px;
@@ -94,14 +85,12 @@
         letter-spacing: .14em;
         text-transform: uppercase;
         color: var(--color-text-subtle);
-        transition: color 0.3s ease;
         z-index: 2;
     }
 
     .podcast-episodes__title {
         color: var(--color-text);
         line-height: 1;
-        transition: color 0.3s ease;
         z-index: 2;
 
         a {
@@ -122,16 +111,15 @@
     .episode-description {
         font-size: 0.813rem;
         line-height: 1.3;
-        transition: color 0.3s ease;
     }
 
     .podcast-episodes__play-icon {
+        color: var(--color-accent);
         font-size: 2rem;
         position: absolute;
         top: 50%;
         left: 2rem;
         transform: translate(-50%, -50%);
-        transition: color 0.3s ease;
     }
 }
 

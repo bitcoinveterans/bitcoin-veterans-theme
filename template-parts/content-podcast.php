@@ -13,17 +13,17 @@
     // Episodes imported from the RSS feed have no Spotify URL; fall back to the feed's episode link.
     $listen_url = $spotify_url ? $spotify_url : get_post_meta(get_the_ID(), 'episode_url', true);
 ?>
-<li id="post-<?php the_ID(); ?>" <?php post_class('podcast-episodes__item'); ?> role="article">
+<li id="post-<?php the_ID(); ?>" <?php post_class('podcast-episodes__item'); ?>>
     <i class="podcast-episodes__play-icon fa-regular fa-circle-play" aria-hidden="true"></i>
     <span class="sr-only">Play Episode</span>
     <div class="podcast-episodes__details">
         <?php if ($episode_number): ?>
-            <span class="podcast-episodes__number grit"><?php echo esc_html($episode_number); ?></span>
+            <span class="podcast-episodes__number" aria-hidden="true"><?php echo esc_html($episode_number); ?></span>
         <?php endif; ?>
         <?php if ($episode_date): ?>
             <small class="podcast-episodes__date"><?php echo esc_html($episode_date); ?></small>
         <?php endif; ?>
-        <h3 class="podcast-episodes__title grit">
+        <h3 class="podcast-episodes__title">
             <?php if ($listen_url): ?>
                 <a href="<?php echo esc_url($listen_url); ?>" class="podcast-episodes__play-button" target="_blank" aria-label="Play Episode: <?php the_title(); ?>"><?php the_title(); ?></a>
             <?php else: ?>

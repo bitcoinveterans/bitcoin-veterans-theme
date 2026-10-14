@@ -333,6 +333,8 @@
 }
 
 // Pagination /////////////////////////////////////////////////////////////
+// Spec Phase 6: 44px square cells with a 1px rule border (radius 0); the
+// current page is a btc fill with night text.
 
 .paginate .navigation {
     display: flex;
@@ -348,8 +350,13 @@
     padding: 0;
 }
 
-.paging-navigation ul.page-numbers {
+.paging-navigation ul.page-numbers,
+.pagination .nav-links {
     clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
     text-align: center;
 }
 
@@ -357,42 +364,51 @@ ul.page-numbers li {
     display: inline;
 }
 
+ul.page-numbers li:first-child>.page-numbers,
+.pagination .nav-links>.page-numbers:first-child {
+    margin-left: 0;
+}
+
 a.page-numbers,
 span.page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    float: left;
-    font-weight: bold;
-    padding: 10px 12px;
-    line-height: 1.42857143;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 12px;
+    margin-left: -1px;
+    font-family: var(--font-cond);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
     text-decoration: none;
     background-color: var(--color-surface);
     color: var(--color-text);
     border: 1px solid var(--color-border);
-    margin-left: -1px;
+    border-radius: 0;
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
 }
 
-.paging-navigation li:first-child>a.page-numbers,
-.paging-navigation li:first-child>span.page-numbers {
-    margin-left: 0;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
+a:hover.page-numbers,
+a:focus-visible.page-numbers {
+    background-color: var(--color-surface);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    z-index: 1;
 }
 
-.paging-navigation li:last-child>a.page-numbers,
-.paging-navigation li:last-child>span.page-numbers {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
+.page-numbers.current {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: 700;
+    z-index: 1;
 }
 
-a:hover.page-numbers {
-    color: var(--color-text);
-    background: var(--color-bg-alt);
-}
-
-.paging-navigation .current {
-    font-weight: bold;
-    color: var(--color-text);
-    background: var(--color-bg-alt);
+span.page-numbers.dots {
+    color: var(--color-text-subtle);
 }
 
 .site-main .comment-navigation,
@@ -430,9 +446,11 @@ a:hover.page-numbers {
 }
 
 // Post Nav /////////////////////////////////////////////////////////////
+// Spec §3.5 cards: panel background, rule border, radius 0 (no rounded slab).
 .post-navigation {
     background-color: var(--color-surface);
-    border-radius: 30px;
+    border: 1px solid var(--color-border);
+    border-radius: 0;
     margin-block-start: 2rem;
     padding: 2rem;
     text-align: center;

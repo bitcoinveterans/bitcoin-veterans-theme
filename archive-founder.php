@@ -14,7 +14,7 @@
                     <?php echo $page_title_icon; ?>
                 <?php endif; ?>
                 <?php if ($page_title): ?>
-                    <h1 class="section-title__headline"><?php echo esc_html($page_title); ?></h1>
+                    <h1 class="section-title__headline" id="founder-archive-title"><?php echo esc_html($page_title); ?></h1>
                 <?php endif; ?>
                 <?php if ($page_description): ?>
                     <p class="section-title__description"><?php echo esc_html($page_description); ?></p>

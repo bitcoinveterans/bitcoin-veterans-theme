@@ -1,76 +1,49 @@
-<?php get_header(); ?>
-    <section class="banner-inner" style="background-image: url(<?php echo esc_url( get_template_directory_uri() ); ?>/assets/img/header-default.jpg);">
-        <div class="module">
+<?php
+/**
+ * Archive template (categories/tags/dates), rebuilt per spec Phase 6 with the
+ * same structure as search.php: container-1360 -> section-title (from
+ * get_the_archive_title()) -> recent-posts__grid of content.php cards ->
+ * pagination.
+ *
+ * @package cc_starter
+ */
 
-            <div class="page-title-wrap">
-                <h1 class="page-title">blog roll</h1>
-                <div class="page-sub-title">
-                    <?php if (is_category()):  ?>
-                        Category: <?php echo single_cat_title( '', false ); ?>
-                    <?php elseif (is_tag()): ?>
-                        Tag: <?php single_tag_title() ?>
+get_header(); ?>
+<main id="content" class="site-main page-content" role="main">
 
-                    <?php elseif (is_archive()): ?>
-                        Archive: <?php the_time('F Y') ?>
+    <section class="recent-posts section" aria-labelledby="page-title">
+        <div class="container container-1360">
 
-                    <?php else: ?>
-                    <?php endif;?>
-                </div>
+            <div class="section-title">
+                <h1 class="section-title__headline" id="page-title"><?php echo esc_html( wp_strip_all_tags( get_the_archive_title() ) ); ?></h1>
             </div>
 
-        </div><!--module-->
-    </section><!-- banner -->
+            <?php if ( have_posts() ) : ?>
 
-    <section class="group page-cols">
+            <ul class="recent-posts__grid">
+                <?php
+                while ( have_posts() ) :
+                    the_post();
+                    get_template_part( 'template-parts/content' );
+                endwhile;
+                ?>
+            </ul><!-- recent-posts__grid -->
 
-        <div class="module">
+            <div class="paginate paginate-bottom">
+                <?php
+                if ( function_exists( 'wp_pagenavi' ) ) {
+                    wp_pagenavi();
+                } elseif ( function_exists( 'cc_starter_paging_nav' ) ) {
+                    cc_starter_paging_nav();
+                }
+                ?>
+            </div>
 
-            <div class="col-1 cf">
+            <?php endif; ?>
 
-                <div class="blog-wrap">
-                    <?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
+        </div><!-- container -->
+    </section>
 
-                        <div class="blog-small cf">
+</main>
 
-                            <div class="thumb">
-    							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'default-post' ); ?></a>
-    						</div><!-- thumb -->
-
-                            <div class="post-content">
-    							<header class="post-header">
-    								<h2 class="post-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title=""><?php the_title(); ?></a></h2>
-    								<div class="meta"><time class="post-date" datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'm/d/Y' ); ?></time></div>
-    							</header>
-
-                                <div class="entry-content">
-                                    <?php echo cc_get_excerpt( null, 'cc_excerpt_length_short' ); ?>
-                                </div>
-
-                                <div class="learn-more"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'cc_2024' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">continue reading <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-                            </div>
-
-                        </div><!-- blog-small -->
-
-                    <?php endwhile; ?>
-
-                    <?php endif; ?>
-                    </div><!-- blog-wrap -->
-                    <div class="paginate">
-                        <?php
-                			if(function_exists('wp_pagenavi')) {
-                				//wp_paginate();
-                				wp_pagenavi();
-                			}
-                			else {
-                				cc_starter_paging_nav();
-                			}
-                		?>
-                    </div>
-                </div><!-- col-1 -->
-
-                <?php get_sidebar('blog'); ?>
-
-            </div><!-- module -->
-
-        </section><!-- group -->
-    	<?php get_footer(); ?>
+<?php get_footer(); ?>

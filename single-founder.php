@@ -14,7 +14,7 @@
                     </div>
                     <div class="founder-info-column">
                         <div class="section-title">
-                            <h1 class="section-title__headline"><?php the_title(); ?></h1>
+                            <h1 class="section-title__headline" id="founder-single-title"><?php the_title(); ?></h1>
                             <?php if (have_rows('social_media_account')): ?>
                                 <ul class="founder-social-links">
                                     <li class="founder-social-links__follow">Follow: </li>
@@ -46,7 +46,7 @@
                     <span class="btn__icon" aria-hidden="true">
                         <i class="fa-solid fa-arrow-right"></i>
                     </span>
-                    <span class="btn-text">View All FFounders</span>
+                    <span class="btn-text">View All Founders</span>
                 </a>
             </div>
         </div>
