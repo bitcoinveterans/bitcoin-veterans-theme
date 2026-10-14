@@ -54,3 +54,13 @@
         margin-inline-start: auto;
     }
 }
+
+// Print stays black on white (spec §3.5): the element-level colours above
+// beat the inherited print reset, so reset them explicitly.
+@media print {
+    .single-article .post-meta,
+    .post-prev-next .btn--secondary {
+        border-color: #000;
+        color: #000;
+    }
+}
