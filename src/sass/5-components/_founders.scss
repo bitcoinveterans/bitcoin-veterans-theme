@@ -7,19 +7,15 @@
 }
 
 // Founders Content Component
+// Spec decision (Phase 5 review follow-up, closed in Phase 6): no rounded slab
+// exceptions — the outer container uses the design-system radius (0) at all widths.
 .founders,
 .founder-archive {
 
     .container {
         background-color: var(--color-surface);
-        border-radius: 1.875rem;
+        border-radius: 0;
         padding: 3rem;
-    }
-
-    @include media-query("under-1048") {
-        .container {
-            border-radius: 0;
-        }
     }
 
     @include media-query("under-768") {
@@ -69,12 +65,17 @@
         }
     }
 
+    // Card photos get the same treatment as the single-founder photo:
+    // square crop, 1px rule-2 border, grayscale(.2) -> none on hover.
     .founder-card__image {
         overflow: hidden;
     }
 
     img {
+        aspect-ratio: 1 / 1;
+        border: 1px solid var(--color-border-strong);
         border-radius: 0;
+        object-fit: cover;
         width: 100%;
         filter: grayscale(.2);
         transition: filter var(--dur-fast) var(--ease);
@@ -138,9 +139,9 @@
 
     .founder-content-wrapper {
         background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
         padding: 24px;
-        border-radius: 30px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
         display: grid;
         grid-template-columns: 4fr 8fr;
         gap: 24px;
