@@ -21,11 +21,10 @@
     "gulp-plumber": "^1.2.1"
   },
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+    "build": "gulp styles adminStyles customJS",
+    "build:css": "gulp styles adminStyles",
+    "build:js": "gulp customJS",
+    "watch": "gulp watch"
   },
   "author": "Author",
   "license": "LGPL",
