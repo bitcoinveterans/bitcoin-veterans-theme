@@ -31,7 +31,7 @@
             <a href="<?php echo esc_url( home_url() ); ?>" class="site-header__logo grit" aria-label="Bitcoin Veterans Home">
 				<img src="<?php bloginfo('template_url');?>/assets/img/logo.png" alt="<?php bloginfo('name');?> logo" class="">
             </a>
-            <nav class="site-header__nav" role="navigation" aria-label="Main Navigation">
+            <nav id="site-navigation" class="site-header__nav" role="navigation" aria-label="Main Navigation">
 				<?php
 				wp_nav_menu( array(
 					'theme_location'    => 'primary',
@@ -40,7 +40,7 @@
 					) );
 				?>
             </nav>
-            <button aria-label="Toggle Main Menu" aria-expanded="false" aria-controls="main-menu" class="site-header__toggle"></button>
+            <button class="site-header__toggle" aria-controls="site-navigation" aria-expanded="false"><span class="screen-reader-text">Menu</span><svg class="site-header__toggle-icon" aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/></svg></button>
         </div>
     </header>
 

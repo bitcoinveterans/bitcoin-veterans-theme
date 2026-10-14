@@ -163,20 +163,26 @@
         }
     }
 
-    .menu-item-has-children .expand:after {
-        color: currentColor;
-        content: "\f067";
-        font-family: "Font Awesome 6 Free";
-        font-weight: 700;
-        font-size: inherit;
+    // The submenu toggle icon is drawn with CSS: two 2px bars forming a "+",
+    // collapsing to a "−" when the parent item is expanded.
+    .menu-item-has-children .expand::before,
+    .menu-item-has-children .expand::after {
+        background-color: currentColor;
+        content: "";
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
     }
 
-    .menu-item-has-children.expanded>.expand:after {
-        color: currentColor;
-        content: "\f068";
-        font-family: "Font Awesome 6 Free";
-        font-weight: 700;
-        font-size: inherit;
+    .menu-item-has-children .expand::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .menu-item-has-children.expanded>.expand::after {
+        transform: translate(-50%, -50%);
     }
 
     .sub-menu {
@@ -208,12 +214,6 @@
 }
 
 .site-header__nav__open {
-    .site-header__toggle {
-        &::after {
-            content: "\f00d";
-        }
-    }
-
     .menu {
         flex-direction: column;
     }
@@ -300,18 +300,6 @@
     right: max(1.5rem, calc(100vw - 88rem) / 2);
 }
 
-.site-header__nav .menu .menu-item-has-children .expand:after {
-    color: currentColor;
-    content: "\f067";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 700;
-    font-size: inherit;
-}
-
-.site-header__nav .menu .menu-item-has-children.expanded>.expand:after {
-    content: "\f068";
-}
-
 .site-header__nav .menu li:hover>ul.sub-menu {
     @include media-query("over-768") {
         top: 100%;
@@ -367,16 +355,10 @@
 
 .site-header__toggle {
     background-color: white;
+    color: $black-1;
     z-index: 50;
     border: none;
     position: absolute;
-
-    &::after {
-        content: "\f0c9";
-        font-family: "Font Awesome 6 Free";
-        font-weight: 700;
-        font-size: 2rem;
-    }
 
     @include media-query("under-768") {
         top: 36px;
@@ -396,13 +378,13 @@
     }
 }
 
-.site-header__nav__open {
-    .site-header__toggle {
-        &::after {
-            content: "\f00d";
-        }
-    }
+// The toggle icon is the inline SVG in header.php; suppress the Font Awesome
+// glyph that the Customizer CSS puts on the ::after (won by specificity here).
+.site-header .site-header__toggle::after {
+    content: none;
+}
 
+.site-header__nav__open {
     .menu {
         flex-direction: column;
     }

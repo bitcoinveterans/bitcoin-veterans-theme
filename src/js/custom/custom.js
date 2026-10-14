@@ -56,10 +56,12 @@ jQuery(document).ready(function ($) {
 		$(".site-header__toggle").data("initialized", true);
 
 		$(".site-header__toggle").on("click", function () {
-			console.log("Hamburger menu clicked");
 			$("body").toggleClass("site-header__nav__open");
-			console.log("Body class after toggle:", $("body").attr("class"));
 			$(".site-header__nav").toggle();
+			$(this).attr(
+				"aria-expanded",
+				$("body").hasClass("site-header__nav__open") ? "true" : "false"
+			);
 
 			// Make the main nav visible when the hamburger menu is clicked
 			if ($("body").hasClass("site-header__nav__open")) {
@@ -67,6 +69,16 @@ jQuery(document).ready(function ($) {
 			} else {
 				$(".site-header__nav").css("display", "none");
 			}
+		});
+
+		// Escape closes the menu and returns focus to the toggle.
+		$(document).on("keydown", function (e) {
+			if (e.key !== "Escape" || !$("body").hasClass("site-header__nav__open")) {
+				return;
+			}
+			$("body").removeClass("site-header__nav__open");
+			$(".site-header__nav").css("display", "none");
+			$(".site-header__toggle").attr("aria-expanded", "false").trigger("focus");
 		});
 	}
 
@@ -80,11 +92,21 @@ jQuery(document).ready(function ($) {
 	// Add dropdown buttons for mobile menu submenu
 	function mobileMenuDropdownIcons() {
 		for (const a of anchorsWithChildren) {
+			// Exactly one .expand button per parent item.
+			if (
+				a.nextElementSibling &&
+				a.nextElementSibling.classList.contains("expand")
+			) {
+				continue;
+			}
+
 			let expandBtn = document.createElement("button");
 			expandBtn.classList.add("expand");
+			expandBtn.type = "button";
+			expandBtn.setAttribute("aria-expanded", "false");
 
 			let expandBtnLabel = document.createElement("SPAN");
-			expandBtnLabel.innerText = "Open Submenu";
+			expandBtnLabel.innerText = "Show submenu: " + a.textContent.trim();
 			expandBtnLabel.classList.add("sr-only");
 			expandBtn.appendChild(expandBtnLabel);
 			a.after(expandBtn);
@@ -96,12 +118,12 @@ jQuery(document).ready(function ($) {
 	$(".site-header__nav").off("click", ".expand").on("click", ".expand", function (e) {
 		e.preventDefault();
 		e.stopPropagation();
-		console.log("Expand button clicked");
 		$(this).parent().toggleClass("expanded");
-		console.log("Parent class after toggle:", $(this).parent().attr("class"));
-		$(this).next(".sub-menu").toggle("medium", function () {
-			console.log("Sub-menu visibility:", $(this).css("display"));
-		});
+		$(this).attr(
+			"aria-expanded",
+			$(this).parent().hasClass("expanded") ? "true" : "false"
+		);
+		$(this).next(".sub-menu").toggle("medium");
 	});
 
 	// Meetups state filter: populate the state select from the server.
@@ -121,9 +143,7 @@ jQuery(document).ready(function ($) {
 				});
 			}
 		},
-		error: function (xhr, status, error) {
-			console.log("AJAX Error:", error);
-		},
+		error: function () {},
 	});
 
 	$("#state-select").on("change", function () {
