@@ -1,0 +1,1166 @@
+{
+    "key": "group_bv_sponsor_deck",
+    "title": "Sponsor Deck",
+    "fields": [
+        {
+            "key": "field_bv_deck_tab_tiers",
+            "label": "Tiers",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_bv_deck_tiers",
+            "label": "Sponsorship levels",
+            "name": "tiers",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add, remove or reorder the sponsorship levels. Order here is the order in the deck. To mark a level as sold, change its Availability to “Sold / purchased” and click Update.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 1,
+            "max": 12,
+            "collapsed": "field_bv_deck_tiers_name",
+            "button_label": "Add tier",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_bv_deck_tiers_name",
+                    "label": "Tier name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "The name of the sponsorship level, e.g. “Flagship”.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_status",
+                    "label": "Availability",
+                    "name": "status",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "Open = can be bought. Few left = still available but limited. Sold / purchased = no longer available (the deck shows a Sold stamp and hides the sponsor button).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "open": "Open",
+                        "low": "Few left",
+                        "sold": "Sold / purchased"
+                    },
+                    "default_value": "open",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_remaining",
+                    "label": "Slots remaining",
+                    "name": "remaining",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "How many of this level are still available. Shown as “2 remain”.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_bv_deck_tiers_status",
+                                "operator": "==",
+                                "value": "low"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 0,
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_slots_total",
+                    "label": "Total slots",
+                    "name": "slots_total",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Optional. The original number of slots, shown as “2 of 3 left” together with Slots remaining.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_bv_deck_tiers_status",
+                                "operator": "==",
+                                "value": "low"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 1,
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_price",
+                    "label": "Price (USD)",
+                    "name": "price",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Whole dollars, no commas, e.g. 7000.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 0,
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "$",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_price_max",
+                    "label": "Upper price (USD)",
+                    "name": "price_max",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Optional. Only for range levels such as “Sponsor a Veteran” ($200 to $40,000). Leave empty for a fixed price.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "$",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_tagline",
+                    "label": "Tagline",
+                    "name": "tagline",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Short line shown under the price on the overview card.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 80,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_intro",
+                    "label": "Intro paragraph",
+                    "name": "intro",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Optional paragraph shown above the benefits on the tier’s own slide.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "rows": 3,
+                    "new_lines": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_benefits",
+                    "label": "Benefits",
+                    "name": "benefits",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "One benefit per line.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "rows": 8,
+                    "new_lines": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_tickets_included",
+                    "label": "Tickets included",
+                    "name": "tickets_included",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "How many summit tickets come with this level (shown in the Compare benefits table). Leave empty or 0 for none.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 0,
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_compare",
+                    "label": "Compare table",
+                    "name": "compare",
+                    "aria-label": "",
+                    "type": "checkbox",
+                    "instructions": "Tick every benefit this level includes. They become diamonds in the “Compare benefits” table.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "led": "LED board",
+                        "shirt": "T-shirt",
+                        "ban": "Stage banners",
+                        "evb": "Event banner",
+                        "land": "Landing page",
+                        "spon": "Sponsor page",
+                        "swag": "Swag bag",
+                        "bag": "Branded bag",
+                        "mail": "Emails",
+                        "soc": "Social",
+                        "spaces": "X Spaces",
+                        "telehash": "Telehash",
+                        "thanks": "Site thank-you"
+                    },
+                    "default_value": [],
+                    "return_format": "value",
+                    "allow_custom": 0,
+                    "save_custom": 0,
+                    "layout": "horizontal",
+                    "toggle": 0,
+                    "custom_choice_button_text": "Add new choice",
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_badge",
+                    "label": "Logo on the tier slide",
+                    "name": "badge",
+                    "aria-label": "",
+                    "type": "radio",
+                    "instructions": "Which logo is shown on the tier’s medal and overview card.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "bv": "Bitcoin Veterans logo",
+                        "ob": "Operation Bitcoin logo"
+                    },
+                    "default_value": "bv",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "layout": "horizontal",
+                    "save_other_choice": 0,
+                    "parent_repeater": "field_bv_deck_tiers"
+                },
+                {
+                    "key": "field_bv_deck_tiers_feature",
+                    "label": "Special feature",
+                    "name": "feature",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Optional extra shown on the tier’s slide.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "": "None",
+                        "telehash": "Hash-rain animation + hash ticker",
+                        "veteran": "Veteran count slider"
+                    },
+                    "default_value": "",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_bv_deck_tiers"
+                }
+            ]
+        },
+        {
+            "key": "field_bv_deck_tab_links",
+            "label": "Links & tickets",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_bv_deck_sponsor_form_url",
+            "label": "Sponsor form link",
+            "name": "sponsor_form_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Where every “Sponsor at this level” button goes (the Google Form).",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_bv_deck_summit_page_url",
+            "label": "Summit page link",
+            "name": "summit_page_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "The main Summit page. Used for the “← Summit 2026” link and the “Get tickets” button.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_bv_deck_tickets",
+            "label": "Tickets",
+            "name": "tickets",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Ticket cards shown on the Tickets slide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 6,
+            "collapsed": "",
+            "button_label": "Add ticket",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_bv_deck_tickets_day",
+                    "label": "Day label",
+                    "name": "day",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. “Day 1 · 9 Nov”.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tickets"
+                },
+                {
+                    "key": "field_bv_deck_tickets_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. “Conference & Workshops”.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tickets"
+                },
+                {
+                    "key": "field_bv_deck_tickets_price",
+                    "label": "Price",
+                    "name": "price",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Including the currency sign, e.g. $99.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_tickets"
+                },
+                {
+                    "key": "field_bv_deck_tickets_url",
+                    "label": "Ticket link",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "The Zaprite (or other) payment link for this ticket.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_bv_deck_tickets"
+                },
+                {
+                    "key": "field_bv_deck_tickets_text",
+                    "label": "Description",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "One or two short sentences.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "rows": 2,
+                    "new_lines": "",
+                    "parent_repeater": "field_bv_deck_tickets"
+                },
+                {
+                    "key": "field_bv_deck_tickets_best",
+                    "label": "Highlight as best deal",
+                    "name": "best",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Shows a “Best deal” label and an orange border.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "parent_repeater": "field_bv_deck_tickets"
+                }
+            ]
+        },
+        {
+            "key": "field_bv_deck_tickets_note",
+            "label": "Tickets note",
+            "name": "tickets_note",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small line under the ticket cards.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_tab_cover",
+            "label": "Cover & mission",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_bv_deck_event_dates",
+            "label": "Event dates",
+            "name": "event_dates",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. 9–10 NOV 2026",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_event_venue",
+            "label": "Venue",
+            "name": "event_venue",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. Bitcoin Park",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_event_city",
+            "label": "City",
+            "name": "event_city",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. Nashville, TN",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_cover_lede",
+            "label": "Cover introduction",
+            "name": "cover_lede",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Wrap words in **double asterisks** to make them bold.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_bv_deck_mission_paragraphs",
+            "label": "Mission paragraphs",
+            "name": "mission_paragraphs",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Separate paragraphs with a blank line. **bold** allowed.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": 10,
+            "new_lines": ""
+        },
+        {
+            "key": "field_bv_deck_mission_stats",
+            "label": "Mission stats",
+            "name": "mission_stats",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Up to four numbers shown on the Mission slide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 4,
+            "collapsed": "",
+            "button_label": "Add stat",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_bv_deck_mission_stats_value",
+                    "label": "Number",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "The number that counts up, e.g. 200.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_mission_stats"
+                },
+                {
+                    "key": "field_bv_deck_mission_stats_suffix",
+                    "label": "Suffix",
+                    "name": "suffix",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional text after the number, e.g. “rd” for 3rd.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_mission_stats"
+                },
+                {
+                    "key": "field_bv_deck_mission_stats_label",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "What the number means.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_bv_deck_mission_stats"
+                }
+            ]
+        },
+        {
+            "key": "field_bv_deck_audience",
+            "label": "Who is in the room",
+            "name": "audience",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "One line per bullet.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": 5,
+            "new_lines": ""
+        },
+        {
+            "key": "field_bv_deck_tab_contact",
+            "label": "Contact",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_bv_deck_contact_heading",
+            "label": "Contact heading",
+            "name": "contact_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. Sponsorship · Media · Logistics",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_contact_name",
+            "label": "Contact name",
+            "name": "contact_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Name of the sponsorship contact shown on the last slide, e.g. Rick Rodgers.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_contact_org",
+            "label": "Organisation",
+            "name": "contact_org",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Organisation or role shown under the name.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_contact_email",
+            "label": "Contact email",
+            "name": "contact_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Email address sponsors should write to. Shown as a button that opens their email app. If empty, the built-in address is used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_contact_email_subject",
+            "label": "Email subject",
+            "name": "contact_email_subject",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Pre-filled subject line of the contact email.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_contact_signal",
+            "label": "Signal handle",
+            "name": "contact_signal",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown as a button that copies the handle. Leave empty to hide the Signal button.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_contact_photo",
+            "label": "Contact photo",
+            "name": "contact_photo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional. Square image works best. If empty, the built-in photo is used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_bv_deck_contact_hide_photo",
+            "label": "Hide contact photo",
+            "name": "contact_hide_photo",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Turn on to remove the contact photo from the deck.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_bv_deck_team_heading",
+            "label": "Team heading",
+            "name": "team_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. Summit team",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_team_email",
+            "label": "Team email",
+            "name": "team_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Shared team inbox shown next to the team text. If empty, the built-in address is used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_team_text",
+            "label": "Team text",
+            "name": "team_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Short paragraph next to the team email.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": 4,
+            "new_lines": ""
+        },
+        {
+            "key": "field_bv_deck_footer_line",
+            "label": "Footer line",
+            "name": "footer_line",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small print at the very bottom of the deck.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_bv_deck_tab_sharing",
+            "label": "Sharing",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_bv_deck_meta_description",
+            "label": "Search / share description",
+            "name": "meta_description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Used by search engines and when the page link is shared. Up to 160 characters.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 160,
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_bv_deck_share_image",
+            "label": "Share image",
+            "name": "share_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional. Image shown when the link is shared (1200×630 or similar). If empty, the Summit banner is used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-sponsor-deck.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1791925000
+}
