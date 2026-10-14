@@ -2,7 +2,7 @@
 .banner-cta {
     background-size: cover;
     border-radius: $border-radius-small;
-    color: $gray-1;
+    color: var(--color-text);
     position: relative;
     overflow: hidden;
     z-index: 1;

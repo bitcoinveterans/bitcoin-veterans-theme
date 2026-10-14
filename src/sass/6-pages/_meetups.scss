@@ -9,7 +9,7 @@
 
     .meetups__item {
         list-style: none;
-        background-color: $gray-1;
+        background-color: var(--color-surface);
         border-radius: 1rem;
         position: relative;
         overflow: hidden;
@@ -21,15 +21,15 @@
         justify-content: center;
 
         &:hover {
-            background-color: $black-1;
+            background-color: var(--color-bg-alt);
 
             .meetups__title,
             .meetups__title a {
-                color: $color-1;
+                color: var(--color-accent);
             }
 
             .meetup__location {
-                color: $white-1;
+                color: var(--color-text);
             }
         }
     }
@@ -60,21 +60,33 @@
     padding-block-end: 1.5rem;
     text-align: center;
 
+    label {
+        color: var(--color-text-muted);
+        font-family: var(--font-cond);
+        font-size: .875rem;
+        font-weight: 600;
+        letter-spacing: .1em;
+        margin-inline-end: .5rem;
+        text-transform: uppercase;
+    }
+
     select {
-        background-color: $white-1;
+        appearance: none;
+        background-color: var(--color-bg-alt);
         background-image: url('../img/arrow-down.svg');
         background-position: right 0.75rem center;
         background-repeat: no-repeat;
         background-size: 18px 116px;
-        border: none;
+        border: 1px solid var(--color-border-input);
         border-radius: 0.25em;
-        box-shadow: 0 0 0 1px hsla(0, 0%, 4%, 0.1);
+        color: var(--color-text);
         cursor: pointer;
         font-size: 1.15rem;
         line-height: 1.1;
         max-width: 30ch;
         min-width: 17ch;
-        padding: 0.5rem;
+        min-height: 44px;
+        padding: 0.5rem 2rem 0.5rem 0.5rem;
         position: relative;
     }
 }

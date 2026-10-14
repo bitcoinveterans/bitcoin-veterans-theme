@@ -20,11 +20,10 @@
     }
 
     .post-card {
-        background-color: $color-1;
-        background-image: url('../img/grit5.svg');
+        background-color: var(--color-accent);
         border-radius: 30px;
         padding: 1.5rem;
-        color: $black-1;
+        color: var(--color-on-accent);
         position: relative;
         transition: background-color 0.3s ease;
 
@@ -41,7 +40,7 @@
         }
 
         &__author-link {
-            color: $black-1;
+            color: var(--color-on-accent);
             text-decoration: none;
             transition: color 0.3s ease;
 
@@ -51,14 +50,15 @@
         }
 
         &__title {
-            font-family: $heading-font;
+            color: var(--color-on-accent);
+            font-family: $font-cond;
             font-size: 2.25rem;
             margin-bottom: 0.5rem;
             transition: color 0.3s ease;
         }
 
         &__title-link {
-            color: $black-1;
+            color: var(--color-on-accent);
             text-decoration: none;
             transition: color 0.3s ease;
 
@@ -74,7 +74,7 @@
         }
 
         &__read-more {
-            color: $black-1;
+            color: var(--color-on-accent);
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 700;
@@ -93,7 +93,7 @@
         }
 
         &:hover {
-            background-color: $black-1;
+            background-color: var(--color-bg-alt);
 
             .post-card__author,
             .post-card__read-more,
@@ -102,7 +102,7 @@
             .post-card__read-more,
             .post-card__author-link,
             i {
-                color: $white-1;
+                color: var(--color-text);
             }
         }
     }
@@ -117,7 +117,7 @@
 // BV Authors ///////////////////////////////////////////////////////////
 .bv-authors {
     .recent-posts .post-card:hover {
-        background: $color-1;
+        background: var(--color-accent);
     }
 
     .recent-posts .post-card:hover .post-card__author,
@@ -126,7 +126,7 @@
     .recent-posts .post-card:hover .post-card__read-more,
     .recent-posts .post-card:hover .post-card__title,
     .recent-posts .post-card:hover i {
-        color: inherit;
+        color: var(--color-on-accent);
     }
 
     .recent-posts .recent-posts__grid {
@@ -145,7 +145,7 @@
             font-weight: 700;
 
             &:hover {
-                color: $white-1;
+                color: var(--color-text);
             }
         }
     }

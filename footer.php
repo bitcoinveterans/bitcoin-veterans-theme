@@ -22,7 +22,7 @@ $footer_logo_alt = get_post_meta($footer_logo, '_wp_attachment_image_alt', true)
             <div class="footer-content__column footer-content__column--logo">
                 <?php if ($footer_logo_url): ?>
                 <div class="footer-content__logo grit">
-                    <a href="<?php echo esc_url(home_url()); ?>" class="footer-content__logo-link">
+                    <a href="<?php echo esc_url(home_url()); ?>" class="footer-content__logo-link" aria-label="Bitcoin Veterans home">
                        <img src="<?php echo esc_url($footer_logo_url); ?>" alt="<?php echo esc_attr($footer_logo_alt); ?>" class="footer-content__logo-image">
                     </a>
                 </div>
@@ -62,9 +62,12 @@ $footer_logo_alt = get_post_meta($footer_logo, '_wp_attachment_image_alt', true)
                         $logo_url = wp_get_attachment_image_url($logo['logo_image'], 'full');
                         $logo_alt = get_post_meta($logo['logo_image'], '_wp_attachment_image_alt', true);
                         ?>
-                        <li class="footer-content__partner-logo-item">
+                        <li class="footer-content__partner-logo-item logo-plate">
                             <?php if (!empty($logo['url'])) : ?>
-                                <a href="<?php echo esc_url($logo['url']); ?>" target="_blank" rel="noopener noreferrer" class="footer-content__partner-logo-link">
+                                <?php
+                                $footer_logo_link_label = $logo_alt ? $logo_alt : wp_parse_url( $logo['url'], PHP_URL_HOST );
+                                ?>
+                                <a href="<?php echo esc_url($logo['url']); ?>" target="_blank" rel="noopener noreferrer" class="footer-content__partner-logo-link" aria-label="<?php echo esc_attr($footer_logo_link_label); ?>">
                             <?php endif; ?>
                                 <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($logo_alt); ?>" class="footer-content__partner-logo-image">
                             <?php if (!empty($logo['url'])) : ?>

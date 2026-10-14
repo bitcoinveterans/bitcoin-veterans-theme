@@ -18,7 +18,7 @@
 }
 
 .cards-grid-2__content {
-    background-color: $white-1;
+    background-color: var(--color-surface);
     position: relative;
     z-index: 2;
     margin-top: -3rem;

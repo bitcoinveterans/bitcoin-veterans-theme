@@ -126,7 +126,7 @@
 
 // Stacked Billboard ////////////////////////////////////////////////////////////////
 .billboard-stacked {
-    background-color: $gray-1;
+    background-color: var(--color-surface);
     border-radius: $border-radius;
     position: relative;
     display: grid;
@@ -136,7 +136,7 @@
     z-index: 1;
 
     .billboard__content {
-        background-color: $white-1;
+        background-color: var(--color-surface);
         border-radius: 4px;
         box-shadow: 20px 15px 25px -8px rgba(0, 0, 0, 0.2);
         padding: 1.5rem;
