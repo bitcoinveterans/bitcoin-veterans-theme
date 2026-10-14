@@ -41,8 +41,16 @@
         }
     }
 
+    // Card recipe: the title is bone at rest (btc is reserved for the card
+    // hover state), matching the podcast rows and recent-posts cards.
     .meetups__title {
+        color: var(--color-text);
         line-height: 1.1;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
     }
 
     a {
