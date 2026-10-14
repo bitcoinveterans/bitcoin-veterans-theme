@@ -9,12 +9,34 @@
     background-image: url('../img/grit5.svg');
 }
 
+.page>.container .section:last-of-type {
+    margin-block-end: 2.5rem;
+}
+
 // Global Containers ///////////////////////////////////////////////////////////
 .container {
     padding-inline: 1.5rem;
 
+    @include media-query("under-600") {
+        padding-inline: 1rem;
+    }
+
     >.section-title {
         margin-block-end: 3.125rem;
+
+        @include media-query("under-600") {
+            margin-block-end: 2rem;
+            padding-inline: 1rem;
+        }
+    }
+}
+
+.page>.container {
+    padding-inline: 0;
+
+    @include media-query("under-600") {
+        padding-inline: 1rem;
+        padding-bottom: 1rem;
     }
 }
 
@@ -49,7 +71,7 @@
     }
 
     @include media-query("under-600") {
-        padding-block: 1.5rem;
+        padding-block: 1rem;
     }
 
     &:first-of-type {
@@ -66,6 +88,10 @@
     max-width: 92ch;
     margin-inline: auto;
     text-align: center;
+
+    @include media-query("under-600") {
+        text-align: left;
+    }
 
     >*+* {
         margin-top: 1.5rem;
@@ -84,6 +110,9 @@
     &__description {
         font-size: 1rem;
         font-weight: 400;
+        margin-inline: auto;
+        max-width: 64ch;
+        text-wrap: pretty;
     }
 
     i {

@@ -258,6 +258,10 @@
 
         .billboard__content {
             padding: 1.5rem;
+
+            @include media-query("under-600") {
+                padding: 0;
+            }
         }
     }
 }

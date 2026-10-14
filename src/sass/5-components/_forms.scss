@@ -47,70 +47,63 @@
     transform-origin: 0 0;
 }
 
-//  Form Styles  ///////////////////////////////////////////////////////////
-div.wpforms-container-full,
-.wpforms-form {
+//  Formidable Form Styles  ///////////////////////////////////////////////////////////
+.frm_style_formidable-style.with_frm_style {
+    background-color: $gray-1;
+    border-radius: 4px;
     margin-inline: 0;
     max-width: 60ch;
+    padding: 1.5rem;
     width: 100%;
 
-    .wpforms-field-container {
-        >*+* {
-            margin-top: 24px;
-        }
+    br {
+        display: none;
+    }
 
-        input[type="date"],
-        input[type="datetime-local"],
-        input[type="email"],
-        input[type="month"],
-        input[type="number"],
-        input[type="password"],
-        input[type="tel"],
-        input[type="text"],
-        select,
-        textarea {
-            background-color: #edf2f7;
-            border-color: #edf2f7;
-            border-radius: 4px;
-            border-style: none;
-            border-width: 0;
-            width: 100%;
-            line-height: 1.25;
-            padding: 12px 16px;
-        }
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="text"],
+    select,
+    textarea {
+        background-color: $white-1;
+        border-color: $white-1;
+        border-radius: 4px;
+        border-style: none;
+        border-width: 0;
+        width: 100%;
+        line-height: 1.25;
+        padding: 12px 16px;
+    }
 
-        textarea {
-            height: 100px;
-        }
+    textarea {
+        height: 100px;
+    }
 
-        &:focus {
-            background-color: white;
-            border-color: #f56565;
-            outline: 1px solid transparent;
-            outline-offset: 1px;
-        }
+    &:focus {
+        background-color: white;
+        border-color: #f56565;
+        outline: 1px solid transparent;
+        outline-offset: 1px;
+    }
 
-        label,
-        .wpforms-field-label {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 4px;
-        }
+    .form-field {
+        margin-bottom: 0;
+    }
 
-        .wpforms-field-row-block {
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        .wpforms-field-row-block input[type="checkbox"] {
-            margin-right: 5px;
+    .frm_fields_container {
+        .frm_form_field,
+        >div.frm_first {
+            margin-block-start: 1.5rem;
         }
     }
 
-    .wpforms-submit-container {
-        margin-block-start: 1.5rem;
-
-        .wpforms-submit {
+    .frm_submit {
+        button {
             border: 0;
             border-radius: $border-radius;
             cursor: pointer;

@@ -34,6 +34,14 @@
     i {
         margin-inline-end: 0.625rem;
     }
+
+    @include media-query("under-768") {
+        font-size: 1.25rem;
+    }
+
+    @include media-query("under-600") {
+        padding: 1rem 1.25rem;
+    }
 }
 
 .btn--primary {

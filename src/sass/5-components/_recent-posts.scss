@@ -2,6 +2,10 @@
 .recent-posts {
     .container {
         padding: 3rem;
+
+        @include media-query("under-600") {
+            padding: 0 1rem;
+        }
     }
 
     .recent-posts__grid {

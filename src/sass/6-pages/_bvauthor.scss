@@ -27,6 +27,10 @@
         >*+* {
             margin-block-start: 1rem;
         }
+
+        @include media-query("under-600") {
+            padding: 1.25rem;
+        }
     }
 
 
@@ -55,8 +59,7 @@
     justify-content: flex-start;
 
     @include media-query("under-660") {
-        flex-direction: column;
-        align-items: center;
+        display: block;
     }
 
     li {

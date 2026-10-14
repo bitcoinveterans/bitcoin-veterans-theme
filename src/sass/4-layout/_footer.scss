@@ -216,3 +216,14 @@
         padding-block: 0;
     }
 }
+
+.basement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+
+    a {
+        font-size: 12px;
+    }
+}

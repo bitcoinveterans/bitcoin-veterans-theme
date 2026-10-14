@@ -22,6 +22,10 @@
 
     h2 {
         font-size: 3rem;
+
+        @include media-query("under-600") {
+            font-size: 2rem;
+        }
     }
 
     blockquote {
@@ -50,15 +54,19 @@
         display: inline;
     }
 
-    table,
-    p,
     dl,
-    li {
+    li,
+    table,
+    >p {
         font-size: 1rem;
         line-height: 1.5;
         text-wrap: pretty;
 
         @include media-query("under-768") {
+            font-size: 0.875rem;
+        }
+
+        @include media-query("under-600") {
             font-size: 0.875rem;
         }
     }
@@ -154,7 +162,7 @@
 
         p,
         li {
-            font-size: 15px;
+            font-size: 0.875rem;
         }
     }
 

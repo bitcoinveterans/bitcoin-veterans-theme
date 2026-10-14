@@ -25,11 +25,16 @@
         flex-direction: column;
         justify-content: center;
 
+        @include media-query("under-600") {
+            padding: 2rem;
+        }
+
         .podcast-episodes__date,
         .podcast-episodes__title,
         .podcast-episodes__description,
         .podcast-episodes__play-button {
             transition: color 0.3s ease;
+            z-index: 2;
         }
 
         &:hover {
@@ -49,8 +54,16 @@
     }
 
     .podcast-episodes__details {
+        z-index: 2;
+
         >*+* {
             margin-block-start: 0.625rem;
+        }
+    }
+
+    .podcast-episodes__description {
+        @include media-query("under-600") {
+            font-size: 14px;
         }
     }
 
@@ -66,6 +79,11 @@
         font-weight: 900;
         font-size: max(1.5rem, min(45cqw, 10rem));
         font-size: max(1.5rem, min(var(--ideal-font-size), var(--max-font-size)));
+
+        @include media-query("under-600") {
+            font-size: 136px;
+            z-index: 0;
+        }
     }
 
     .grit {
@@ -80,12 +98,14 @@
         font-weight: 900;
         color: $black-3;
         transition: color 0.3s ease;
+        z-index: 2;
     }
 
     .podcast-episodes__title {
         color: $black-1;
         line-height: 1;
         transition: color 0.3s ease;
+        z-index: 2;
 
         a {
             color: inherit;

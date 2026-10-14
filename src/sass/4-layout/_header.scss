@@ -18,6 +18,22 @@
             img {
                 width: 100%;
             }
+
+            @include media-query("under-600") {
+                margin-bottom: 20px;
+                width: 100%;
+
+                img {
+                    margin-inline: auto;
+                    max-width: 300px;
+                }
+            }
+
+            @include media-query("under-480") {
+                img {
+                    max-width: 200px;
+                }
+            }
         }
 
         .site-header__nav {

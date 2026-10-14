@@ -83,6 +83,11 @@
             font-size: 1rem;
             padding: 1rem 2rem;
         }
+
+        @include media-query("under-600") {
+            font-size: 0.875rem;
+            padding: 1rem 1.25rem;
+        }
     }
 
     .details {
