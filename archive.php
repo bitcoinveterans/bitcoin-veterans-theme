@@ -15,7 +15,7 @@ get_header(); ?>
         <div class="container container-1360">
 
             <div class="section-title">
-                <h1 class="section-title__headline" id="page-title"><?php echo esc_html( get_the_archive_title() ); ?></h1>
+                <h1 class="section-title__headline" id="page-title"><?php echo esc_html( wp_strip_all_tags( get_the_archive_title() ) ); ?></h1>
             </div>
 
             <?php if ( have_posts() ) : ?>

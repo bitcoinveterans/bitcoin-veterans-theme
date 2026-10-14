@@ -60,7 +60,12 @@
     color: var(--night) !important;
 }
 
-// .bvs-btn-ghost picks up bone text and border through --bvs-dark (no override).
+// Ghosts are outlined (transparent bg) on the dark island, so the night
+// override above would render them night-on-night. Keep ghost labels bone;
+// this must stay after the .bvs-btn rule (equal specificity, both !important).
+.entry-content .bvs .bvs-btn-ghost {
+    color: var(--bone) !important;
+}
 
 .entry-content .bvs .bvs-fact-tag,
 .entry-content .bvs .bvs-badge {
