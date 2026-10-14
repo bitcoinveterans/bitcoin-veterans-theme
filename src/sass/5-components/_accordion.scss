@@ -17,7 +17,7 @@
 }
 
 .accordion-item {
-    border: 1px solid shade($gray-1, 10%);
+    border: 1px solid var(--color-border);
     border-radius: 100px 100px 100px 100px;
     margin-left: auto;
     margin-right: auto;
@@ -30,7 +30,7 @@
     &:last-of-type {}
 
     .accordion-header {
-        background-color: $gray-1;
+        background-color: var(--color-surface);
         font-family: inherit;
 
         &::marker,
@@ -40,7 +40,7 @@
         }
 
         &:focus {
-            outline-color: $color-1;
+            outline-color: var(--color-accent);
         }
     }
 
@@ -53,7 +53,7 @@
         font-size: 1.25rem;
         font-weight: 700;
         background-color: inherit;
-        color: $black-1;
+        color: var(--color-text);
         cursor: pointer;
         z-index: 2;
         position: relative;
@@ -101,7 +101,7 @@
     .entry-content {
         padding: 1.25em 2em;
         min-height: unset;
-        color: $color-body-text;
+        color: var(--color-text);
         margin: 0;
 
         @include media-query("under-768") {
@@ -118,16 +118,16 @@
 
         .heading,
         .summary {
-            color: $color-body-text;
+            color: var(--color-text);
             background-color: inherit;
             font-weight: 500;
-            border-bottom: 1px solid shade($gray-1, 10%);
+            border-bottom: 1px solid var(--color-border);
 
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
 
             &::after {
-                color: $color-body-text;
+                color: var(--color-text);
                 transform: rotate(180deg);
                 margin-top: -2px;
             }
@@ -139,7 +139,7 @@
     }
 
     .details__content {
-        background: white;
+        background: var(--color-surface);
     }
 }
 

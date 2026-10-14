@@ -3,19 +3,27 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     scroll-behavior: smooth;
-    color: $color-body-text;
+    color-scheme: dark;
+    color: var(--color-text-muted);
     font-family: $body-font;
     font-weight: normal;
     font-size: 16px;
 }
 
 body {
-    background-color: white;
+    background-color: var(--color-bg);
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.55;
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
     height: 100%;
+
+    @media (max-width: 900px) {
+        font-size: 1rem;
+    }
 }
 
 p {
@@ -24,7 +32,7 @@ p {
 
 p,
 li {
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 h1,
@@ -33,62 +41,89 @@ h3,
 h4,
 h5,
 h6 {
-    color: $black-heading;
+    color: var(--color-text);
     font-family: $heading-font;
-    font-weight: 700;
+    font-weight: 400;
+    line-height: .95;
     margin: 0;
-    text-transform: none;
+    text-transform: uppercase;
     text-wrap: balance;
 }
 
 h1 {
-    line-height: 1.1;
-    font-size: $font-size-h1;
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
 }
 
 h2 {
-    line-height: 1.15;
-    font-size: $font-size-h2;
-    letter-spacing: -1px;
+    font-size: clamp(2rem, 5.5vw, 4rem);
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-cond;
 }
 
 h3 {
-    line-height: 1.2;
-    font-size: $font-size-h3;
+    font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.15;
 }
 
 h4 {
-    line-height: 1.25;
-    font-size: $font-size-h4;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    line-height: 1.2;
 }
 
 h5 {
-    line-height: 1.3;
-    font-size: $font-size-h5;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    line-height: 1.25;
 }
 
 h6 {
-    line-height: 1.35;
-    font-size: $font-size-h6;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    line-height: 1.3;
 }
 
 small,
 .text_small {
-    font-size: $font-size-xs;
+    color: var(--color-text-subtle);
+    font-family: $font-cond;
+    font-size: .8125rem; // never below 12px
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 a {
-    color: $black-1;
+    color: var(--color-accent);
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
-    transition: $transition;
+    transition: color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
 
     &:hover,
     &:focus {
-        color: $black-1;
+        color: var(--color-accent-hover);
         text-decoration: none;
     }
+}
+
+::selection {
+    background: var(--btc);
+    color: var(--night);
+}
+
+:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
 }
 
 ul {
@@ -122,13 +157,13 @@ button {
     overflow: hidden;
 
     &:focus {
-        background-color: inherit;
+        background-color: var(--color-surface);
         border-radius: $border-radius-small;
         box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
         clip: auto !important;
-        color: inherit;
+        color: var(--color-text);
         display: block;
-        font-weight: bold;
+        font-weight: 600;
         height: auto;
         left: 5px;
         line-height: normal;
@@ -144,8 +179,10 @@ address {
     font-style: normal;
 }
 
-strong {
-    font-weight: bold;
+strong,
+b {
+    color: var(--color-text);
+    font-weight: 600;
 }
 
 .iframe-wrap {
@@ -174,4 +211,57 @@ select {
     line-height: inherit;
     margin: 0;
     padding: 0 1em 0 0;
+}
+
+// Motion: no scroll-triggered animation on site pages; respect reduced motion.
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+// Print: always black on white (spec §3.5); the packing list keeps its own print rules.
+@media print {
+
+    // White page boxes: under `color-scheme: dark` Chrome otherwise paints
+    // @page margins with the dark UA canvas (#121212).
+    @page {
+        margin: .5in;
+        background: #fff;
+    }
+
+    html,
+    body,
+    .site-main {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    // Element rules (h1..h6/strong use bone --color-text) beat the inherited
+    // #000 above, so they must be reset explicitly.
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+        color: #000 !important;
+    }
+
+    .site-header,
+    .site-footer {
+        display: none;
+    }
+
+    a {
+        color: #000;
+    }
 }

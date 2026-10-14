@@ -13,7 +13,7 @@
 
     li.podcast-episodes__item {
         list-style: none;
-        background-color: $gray-1;
+        background-color: var(--color-surface);
         border-radius: 1rem;
         position: relative;
         overflow: hidden;
@@ -38,17 +38,17 @@
         }
 
         &:hover {
-            background-color: $black-1;
+            background-color: var(--color-bg-alt);
 
             .podcast-episodes__date,
             .podcast-episodes__title,
             .podcast-episodes__description,
             .podcast-episodes__play-button {
-                color: $white-1;
+                color: var(--color-text);
             }
 
             .podcast-episodes__play-icon {
-                color: $color-1;
+                color: var(--color-accent);
             }
         }
     }
@@ -71,12 +71,12 @@
         position: absolute;
         top: -20px;
         right: 0;
-        color: $color-1;
+        color: var(--color-decor);
         transform: translate(6.9%, -22%);
         --max-font-size: 10.5rem;
         --ideal-font-size: 45cqw;
         font-family: $heading-font;
-        font-weight: 900;
+        font-weight: 400;
         font-size: max(1.5rem, min(45cqw, 10rem));
         font-size: max(1.5rem, min(var(--ideal-font-size), var(--max-font-size)));
 
@@ -86,23 +86,20 @@
         }
     }
 
-    .grit {
-        mask-image: url('../img/grit_mask.png');
-        mask-repeat: repeat;
-        mask-size: 250px;
-    }
 
     .podcast-episodes__date {
-        font-family: $heading-font;
+        font-family: $font-cond;
         font-size: 0.875rem;
-        font-weight: 900;
-        color: $black-3;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--color-text-subtle);
         transition: color 0.3s ease;
         z-index: 2;
     }
 
     .podcast-episodes__title {
-        color: $black-1;
+        color: var(--color-text);
         line-height: 1;
         transition: color 0.3s ease;
         z-index: 2;
@@ -172,20 +169,20 @@
         height: 2rem;
         padding: 0 0.5rem;
         text-decoration: none;
-        color: $color-1;
-        background-color: $gray-1;
+        color: var(--color-accent);
+        background-color: var(--color-surface);
         border-radius: 0.25rem;
         transition: background-color 0.3s ease;
 
         &:hover,
         &:focus {
-            background-color: $color-1;
-            color: $black-1;
+            background-color: var(--color-accent);
+            color: var(--color-on-accent);
         }
     }
 
     .current-page {
-        background-color: $color-1;
-        color: $black-1;
+        background-color: var(--color-accent);
+        color: var(--color-on-accent);
     }
 }

@@ -1,14 +1,67 @@
 //  2. Base - Fonts  ///////////////////////////////////////////////////////////
+// Self-hosted webfonts (spec §3.4). Files live in assets/fonts/; main.css is
+// compiled to assets/css/, hence the ../fonts paths. All SIL OFL 1.1.
 
-$font-1: "Open Sans",
-Helvetica,
-Arial,
-sans-serif;
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/barlow-400.woff2') format('woff2');
+}
 
-$font-2: 'Phudu',
-Helvetica,
-Arial,
-sans-serif;
+@font-face {
+    font-family: 'Barlow';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/barlow-400-italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/barlow-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/barlow-condensed-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/barlow-condensed-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/barlow-condensed-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Black Ops One';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/black-ops-one-400.woff2') format('woff2');
+}
+
+//  2. Base - Font Stacks  ///////////////////////////////////////////////////////////
+$font-1: var(--font-body);
+$font-2: var(--font-display);
+$font-cond: var(--font-cond);
 $font-3: Helvetica,
 Arial,
 sans-serif;
@@ -17,7 +70,7 @@ $font-serif: Georgia,
 serif;
 
 $font-family-base: $font-1;
-$nav-font: $font-1;
+$nav-font: $font-cond;
 $heading-font: $font-2;
 $body-font: $font-1;
 

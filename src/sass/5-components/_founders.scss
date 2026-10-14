@@ -1,7 +1,7 @@
 //  5. Componenets - Founders  ///////////////////////////////////////////////////////////
 :root {
     --founder-card-radius: 6px;
-    --founder-card-border: 1px solid #E4E4E5;
+    --founder-card-border: 1px solid var(--color-border);
 }
 
 // Founders Content Component
@@ -9,10 +9,9 @@
 .founder-archive {
 
     .container {
-        background-color: $gray-1;
+        background-color: var(--color-surface);
         border-radius: 1.875rem;
         padding: 3rem;
-        // background-image: url('../img/grit5.svg');
     }
 
     @include media-query("under-1048") {
@@ -76,11 +75,11 @@
 }
 
 .founder-card__content {
-    background-color: $white-1;
+    background-color: var(--color-surface);
     transition: background-color 0.3s ease-in;
 
     &:hover {
-        background-color: $black-1;
+        background-color: var(--color-bg-alt);
     }
 }
 
@@ -106,7 +105,7 @@
     }
 
     &:hover {
-        color: $color-1;
+        color: var(--color-accent);
     }
 }
 
@@ -114,7 +113,7 @@
 .single-founder {
 
     .founder-content-wrapper {
-        background-color: $white-1;
+        background-color: var(--color-surface);
         padding: 24px;
         border-radius: 30px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -150,7 +149,7 @@
     }
 
     .founder-social-links {
-        color: $black-3;
+        color: var(--color-text-subtle);
         display: flex;
         list-style: none;
         padding: 0;
@@ -175,7 +174,7 @@
             transition: color 0.3s ease-in;
 
             &:hover {
-                color: $color-1;
+                color: var(--color-accent);
             }
 
             i {
@@ -188,7 +187,7 @@
     .entry-content {
         margin-top: 1.5rem;
         padding-top: 1.5rem;
-        border-top: 1px solid $gray-2;
+        border-top: 1px solid var(--color-border);
 
         p:first-child {
             margin-top: 0;

@@ -1,0 +1,69 @@
+//  2. Base - Tokens  ///////////////////////////////////////////////////////////
+// Summit-theme design tokens (spec §3.2). Primitives copied from the sponsor
+// deck verbatim; semantic aliases sit on top. Components must use the aliases,
+// never hex values. Legacy variables stay in _variables.scss (used by
+// admin-styles.css and wp-admin ACF labels); do not remove them.
+
+:root {
+    // Primitives ///////////////////////////////////////////////////////////
+    --night: #0c0b09; // page background; text on accent
+    --char: #16140f; // raised band: footer, alternate sections, table heads, form inputs
+    --panel: #1d1a13; // cards and panels
+    --rule: #2f2a1f; // 1px dividers and card borders (decorative)
+    --rule-2: #403929; // stronger decorative borders (ghost buttons, chips)
+    --bone: #efe6d3; // primary text and headings
+    --bone-2: #cfc4ac; // body copy and ledes
+    --khaki: #a79c7a; // meta, labels, captions, placeholders
+    --khaki-2: #7c7358; // non-text only: dots, input borders, decorative numerals >= 24px
+    --btc: #f7931a; // accent: links, primary buttons, eyebrows, focus ring, prices, icons
+    --ember: #e5471d; // gradients and progress bars only
+    --ember-2: #ff6a2b; // primary button hover background
+    --alert: #d9342b; // danger borders only
+    --alert-text: #ff6b62; // danger and "sold" text
+    --ok: #7bb26b; // success borders and dots
+    --ok-text: #9ed08d; // success text
+
+    // Semantic aliases ///////////////////////////////////////////////////////////
+    --color-bg: var(--night);
+    --color-bg-alt: var(--char);
+    --color-surface: var(--panel);
+    --color-border: var(--rule);
+    --color-border-strong: var(--rule-2);
+    --color-border-input: var(--khaki-2);
+    --color-text: var(--bone);
+    --color-text-muted: var(--bone-2);
+    --color-text-subtle: var(--khaki);
+    --color-decor: var(--khaki-2);
+    --color-accent: var(--btc);
+    --color-accent-hover: var(--ember-2);
+    --color-on-accent: var(--night);
+    --color-danger: var(--alert);
+    --color-danger-text: var(--alert-text);
+    --color-success: var(--ok);
+    --color-success-text: var(--ok-text);
+    --focus-ring: 2px solid var(--btc);
+    --focus-offset: 3px;
+    --font-display: 'Black Ops One', 'Impact', 'Arial Narrow Bold', sans-serif;
+    --font-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --font-body: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+    --gutter: clamp(16px, 4vw, 48px);
+    --maxw: 1180px;
+    --space-1: .25rem;
+    --space-2: .5rem;
+    --space-3: .75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    --space-9: 6rem;
+    --section-pad: clamp(3rem, 8vw, 6rem);
+    --radius: 0;
+    --radius-round: 50%;
+    --shadow-lg: 0 30px 80px rgba(0, 0, 0, .6);
+    --glow-accent: 0 0 0 1px rgba(247, 147, 26, .2);
+    --ease: cubic-bezier(.22, 1, .36, 1);
+    --dur-fast: .2s;
+    --dur: .45s;
+    --tint-accent: radial-gradient(60% 70% at 80% 30%, rgba(247, 147, 26, .14), transparent 70%);
+}
