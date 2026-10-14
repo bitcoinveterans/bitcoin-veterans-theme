@@ -53,9 +53,9 @@ if ( isset( $args['partners_section'] ) ) :
             $logo_url = $partner_logo['url'];
             $logo_alt = $partner_logo['alt'];
         ?>
-        <li>
+        <li class="logo-plate">
             <?php if ($partner_url) : ?>
-                <a href="<?php echo esc_url($partner_url); ?>" target="_blank" rel="noopener noreferrer">
+                <a href="<?php echo esc_url($partner_url); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $logo_alt ? $logo_alt : wp_parse_url( $partner_url, PHP_URL_HOST ) ); ?>">
             <?php endif; ?>
             <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($logo_alt); ?>" class="partner-logo">
             <?php if ($partner_url) : ?>
