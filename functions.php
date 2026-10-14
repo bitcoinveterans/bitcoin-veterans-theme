@@ -52,6 +52,9 @@ require_once CC_STARTER_THEME_DIR . '/inc/cc-starter-comments.php';
 // include podcast RSS feed importer.
 require_once CC_STARTER_THEME_DIR . '/inc/podcast-feed.php';
 
+// include DIB nostr mirror importer.
+require_once CC_STARTER_THEME_DIR . '/inc/dib-feed.php';
+
 // include ajax.
 require_once CC_STARTER_THEME_DIR . '/inc/ajax.php';
 
