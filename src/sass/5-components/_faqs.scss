@@ -17,7 +17,7 @@
 
     .faq-category-wrapper {
         margin-block-start: 2rem;
-        border-bottom: 2px dashed rgba($color: $black-3, $alpha: 0.6);
+        border-bottom: 1px solid var(--color-border);
         padding-block-end: 2rem;
 
         &:last-of-type {
@@ -26,13 +26,28 @@
         }
     }
 
+    // Eyebrow style (spec Phase 5: drop the grit mask look)
     .faq-category-title {
+        align-items: center;
+        color: var(--color-accent);
+        display: flex;
+        font-family: var(--font-cond);
+        font-size: .875rem;
+        font-weight: 600;
+        gap: 12px;
+        letter-spacing: .22em;
+        line-height: 1.2;
         margin-block-end: 1rem;
-        font-size: 2.25rem;
-        padding-inline-start: 1rem;
+        text-transform: uppercase;
+        text-wrap: wrap;
+
+        &::before {
+            background: var(--color-accent);
+            content: '';
+            display: block;
+            flex: 0 0 28px;
+            height: 2px;
+        }
     }
 
-    .faq-category-title.grit {
-        mask-size: 150px;
-    }
 }

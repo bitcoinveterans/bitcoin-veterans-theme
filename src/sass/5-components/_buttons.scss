@@ -1,92 +1,73 @@
 //  5. Componenets - Buttons  ///////////////////////////////////////////////////////////
+// Deck visual language (spec §3.5): square corners, 1px border, Barlow Condensed
+// 700 uppercase, no light fills.
 .btn {
     background: transparent;
-    border: 0;
-    border-radius: $border-radius-large;
+    border: 1px solid transparent;
+    border-radius: 0;
     cursor: pointer;
     color: inherit;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: $font-1;
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: 1;
-    padding: 1.25rem 1.875rem;
+    gap: 8px;
+    font-family: var(--font-cond);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    line-height: 1.2;
+    padding: .875rem 1.5rem;
     text-align: center;
     text-transform: uppercase;
     touch-action: manipulation;
-    transition: background 600ms ease-in-out, color 600ms ease-in-out; // Added color transition
+    transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
     user-select: none;
     vertical-align: middle;
     white-space: normal;
     text-decoration: none;
 
-    &:hover,
-    &:focus,
-    &:active {
-        background: transparent;
-        color: transparent;
-    }
-
-
     i {
-        margin-inline-end: 0.625rem;
+        color: currentColor;
     }
 
-    @include media-query("under-768") {
-        font-size: 1.25rem;
-    }
-
-    @include media-query("under-600") {
-        padding: 1rem 1.25rem;
+    &:disabled,
+    &[aria-disabled="true"],
+    &.disabled {
+        background: transparent;
+        border-color: var(--color-border-strong);
+        color: var(--color-text-subtle);
+        cursor: not-allowed;
+        pointer-events: none;
     }
 }
 
 .btn--primary {
-    color: $black-1;
-    background: $color-1;
-    font-weight: 700;
-    letter-spacing: -1px;
-    transition: background 600ms ease-in-out;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
 
     &:hover,
     &:active,
     &:focus {
-        color: white;
-        background: $black-1;
+        background: var(--color-accent-hover);
+        border-color: var(--color-accent-hover);
+        color: var(--color-on-accent);
     }
-
-    @include media-query("under-768") {}
 }
 
 .btn--secondary {
-    color: $black-2;
-    background-color: $gray-1;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 1.1px;
-    padding: 0.875rem 1.25rem;
-    min-width: 300px;
+    background: transparent;
+    border-color: var(--color-border-strong);
+    color: var(--color-text);
 
     &:hover,
     &:active,
     &:focus {
-        color: white;
-        background: $black-1;
+        border-color: var(--color-accent);
+        color: var(--color-accent);
     }
 }
 
 .btn--icon-right {
     flex-direction: row-reverse;
-
-    i {
-        margin-inline-start: 0.625rem;
-        margin-inline-end: 0;
-    }
-
-    .btn-text {
-        order: 0;
-    }
 }

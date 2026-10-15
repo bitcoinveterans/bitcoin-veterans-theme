@@ -1,407 +1,345 @@
 //  5. Componenets - Navigation  ///////////////////////////////////////////////////////////
 
-.admin-bar .main-nav {
-    // padding-top: 32px;
-}
-
 // Site Header Nav /////////////////////////////////////////////////////////////
 .site-header__nav {
-    background-color: #fff9;
+    color: var(--color-text);
     font-family: $nav-font;
-    color: $black-1;
 
     ul {
         list-style: none;
     }
 
-
-    @include media-query("over-768") {
-        border-radius: 100rem;
-        box-shadow: 0 0 0 1px rgba($color: $black-1, $alpha: 0.1);
-        display: flex;
-        flex-direction: row;
-        grid-column: 1/-1;
-    }
-
+    // Closed state on mobile (the toggle button opens it).
     @include media-query("under-768") {
-        opacity: 0;
-        left: -9999px;
         display: none;
-        z-index: 10;
-        transition-duration: 0.5s;
-        transition-property: top;
-        transition-timing-function: ease-in-out;
     }
 }
 
+// Open state on mobile: full-height overlay below the header.
 .site-header__nav__open .site-header__nav {
-    display: block;
-    height: 100vh;
-    left: 0;
-    top: 4px;
-    opacity: 1;
-    width: 100%;
-}
-
-.site-header__nav .menu {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-
-    @include media-query("over-768") {
-        justify-content: space-between;
-        padding-inline-start: 1rem;
-    }
-
     @include media-query("under-768") {
-        flex-direction: column;
-        align-items: stretch;
-        margin: 24px 0 0;
-    }
-
-    >li {
-        flex: 1;
-    }
-
-    >li {
-
-        font-weight: 600;
-        line-height: 1;
-        list-style-type: none;
-        padding: 0;
-        position: relative;
-        text-transform: none;
-        transition-duration: 333ms;
-        transition-property: color, background-color, opacity;
-        transition-timing-function: ease-in-out;
-
-        @include media-query("over-996") {
-            font-size: 1rem;
-            margin: 0;
-
-            &:last-of-type {
-                margin-right: 0;
-            }
-        }
-
-        @include media-query("under-996") {
-            // font-size: 0.8rem;
-        }
-
-        @include media-query("over-768") {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin: 0;
-
-            &:last-of-type {
-                margin-right: 0;
-            }
-        }
-
-        @include media-query("under-768") {
-            border-bottom: 1px solid #e1e1e1;
-
-            &:first-of-type {
-                border-top: 1px solid #e1e1e1;
-            }
-        }
-
-        &.btn--nav {
-            color: $black-1;
-            background: $color-1;
-            font-weight: 700;
-            letter-spacing: -1px;
-            transition: background 600ms ease-in-out;
-
-            &:hover,
-            &:active,
-            &:focus {
-                color: white;
-                background: $black-1;
-            }
-        }
-    }
-
-    li a {
+        background: var(--color-bg);
+        bottom: 0;
         display: block;
-        position: relative;
-        color: inherit;
-        cursor: pointer;
-        text-decoration: none;
-        transition: $transition;
-
-        &:hover,
-        &:focus {
-            color: $color-1;
-            text-decoration: none;
-            transition: background 333ms ease-in-out;
-        }
-
-        @include media-query("over-996") {
-            padding: 1.25rem 1rem;
-        }
-
-        @include media-query("under-996") {
-            padding: 1rem;
-        }
-    }
-
-    .menu-item-has-children .expand {
-        @include media-query("under-768") {
-            background: transparent;
-            border: none;
-            position: absolute;
-            right: max(1.5rem, calc(100vw - 88rem) / 2);
-            top: 6px;
-            height: 36px;
-            width: 36px;
-        }
-
-        @include media-query("over-768") {
-            display: none;
-        }
-    }
-
-    // The submenu toggle icon is drawn with CSS: two 2px bars forming a "+",
-    // collapsing to a "−" when the parent item is expanded.
-    .menu-item-has-children .expand::before,
-    .menu-item-has-children .expand::after {
-        background-color: currentColor;
-        content: "";
-        height: 2px;
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 16px;
-    }
-
-    .menu-item-has-children .expand::after {
-        transform: translate(-50%, -50%) rotate(90deg);
-    }
-
-    .menu-item-has-children.expanded>.expand::after {
-        transform: translate(-50%, -50%);
-    }
-
-    .sub-menu {
-        background-color: #f9f9f9;
-
-        li {
-            text-transform: none;
-        }
-
-        @include media-query("under-768") {
-            display: none;
-        }
-    }
-
-    .current-menu-item>a {
-        color: $color-1;
-        font-weight: 700;
-    }
-}
-
-.site-header__nav .menu .menu-item-has-children>a:after {
-    @include media-query("over-768") {
-        content: "\f078";
-        font-family: "Font Awesome 6 Free";
-        font-weight: 700;
-        font-size: 14px;
-        margin-left: 8px;
-    }
-}
-
-.site-header__nav__open {
-    .menu {
-        flex-direction: column;
-    }
-}
-
-// Main Nav Submenu /////////////////////////////////////////////////////////////
-
-.site-header__nav .menu ul.sub-menu {
-    @include media-query("over-768") {
-        background-color: $white-1;
-        border-radius: $border-radius;
-        box-shadow: 0 0 0 .5px rgba($color: $black-1, $alpha: 0.3);
-        left: 99999px;
-        opacity: 0;
-        text-align: left;
-        visibility: hidden;
-        position: absolute;
-        z-index: 30;
-        min-width: 210px;
-        transition: opacity 600ms ease-in-out;
-    }
-
-    li {
-        position: relative;
-
-        @include media-query("under-768") {
-            padding-left: 20px;
-        }
-
-        @include media-query("over-768") {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-
-            &:last-of-type {
-                border-bottom: none;
-            }
-        }
-
-        a {
-            background: transparent;
-            color: inherit;
-            display: block;
-            float: none;
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: inherit;
-            height: auto;
-            line-height: 1.5;
-            margin: 0;
-            max-width: 100% !important;
-            padding: 10px 12px;
-            text-transform: capitalize;
-            transition: $transition;
-
-            &:hover {
-                background: $color-1;
-                color: white;
-            }
-        }
-
-        &:first-of-type a {
-            border-radius: 10px 10px 0 0;
-        }
-
-        &:last-of-type a {
-            border-radius: 0 0 10px 10px;
-        }
-    }
-
-    .current-menu-item>a {
-        background: $color-1;
-        color: white;
-        font-weight: 700;
-    }
-}
-
-.site-header__nav.menu .menu-item-has-children>ul.sub-menu {
-    @include media-query("over-768") {}
-}
-
-.menu-item-has-children .expand {
-    background: transparent;
-    border: none;
-    position: absolute;
-    right: max(1.5rem, calc(100vw - 88rem) / 2);
-}
-
-.site-header__nav .menu li:hover>ul.sub-menu {
-    @include media-query("over-768") {
-        top: 100%;
         left: 0;
-        opacity: 1;
-        visibility: visible;
-        transition: opacity 600ms ease-in-out;
-    }
-}
-
-.site-header__nav .menu ul.sub-menu ul.sub-menu {
-    @include media-query("over-768") {
-        top: 0;
-        left: 100%;
-    }
-}
-
-.site-header__nav .menu>.current_page_item>a {
-    color: $color-1;
-}
-
-.site-header__nav .menu ul.sub-menu li.current_page_item>a {
-    background: $color-2;
-    color: white;
-}
-
-.site-header__nav .menu>.btn--nav.current_page_item>a {
-    color: $black-1;
-}
-
-.site-header__nav .menu>li.current_page_item.btn--nav:active,
-.site-header__nav .menu>li.current_page_item.btn--nav:focus,
-.site-header__nav .menu>li.current_page_item.btn--nav:hover {
-    color: $white-1;
-}
-
-.site-header__nav .menu>li.current-menu-ancestor,
-.site-header__nav .menu>li.current-menu-parent {
-    >a {
-        color: $color-1;
-    }
-}
-
-.site-header__nav .menu>.btn--nav.current_page_item>a {
-
-
-    &:hover,
-    &:active,
-    &:focus {
-        color: $white-1;
-    }
-}
-
-.site-header__toggle {
-    background-color: white;
-    color: $black-1;
-    z-index: 50;
-    border: none;
-    position: absolute;
-
-    @include media-query("under-768") {
-        top: 36px;
-        right: 20px;
-        width: 36px;
-        height: 36px;
-    }
-
-    @include media-query("under-480") {
-        top: 13px;
-    }
-
-    @media screen and (max-width: 600px) {}
-
-    @include media-query("over-768") {
-        display: none;
-    }
-}
-
-// The toggle icon is the inline SVG in header.php; suppress the Font Awesome
-// glyph that the Customizer CSS puts on the ::after (won by specificity here).
-.site-header .site-header__toggle::after {
-    content: none;
-}
-
-.site-header__nav__open {
-    .menu {
-        flex-direction: column;
+        overflow-y: auto;
+        position: fixed;
+        right: 0;
+        top: 64px;
+        z-index: 40;
     }
 }
 
 // No `body` scrolling when the menu is open.
 .site-header__nav__open {
     height: 100vh;
+    overflow-y: hidden;
+}
+
+.site-header__nav .menu {
+    display: flex;
+    flex-direction: row;
+
+    @include media-query("over-768") {
+        align-items: center;
+        gap: .25rem;
+        justify-content: flex-end;
+    }
+
+    @include media-query("under-768") {
+        align-items: stretch;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    >li {
+        list-style-type: none;
+        padding: 0;
+        position: relative;
+
+        @include media-query("under-768") {
+            border-bottom: 1px solid var(--rule);
+
+            &:first-of-type {
+                border-top: 1px solid var(--rule);
+            }
+        }
+    }
+
+    // Top-level links: Barlow Condensed 600, .875rem, .14em, uppercase, bone.
+    >li>a {
+        color: var(--color-text);
+        display: block;
+        font-family: var(--font-cond);
+        font-size: .875rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        line-height: 1.2;
+        padding: .625rem .875rem;
+        text-decoration-color: transparent;
+        text-transform: uppercase;
+        transition: color var(--dur-fast) var(--ease);
+        white-space: nowrap;
+
+        &:hover,
+        &:focus {
+            color: var(--color-accent);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 6px;
+        }
+
+        @include media-query("under-768") {
+            font-size: 1.125rem;
+            padding: 1.25rem var(--gutter);
+        }
+    }
+
+    // Current page / ancestor get the btc 2px underline.
+    >li:not(.btn--nav).current-menu-item>a,
+    >li:not(.btn--nav).current_page_item>a,
+    >li:not(.btn--nav).current-menu-ancestor>a,
+    >li:not(.btn--nav).current-menu-parent>a {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 6px;
+    }
+
+    // The nav CTA is a compact primary button.
+    >li.btn--nav {
+        align-items: center;
+        border-radius: 0;
+        display: flex;
+        justify-content: center;
+
+        >a {
+            background: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            border-radius: 0;
+            color: var(--color-on-accent);
+            display: inline-flex;
+            font-family: var(--font-cond);
+            font-size: .875rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            line-height: 1.2;
+            padding: .625rem 1rem;
+            text-transform: uppercase;
+            transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+            white-space: nowrap;
+
+            &:hover,
+            &:active,
+            &:focus {
+                background: var(--color-accent-hover);
+                border-color: var(--color-accent-hover);
+                color: var(--color-on-accent);
+                text-decoration: none;
+            }
+        }
+
+        &.current-menu-item>a,
+        &.current_page_item>a {
+            color: var(--color-on-accent);
+        }
+
+        @include media-query("under-768") {
+            display: block;
+            padding: 1rem var(--gutter);
+
+            >a {
+                padding: .875rem 1.5rem;
+            }
+        }
+    }
+
+    // Small CSS chevron on top-level items that have children (desktop).
+    .menu-item-has-children>a::after {
+        @include media-query("over-768") {
+            border-bottom: 2px solid currentColor;
+            border-right: 2px solid currentColor;
+            content: "";
+            display: inline-block;
+            height: 6px;
+            margin-left: 8px;
+            transform: rotate(45deg) translateY(-2px);
+            vertical-align: baseline;
+            width: 6px;
+        }
+    }
+}
+
+// The submenu reveal (desktop): hover and keyboard focus-within.
+.site-header__nav .menu li:hover>ul.sub-menu,
+.site-header__nav .menu li:focus-within>ul.sub-menu {
+    @include media-query("over-768") {
+        display: block;
+    }
+}
+
+// Submenus /////////////////////////////////////////////////////////////
+// Hidden with display:none (not off-canvas left:99999px) so the menus can
+// never extend the page horizontally (fixes the 1280px overflow bug).
+.site-header__nav .menu ul.sub-menu {
+    @include media-query("over-768") {
+        background-color: var(--color-surface);
+        border: 1px solid var(--rule);
+        display: none;
+        left: 0;
+        min-width: 220px;
+        padding: 0;
+        position: absolute;
+        text-align: left;
+        top: 100%;
+        z-index: 30;
+    }
+
+    @include media-query("under-768") {
+        background: transparent;
+        display: none;
+    }
+
+    li {
+        position: relative;
+
+        @include media-query("over-768") {
+            border-bottom: 1px solid var(--rule);
+
+            &:last-of-type {
+                border-bottom: none;
+            }
+        }
+
+        @include media-query("under-768") {
+            border-top: 1px solid var(--rule);
+            padding-left: 20px;
+        }
+
+        a {
+            background: transparent;
+            color: var(--color-text);
+            display: block;
+            float: none;
+            font-family: var(--font-cond);
+            font-size: .8125rem;
+            font-weight: 600;
+            height: auto;
+            letter-spacing: .14em;
+            line-height: 1.5;
+            margin: 0;
+            max-width: 100% !important;
+            padding: 10px 12px;
+            text-transform: uppercase;
+            transition: color var(--dur-fast) var(--ease);
+
+            &:hover,
+            &:focus {
+                color: var(--color-accent);
+            }
+
+            @include media-query("under-768") {
+                font-size: 1rem;
+                padding: 1rem var(--gutter) 1rem 12px;
+            }
+        }
+    }
+
+    .current-menu-item>a,
+    .current_page_item>a {
+        color: var(--color-accent);
+    }
+}
+
+.site-header__nav .menu ul.sub-menu ul.sub-menu {
+    @include media-query("over-768") {
+        left: 100%;
+        top: 0;
+    }
+}
+
+// Mobile submenu expand toggle (drawn with CSS: "+" collapsing to "−").
+.site-header__nav .menu-item-has-children .expand {
+    @include media-query("under-768") {
+        background: transparent;
+        border: none;
+        color: var(--color-accent);
+        height: 36px;
+        position: absolute;
+        right: var(--gutter);
+        top: 10px;
+        width: 36px;
+    }
+
+    @include media-query("over-768") {
+        display: none;
+    }
+}
+
+.site-header__nav .menu-item-has-children .expand::before,
+.site-header__nav .menu-item-has-children .expand::after {
+    background-color: currentColor;
+    content: "";
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+}
+
+.site-header__nav .menu-item-has-children .expand::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.site-header__nav .menu-item-has-children.expanded>.expand::after {
+    transform: translate(-50%, -50%);
+}
+
+// Mobile toggle (hamburger). The icon is the inline SVG in header.php (Phase 3).
+// Specificity beats the same-element rules the WP Customizer CSS adds later.
+.site-header .site-header__toggle {
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    display: none;
+    z-index: 50;
+
+    @include media-query("under-768") {
+        align-items: center;
+        display: flex;
+        height: 44px;
+        justify-content: center;
+        padding: 0;
+        position: absolute;
+        right: calc(var(--gutter) - 10px);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+    }
+}
+
+// Suppress the Font Awesome glyph that the Customizer CSS puts on the ::after.
+.site-header .site-header__toggle::after {
+    content: none;
+}
+
+// Reveal the keyboard focus ring inside the nav even though links restyle :focus.
+.site-header__nav a:focus-visible,
+.site-header__toggle:focus-visible,
+.site-header__nav .expand:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 2px;
 }
 
 // Pagination /////////////////////////////////////////////////////////////
+// Spec Phase 6: 44px square cells with a 1px rule border (radius 0); the
+// current page is a btc fill with night text.
 
 .paginate .navigation {
     display: flex;
     justify-content: center;
     margin: 48px 0 0 0;
-    // border-top: 3px dashed rgba($color: $black-3, $alpha: 0.6);
     padding: 36px 0 36px;
 }
 
@@ -412,8 +350,13 @@
     padding: 0;
 }
 
-.paging-navigation ul.page-numbers {
+.paging-navigation ul.page-numbers,
+.pagination .nav-links {
     clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
     text-align: center;
 }
 
@@ -421,41 +364,51 @@ ul.page-numbers li {
     display: inline;
 }
 
+ul.page-numbers li:first-child>.page-numbers,
+.pagination .nav-links>.page-numbers:first-child {
+    margin-left: 0;
+}
+
 a.page-numbers,
 span.page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    float: left;
-    font-weight: bold;
-    padding: 10px 12px;
-    line-height: 1.42857143;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 12px;
     margin-left: -1px;
+    font-family: var(--font-cond);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 0;
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
 }
 
-.paging-navigation li:first-child>a.page-numbers,
-.paging-navigation li:first-child>span.page-numbers {
-    margin-left: 0;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
+a:hover.page-numbers,
+a:focus-visible.page-numbers {
+    background-color: var(--color-surface);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    z-index: 1;
 }
 
-.paging-navigation li:last-child>a.page-numbers,
-.paging-navigation li:last-child>span.page-numbers {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
+.page-numbers.current {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: 700;
+    z-index: 1;
 }
 
-a:hover.page-numbers {
-    color: #000;
-    background: #f5f3f3;
-}
-
-.paging-navigation .current {
-    font-weight: bold;
-    color: #000;
-    background: #eeeeee;
+span.page-numbers.dots {
+    color: var(--color-text-subtle);
 }
 
 .site-main .comment-navigation,
@@ -493,9 +446,11 @@ a:hover.page-numbers {
 }
 
 // Post Nav /////////////////////////////////////////////////////////////
+// Spec §3.5 cards: panel background, rule border, radius 0 (no rounded slab).
 .post-navigation {
-    background-color: $gray-1;
-    border-radius: 30px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0;
     margin-block-start: 2rem;
     padding: 2rem;
     text-align: center;
@@ -537,7 +492,7 @@ a:hover.page-numbers {
     }
 
     &__title {
-        font-family: $heading-font;
+        font-family: $font-cond;
         font-size: 1rem;
         text-transform: uppercase;
     }
@@ -550,8 +505,6 @@ a:hover.page-numbers {
         font-size: 1.5rem;
         margin-bottom: 0.875rem;
     }
-
-    &__item--next {}
 }
 
 .post-navigation__links--1 {

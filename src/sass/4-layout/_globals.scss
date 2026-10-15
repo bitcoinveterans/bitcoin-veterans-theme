@@ -5,8 +5,8 @@
 // }
 
 .site-main {
-    background-color: $white-1;
-    background-image: url('../img/grit5.svg');
+    background-color: var(--color-bg);
+    background-image: none; // grit5.svg texture removed (Phase 4)
 }
 
 .page>.container .section:last-of-type {
@@ -15,11 +15,7 @@
 
 // Global Containers ///////////////////////////////////////////////////////////
 .container {
-    padding-inline: 1.5rem;
-
-    @include media-query("under-600") {
-        padding-inline: 1rem;
-    }
+    padding-inline: var(--gutter);
 
     >.section-title {
         margin-block-end: 3.125rem;
@@ -35,7 +31,7 @@
     padding-inline: 0;
 
     @include media-query("under-600") {
-        padding-inline: 1rem;
+        padding-inline: var(--gutter);
         padding-bottom: 1rem;
     }
 }
@@ -65,9 +61,7 @@
     padding-block: 2.5rem;
 
     i {
-        mask-image: url('../img/grit_mask.png');
-        mask-repeat: repeat;
-        mask-size: 250px;
+        color: var(--color-accent);
     }
 
     @include media-query("under-600") {
@@ -98,53 +92,65 @@
     }
 
     &__headline {
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1;
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5.5vw, 4rem);
+        font-weight: 400;
+        line-height: .95;
         margin-block: 1.25rem 0;
-        mask-image: url('../img/grit_mask.png');
-        mask-repeat: repeat;
-        mask-size: 350px;
+        text-transform: uppercase;
     }
 
     &__description {
-        font-size: 1rem;
+        color: var(--color-text-muted);
+        font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
         font-weight: 400;
+        line-height: 1.6;
         margin-inline: auto;
         max-width: 64ch;
         text-wrap: pretty;
     }
 
     i {
-        font-size: 3.75rem;
+        color: var(--color-accent);
+        font-size: 2.5rem;
     }
+}
 
-    @include media-query("under-600") {
-        &__headline {
-            font-size: 2.625rem;
-        }
+// Eyebrow utility (spec §3.5): cond 600 .875rem .22em uppercase btc, 28px×2px rule
+.eyebrow {
+    align-items: center;
+    color: var(--color-accent);
+    display: flex;
+    font-family: var(--font-cond);
+    font-size: .875rem;
+    font-weight: 600;
+    gap: 12px;
+    letter-spacing: .22em;
+    line-height: 1.2;
+    text-transform: uppercase;
 
-        i {
-            font-size: 4.125rem;
-        }
-
-        &__description {
-            font-size: 0.875rem;
-        }
+    &::before {
+        background: var(--color-accent);
+        content: '';
+        display: block;
+        height: 2px;
+        width: 28px;
     }
 }
 
 // Sections ///////////////////////////////////////////////////////////
 
 // Grits ///////////////////////////////////////////////////////////
-.grit {
+// The grit mask is kept only for the header and footer logos (spec §3.5 texture).
+.site-header__logo.grit,
+.footer-content__logo.grit {
     mask-image: url('../img/grit_mask.png');
     mask-repeat: repeat;
     mask-size: 250px;
 }
 
 .gradient-noise {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(239, 230, 211, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(239, 230, 211, 0.04) 1px, transparent 1px);
     background-size: 20px 20px;
 }

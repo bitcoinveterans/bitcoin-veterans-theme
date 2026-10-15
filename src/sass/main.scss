@@ -3,6 +3,7 @@
 
 // Base
 @import "2-base/variables";
+@import "2-base/tokens";
 @import "2-base/fonts";
 @import "2-base/base";
 
@@ -33,6 +34,7 @@
 @import "5-components/billboard";
 @import "5-components/cards-grid";
 @import "5-components/banner-cta";
+@import "5-components/content-compat"; // Phase 5: legacy .bvs-*/.bvpl-* content islands
 
 // Pages
 @import "6-pages/front";

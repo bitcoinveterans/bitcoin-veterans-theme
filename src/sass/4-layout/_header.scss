@@ -1,51 +1,52 @@
 //  4. Layout - Header  ///////////////////////////////////////////////////////////
 
 .site-header {
-    background: $white-1;
-    padding-block: 1.563rem;
-    // text-align: center;
-    position: relative;
+    background: rgba(12, 11, 9, .92); // --night at 92%
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
     .container {
-        display: grid;
-        grid-template-columns: repeat(16, 1fr);
         align-items: center;
+        display: flex;
         gap: 1.5rem;
+        height: 80px;
+        justify-content: space-between;
+        max-width: var(--maxw);
+        padding-inline: var(--gutter);
+    }
 
-        .site-header__logo {
-            grid-column: span 3;
+    .site-header__logo {
+        display: block;
 
-            img {
-                width: 100%;
-            }
-
-            @include media-query("under-600") {
-                margin-bottom: 20px;
-                width: 100%;
-
-                img {
-                    margin-inline: auto;
-                    max-width: 300px;
-                }
-            }
-
-            @include media-query("under-480") {
-                img {
-                    max-width: 200px;
-                }
-            }
-        }
-
-        .site-header__nav {
-            grid-column: span 13;
-        }
-
-        @include media-query("under-768") {
+        img {
             display: block;
+            height: 64px;
+            width: auto;
         }
     }
 
     @include media-query("under-768") {
-        padding-block: 1.5rem 0;
+        .container {
+            height: 64px;
+        }
+
+        .site-header__logo img {
+            height: 48px;
+        }
+    }
+}
+
+// WP admin bar offsets (32px >= 783px, 46px down to 601px, absolute bar below).
+.admin-bar .site-header {
+    top: 32px;
+
+    @media screen and (max-width: 782px) {
+        top: 46px;
+    }
+
+    @media screen and (max-width: 600px) {
+        top: 0;
     }
 }

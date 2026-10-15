@@ -1,24 +1,21 @@
 //  5. Componenets - Founders  ///////////////////////////////////////////////////////////
+// Spec Phase 5: photos square with a rule-2 border, grayscale(.2) -> none on
+// hover; name cond 700 uppercase; role khaki.
 :root {
-    --founder-card-radius: 6px;
-    --founder-card-border: 1px solid #E4E4E5;
+    --founder-card-radius: 0;
+    --founder-card-border: 1px solid var(--color-border);
 }
 
 // Founders Content Component
+// Spec decision (Phase 5 review follow-up, closed in Phase 6): no rounded slab
+// exceptions — the outer container uses the design-system radius (0) at all widths.
 .founders,
 .founder-archive {
 
     .container {
-        background-color: $gray-1;
-        border-radius: 1.875rem;
+        background-color: var(--color-surface);
+        border-radius: 0;
         padding: 3rem;
-        // background-image: url('../img/grit5.svg');
-    }
-
-    @include media-query("under-1048") {
-        .container {
-            border-radius: 0;
-        }
     }
 
     @include media-query("under-768") {
@@ -51,46 +48,73 @@
 }
 
 .founder-card {
+    border: var(--founder-card-border);
     border-radius: var(--founder-card-radius);
     overflow: hidden;
     position: relative;
+    transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 
+    &:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-4px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &:hover {
+            transform: none;
+        }
+    }
+
+    // Card photos get the same treatment as the single-founder photo:
+    // square crop, 1px rule-2 border, grayscale(.2) -> none on hover.
     .founder-card__image {
         overflow: hidden;
     }
 
     img {
-        border-radius: var(--founder-card-radius) var(--founder-card-radius) 0 0;
+        aspect-ratio: 1 / 1;
+        border: 1px solid var(--color-border-strong);
+        border-radius: 0;
+        object-fit: cover;
         width: 100%;
-        filter: grayscale(100%);
-        transition: filter 0.3s ease-in, scale 0.3s ease-in;
+        filter: grayscale(.2);
+        transition: filter var(--dur-fast) var(--ease);
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none; // spec: no transition under reduced motion
+        }
     }
 
     &:hover {
 
         img {
-            filter: grayscale(0%);
-            scale: 1.2;
+            filter: grayscale(0);
         }
     }
 }
 
 .founder-card__content {
-    background-color: $white-1;
-    transition: background-color 0.3s ease-in;
-
-    &:hover {
-        background-color: $black-1;
-    }
+    background-color: var(--color-surface);
 }
 
 .founder-card__name {
+    font-family: var(--font-cond);
     font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .06em;
     text-align: center;
+    text-transform: uppercase;
     padding: 1rem;
-    transition: padding 0.3s ease-in;
+}
 
-    &:hover {}
+// (rendered inside the name on some founder records)
+.founder-card__role {
+    color: var(--color-text-subtle);
+    font-family: var(--font-cond);
+    font-size: .875rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
 }
 
 .founder-card__name a {
@@ -106,7 +130,7 @@
     }
 
     &:hover {
-        color: $color-1;
+        color: var(--color-accent);
     }
 }
 
@@ -114,10 +138,10 @@
 .single-founder {
 
     .founder-content-wrapper {
-        background-color: $white-1;
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
         padding: 24px;
-        border-radius: 30px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
         display: grid;
         grid-template-columns: 4fr 8fr;
         gap: 24px;
@@ -135,9 +159,20 @@
         }
     }
 
+    // Photo treatment per Phase 5 founders bullet
     .founder-image img {
-        border-radius: 12px;
-        // box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--color-border-strong);
+        border-radius: 0;
+        filter: grayscale(.2);
+        transition: filter var(--dur-fast) var(--ease);
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &:hover {
+            filter: grayscale(0);
+        }
     }
 
     .section-title {
@@ -150,7 +185,7 @@
     }
 
     .founder-social-links {
-        color: $black-3;
+        color: var(--color-text-subtle);
         display: flex;
         list-style: none;
         padding: 0;
@@ -175,7 +210,7 @@
             transition: color 0.3s ease-in;
 
             &:hover {
-                color: $color-1;
+                color: var(--color-accent);
             }
 
             i {
@@ -188,7 +223,7 @@
     .entry-content {
         margin-top: 1.5rem;
         padding-top: 1.5rem;
-        border-top: 1px solid $gray-2;
+        border-top: 1px solid var(--color-border);
 
         p:first-child {
             margin-top: 0;

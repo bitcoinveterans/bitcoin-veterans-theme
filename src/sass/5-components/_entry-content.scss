@@ -13,45 +13,23 @@
     h4,
     h5,
     h6 {
-        color: $black-heading;
+        color: var(--color-text);
         text-wrap: balance;
-        mask-image: url(../img/grit_mask.png);
-        mask-repeat: repeat;
-        mask-size: 250px;
     }
 
+    // h2 keeps the §3.4 display scale
     h2 {
-        font-size: 3rem;
-
-        @include media-query("under-600") {
-            font-size: 2rem;
-        }
+        font-size: clamp(2rem, 5.5vw, 4rem);
     }
 
+    // §3.5 blockquote: btc rule, bone-2 italic Barlow 400i
     blockquote {
-        background: #f9f9f9;
-        border-radius: 4px;
-        border-left: 10px solid $color-1;
-        display: block;
-        line-height: 1;
-        margin-inline: auto;
-        width: 100%;
-        font-size: 28px;
-        padding: 2rem 1.25rem;
-        quotes: "\201C""\201D""\2018""\2019";
-    }
-
-    blockquote:before {
-        color: #ccc;
-        content: open-quote;
-        font-size: 4.5rem;
-        line-height: 0.1em;
-        margin-right: 0.1em;
-        vertical-align: -0.5em;
-    }
-
-    blockquote p {
-        display: inline;
+        border-left: 2px solid var(--btc);
+        color: var(--color-text-muted);
+        font-style: italic;
+        line-height: 1.55;
+        margin-inline: 0;
+        padding-left: 1.25rem;
     }
 
     dl,
@@ -97,6 +75,13 @@
 
         li {
             list-style: decimal;
+
+            // numbers in btc cond 700 (§3.5)
+            &::marker {
+                color: var(--color-accent);
+                font-family: var(--font-cond);
+                font-weight: 700;
+            }
         }
     }
 
@@ -107,29 +92,42 @@
             padding: 16px 0 0 20px;
         }
 
+        // 9x9 btc square rotated 45deg instead of disc markers (§3.5)
         li {
-            list-style: disc;
-        }
+            position: relative;
 
-        li li {
-            list-style: circle;
-        }
-
-        li li li {
-            list-style: square;
+            &::before {
+                background: var(--color-accent);
+                content: "";
+                height: 9px;
+                left: -26px;
+                margin-right: 9px;
+                position: absolute;
+                top: .35em;
+                transform: rotate(45deg);
+                width: 9px;
+            }
         }
     }
 
     a {
-        color: $color-link;
+        color: var(--color-accent);
         text-decoration: underline;
-        font-weight: bold;
+        text-decoration-thickness: 1px;
+        text-underline-offset: .18em;
+        font-weight: 600;
 
         &:hover,
         &:active,
         &:focus {
-            color: $color-link-hover;
-            text-decoration: underline dashed;
+            color: var(--color-accent-hover);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: .18em;
+        }
+
+        &:visited {
+            color: var(--color-accent);
         }
     }
 
@@ -140,14 +138,54 @@
     hr {
         border: 0;
         height: 1px;
-        background: $color-body-text;
+        background: var(--color-border);
+    }
+
+    // §3.5 tables: char background, khaki condensed header row, rule separators
+    table {
+        background-color: var(--color-bg-alt);
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border: 1px solid var(--color-border);
+        padding: 0.75rem 1rem;
+        text-align: left;
+    }
+
+    th {
+        color: var(--color-text-subtle);
+        font-family: var(--font-cond);
+        font-size: .75rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+    }
+
+    @include media-query("under-600") {
+        table {
+            display: block;
+            overflow-x: auto;
+        }
     }
 
     .gallery-caption,
     .wp-caption,
     .wp-caption-text {
-        background-color: $gray-2;
+        background-color: var(--color-surface);
+        color: var(--color-text-muted);
         padding: 0.3rem;
+    }
+
+    // §3.5: captions under figures in khaki condensed small type
+    figure figcaption {
+        color: var(--color-text-subtle);
+        font-family: var(--font-cond);
+        font-size: .8125rem;
+        font-weight: 500;
+        line-height: 1.4;
     }
 
     .wp-caption-text {
@@ -167,8 +205,7 @@
     }
 
     img {
-        border-radius: 4px;
-        // box-shadow: 0px 0px 19px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
     }
 
     >*+* {

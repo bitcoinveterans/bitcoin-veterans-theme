@@ -1,9 +1,9 @@
 //  5. Componenets - Banner  ///////////////////////////////////////////////////////////
 
 .banner {
-    background: url('../img/bg-main.jpg') center center no-repeat white;
+    background: url('../img/bg-main.jpg') center center no-repeat var(--color-bg);
     background-size: cover;
-    color: white;
+    color: var(--color-text);
     padding: 112px 0;
     text-align: center;
 

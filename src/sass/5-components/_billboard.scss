@@ -1,7 +1,11 @@
 // 5. Components - Billboard  ///////////////////////////////////////////////////////////
 .billboard {
+    // Deck banner treatment: square image with a rule-2 border, drop shadow and
+    // accent glow (spec Phase 5).
     figure img {
-        border-radius: 4px;
+        border: 1px solid var(--color-border-strong);
+        border-radius: 0;
+        box-shadow: var(--shadow-lg), var(--glow-accent);
     }
 }
 
@@ -126,8 +130,8 @@
 
 // Stacked Billboard ////////////////////////////////////////////////////////////////
 .billboard-stacked {
-    background-color: $gray-1;
-    border-radius: $border-radius;
+    background-color: var(--color-bg-alt); // char band
+    border-radius: 0;
     position: relative;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -135,10 +139,12 @@
     padding: 0;
     z-index: 1;
 
+    // Content card: panel with a rule border, no shadow (spec Phase 5).
     .billboard__content {
-        background-color: $white-1;
-        border-radius: 4px;
-        box-shadow: 20px 15px 25px -8px rgba(0, 0, 0, 0.2);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 0;
+        box-shadow: none;
         padding: 1.5rem;
         grid-column: 2 / 8;
         grid-row: 2 / -2;
@@ -179,7 +185,7 @@
             grid-column: 1 / -1;
             grid-row: 2 / 3;
             max-width: 100%;
-            box-shadow: none;
+            border: 0;
             background-color: transparent;
             padding: 0;
         }
@@ -198,18 +204,6 @@
             width: 100%;
             height: auto;
             object-fit: cover;
-        }
-    }
-
-    @include media-query("under-880") {
-        .billboard__content {
-            border-radius: 4px 0 0 4px;
-        }
-    }
-
-    @include media-query("under-660") {
-        .billboard__content {
-            border-radius: 0;
         }
     }
 
@@ -234,17 +228,7 @@
 }
 
 .billboard-stacked.media-left {
-    @include media-query("under-880") {
-        .billboard__content {
-            border-radius: 0 4px 4px 0;
-        }
-    }
-
     @include media-query("under-660") {
-        .billboard__content {
-            border-radius: 0;
-        }
-
         .billboard__media {
             grid-row: 1 / 2;
         }

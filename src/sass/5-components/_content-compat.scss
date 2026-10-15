@@ -1,0 +1,157 @@
+//  5. Components - Content Compatibility  /////////////////////////////////////
+// Editor-authored <style> blocks on pages 6122 (/summit2026/) and 6154
+// (/packinglist/) were designed for the old light site (snapshots:
+// ops/specs/summit-theme/page-6122-inline-style.css and page-6154-inline-style.css).
+// These rules over-specify the inline blocks (`.entry-content .bvs …` beats
+// `.bvs …`) so the islands render in the deck palette without touching the
+// editor content. `!important` is used ONLY where the inline rule itself
+// carries `!important` (6122: 5 cases — .bvs-btn color, .bvs-btn-ghost color,
+// .bvs-hero padding-top, .bvs-who h3 color, .bvs-day2-cta .bvs-btn margin-left;
+// of these only the two colour cases need a counter-override).
+
+// ---------------------------------------------------------------------------
+// /summit2026/ (page 6122)
+// ---------------------------------------------------------------------------
+.entry-content .bvs {
+    --bvs-accent: var(--btc);
+    --bvs-dark: var(--bone);
+    --bvs-text: var(--bone-2);
+    --bvs-muted: var(--khaki);
+    --bvs-line: var(--rule);
+    --bvs-soft: var(--panel);
+
+    h2 {
+        font-family: var(--font-display);
+    }
+
+    h3 {
+        font-family: var(--font-cond);
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+
+    // The island styles its own lists; suppress the theme's diamond bullets.
+    ul li::before,
+    ol li::before {
+        content: none;
+    }
+}
+
+// Square corners on the island's buttons, cards, chips and badges.
+.entry-content .bvs .bvs-btn,
+.entry-content .bvs .bvs-ticket,
+.entry-content .bvs .bvs-chip,
+.entry-content .bvs .bvs-badge,
+.entry-content .bvs .bvs-fact,
+.entry-content .bvs .bvs-fact-tag,
+.entry-content .bvs .bvs-phase-time,
+.entry-content .bvs .bvs-who,
+.entry-content .bvs .bvs-who-item,
+.entry-content .bvs .bvs-alert,
+.entry-content .bvs .bvs-sessions li,
+.entry-content .bvs .bvs-sponsor,
+.entry-content .bvs .bvs-form {
+    border-radius: 0;
+}
+
+// Inline rule is `color: #fff !important` (white-on-btc, forbidden) -> night.
+.entry-content .bvs .bvs-btn {
+    color: var(--night) !important;
+}
+
+// Ghosts are outlined (transparent bg) on the dark island, so the night
+// override above would render them night-on-night. Keep ghost labels bone;
+// this must stay after the .bvs-btn rule (equal specificity, both !important).
+.entry-content .bvs .bvs-btn-ghost {
+    color: var(--bone) !important;
+}
+
+.entry-content .bvs .bvs-fact-tag,
+.entry-content .bvs .bvs-badge {
+    background: var(--btc);
+    color: var(--night);
+}
+
+.entry-content .bvs .bvs-who,
+.entry-content .bvs .bvs-phase-num {
+    background: var(--char);
+    border: 1px solid var(--rule);
+    color: var(--bone);
+}
+
+// Inline rule is `color: #fff !important`; keep it in-palette.
+.entry-content .bvs .bvs-who h3 {
+    color: var(--bone) !important;
+}
+
+.entry-content .bvs .bvs-alert {
+    background: var(--panel);
+    border-left-color: var(--btc);
+    color: var(--bone-2);
+}
+
+.entry-content .bvs .bvs-sessions li {
+    background: var(--panel);
+}
+
+// Sponsor logos: the .logo-plate look (deliberate light plate; the white-box
+// detector exempts island content per spec §5 Phase 4 AC2).
+.entry-content .bvs .bvs-sponsor {
+    background: var(--bone);
+    padding: 1rem;
+}
+
+// Iframe wrapper frame (the Google Form iframe itself stays white).
+.entry-content .bvs .bvs-form {
+    border-color: var(--rule);
+}
+
+// ---------------------------------------------------------------------------
+// /packinglist/ (page 6154) — screen only; print rendering stays as today.
+// ---------------------------------------------------------------------------
+@media screen {
+    .entry-content .bvpl {
+        --d: var(--bone);
+        --m: var(--khaki);
+        --l: var(--rule);
+        --s: var(--panel);
+        color: var(--bone-2);
+
+        // The island styles its own check-list rows; suppress theme bullets.
+        li::before {
+            content: none;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+        }
+    }
+
+    .entry-content .bvpl .bvpl-box {
+        background: transparent;
+        border-color: var(--bone);
+    }
+
+    .entry-content .bvpl .bvpl-note {
+        background: var(--panel);
+    }
+
+    // Inline rule is `color: #fff` on btc -> night for an approved pair.
+    .entry-content .bvpl .bvpl-print button {
+        color: var(--night);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Search excerpts (/?s=…) — screen only
+// ---------------------------------------------------------------------------
+// Excerpts flatten island markup (the .bvs wrapper is stripped) but keep
+// editor inline styles. `color: purple` ("PURCHASED" markers) was authored
+// for the old light background and scores 2.08:1 on night. Neutralize
+// exactly that value; anything else stays editorial.
+@media screen {
+    .entry-content h2[style*="color: purple"] {
+        color: var(--bone) !important;
+    }
+}

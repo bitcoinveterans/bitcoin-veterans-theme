@@ -1,4 +1,7 @@
 //  5. Componenets - Accordion  ///////////////////////////////////////////////////////////
+// Spec Phase 5: items separated by a 1px rule (no boxes); summary cond 600
+// 1.0625rem uppercase bone, padding 1rem 0, CSS +/- indicator in btc; open
+// summary btc; content bone-2; focus ring on the summary.
 
 @keyframes fade-in {
     0% {
@@ -17,22 +20,15 @@
 }
 
 .accordion-item {
-    border: 1px solid shade($gray-1, 10%);
-    border-radius: 100px 100px 100px 100px;
-    margin-left: auto;
-    margin-right: auto;
-    margin: 0 0 1rem;
+    border-bottom: 1px solid var(--color-border);
+    margin: 0;
     max-width: 100%;
-    overflow: hidden;
-    transition: border 0.3s ease-in-out;
-    will-change: height;
 
-    &:last-of-type {}
+    &:first-of-type {
+        border-top: 1px solid var(--color-border);
+    }
 
     .accordion-header {
-        background-color: $gray-1;
-        font-family: inherit;
-
         &::marker,
         &::-webkit-details-marker {
             content: "";
@@ -40,7 +36,7 @@
         }
 
         &:focus {
-            outline-color: $color-1;
+            outline-color: var(--color-accent);
         }
     }
 
@@ -49,68 +45,53 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-family: $body-font;
-        font-size: 1.25rem;
-        font-weight: 700;
-        background-color: inherit;
-        color: $black-1;
+        gap: 1rem;
+        font-family: var(--font-cond);
+        font-size: 1.0625rem;
+        font-weight: 600;
+        letter-spacing: .04em;
+        background-color: transparent;
+        color: var(--color-text);
         cursor: pointer;
+        text-transform: uppercase;
         z-index: 2;
         position: relative;
-        padding: 1rem 3.5rem 1rem 1.75rem;
+        padding: 1rem 2.25rem 1rem 0;
         margin: 0;
-        text-transform: none;
-        /* border-radius: 4px; */
-        transition-duration: 0.3s;
-        transition-property: color, border-radius;
-        transition-timing-function: ease-in-out;
+        transition: color var(--dur-fast) var(--ease);
 
-        &::after {
-            content: "\f063";
-            font-family: "font awesome\ 6 free";
-            color: inherit;
-            font-size: inherit;
-            font-weight: 900;
-            line-height: 0.5;
-            transition-duration: 0.2s;
-            transition-property: transform, color;
-            transition-timing-function: ease-in-out;
+        // CSS +/- indicator in btc on the right (replace the old FA arrow)
+        &::after,
+        &::before {
+            background-color: var(--color-accent);
+            content: "";
+            display: block;
+            height: 2px;
             position: absolute;
-            right: 20px;
+            right: 2px;
+            top: 50%;
+            width: 14px;
         }
 
-        @include media-query("under-768") {
-            font-size: 1rem;
-            padding: 1rem 2rem;
+        &::before {
+            transform: rotate(90deg); // vertical bar: makes the "+"
+            transition: transform var(--dur-fast) var(--ease);
         }
-
-        @include media-query("under-600") {
-            font-size: 0.875rem;
-            padding: 1rem 1.25rem;
-        }
-    }
-
-    .details {
-        font-size: 1.25rem;
-        padding: 16px;
-        background-color: inherit;
-        line-height: 1.5;
-        will-change: display;
     }
 
     .entry-content {
-        padding: 1.25em 2em;
+        padding: 0 2.25rem 1.25rem 0;
         min-height: unset;
-        color: $color-body-text;
+        color: var(--color-text-muted);
         margin: 0;
+        max-width: none;
 
         @include media-query("under-768") {
-            padding: 1rem;
+            padding: 0 1.5rem 1rem 0;
         }
     }
 
     &[open] {
-        border-radius: 12px;
 
         summary~* {
             animation: fade-in 0.8s ease-in-out;
@@ -118,28 +99,18 @@
 
         .heading,
         .summary {
-            color: $color-body-text;
-            background-color: inherit;
-            font-weight: 500;
-            border-bottom: 1px solid shade($gray-1, 10%);
+            color: var(--color-accent);
 
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-
-            &::after {
-                color: $color-body-text;
-                transform: rotate(180deg);
-                margin-top: -2px;
-            }
-
-            @include media-query("under-768") {
-                padding: 1rem 2rem 1rem 1rem;
+            // The +/- bars are pseudo-elements of the .heading/.summary h3
+            // inside summary.accordion-header.
+            &::before {
+                transform: rotate(0deg); // vertical bar disappears: "+" becomes "−"
             }
         }
     }
 
     .details__content {
-        background: white;
+        background: transparent;
     }
 }
 

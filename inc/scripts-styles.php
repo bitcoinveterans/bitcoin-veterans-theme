@@ -12,8 +12,7 @@ function cc_starter_enqueue_styles_and_scripts() {
 	// Load the stylesheets
 	wp_enqueue_style( 'cc_starter-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
 
-	wp_enqueue_style( 'cc_starter-googlefonts', '//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Phudu:wght@500;700;900&display=swap' );
-
+	// Fonts are self-hosted (assets/fonts/*.woff2 via @font-face in main.css); no Google Fonts request.
 	wp_enqueue_style( 'cc_starter-master', CC_STARTER_THEME_URI . '/assets/css/main.css', array(), filemtime( CC_STARTER_THEME_DIR . '/assets/css/main.css' ) );
 
 
@@ -33,6 +32,18 @@ function cc_starter_enqueue_styles_and_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'cc_starter_enqueue_styles_and_scripts', 999 );
+
+// Preload the critical self-hosted webfonts early on every page.
+function cc_starter_preload_fonts() {
+	$fonts = array( 'barlow-400', 'black-ops-one-400' );
+	foreach ( $fonts as $font ) {
+		printf(
+			'<link rel="preload" as="font" type="font/woff2" crossorigin href="%s">' . "\n",
+			esc_url( get_template_directory_uri() . '/assets/fonts/' . $font . '.woff2' )
+		);
+	}
+}
+add_action( 'wp_head', 'cc_starter_preload_fonts', 2 );
 
 // Enqueue admin styles
 function cc_starter_enqueue_admin_styles() {

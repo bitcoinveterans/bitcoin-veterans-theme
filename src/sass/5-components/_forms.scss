@@ -19,27 +19,38 @@
 }
 
 .InputAddOn-item {
-    background-color: white;
-    color: $color-body-text;
+    background-color: var(--color-surface);
+    color: var(--color-text);
     font: inherit;
     font-weight: normal;
 }
 
 .InputAddOn-field,
 .InputAddOn-item {
-    border: 1px solid rgba(147, 128, 108, 0.25);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border-input);
+    color: var(--color-text);
+    min-height: 44px;
     padding: 10px;
     font-size: 14px;
 }
 
+.InputAddOn-field::placeholder {
+    color: var(--color-text-subtle);
+}
+
+.InputAddOn-field:focus-visible {
+    border-color: var(--color-accent);
+}
+
 .InputAddOn-field:first-child,
 .InputAddOn-item:first-child {
-    border-radius: 2px 0 0 2px;
+    border-radius: 0;
 }
 
 .InputAddOn-field:last-child,
 .InputAddOn-item:last-child {
-    border-radius: 0 2px 2px 0;
+    border-radius: 0;
 }
 
 .entry-content .ginput_recaptcha {
@@ -47,17 +58,86 @@
     transform-origin: 0 0;
 }
 
+//  Search Form (searchform.php)  //////////////////////////////////////////////
+// Spec Phase 6: input per the §3.5 form rules (char background, khaki-2 border,
+// bone text, khaki placeholder, radius 0, 44px minimum height); the submit
+// button is .btn.btn--primary in the markup.
+.search-form {
+    align-items: stretch;
+    display: flex;
+    margin-inline: auto;
+    max-width: 60ch;
+
+    .search-field {
+        appearance: none;
+        background-color: var(--color-bg-alt);
+        border: 1px solid var(--color-border-input);
+        border-radius: 0;
+        color: var(--color-text);
+        flex: 1;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        line-height: 1.25;
+        min-height: 44px;
+        min-width: 0;
+        padding: 10px 16px;
+
+        &::placeholder {
+            color: var(--color-text-subtle);
+        }
+
+        &:focus {
+            border-color: var(--color-accent);
+            outline: var(--focus-ring);
+            outline-offset: 1px;
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .btn {
+        flex: none;
+        margin-inline-start: -1px;
+    }
+}
+
 //  Formidable Form Styles  ///////////////////////////////////////////////////////////
+// Container: panel background, rule border, padding 1.5rem (spec Phase 5 forms).
 .frm_style_formidable-style.with_frm_style {
-    background-color: $gray-1;
-    border-radius: 4px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0;
     margin-inline: 0;
     max-width: 60ch;
     padding: 1.5rem;
     width: 100%;
 
+    // Re-token the plugin stylesheet's own custom properties (it renders
+    // labels/descriptions via var(--label-color) / var(--form-desc-color)
+    // with light-theme defaults like #344054 that fail on dark surfaces).
+    // This selector out-classes the plugin's `.with_frm_style` where the
+    // defaults are defined, regardless of stylesheet order.
+    --label-color: var(--color-text-muted);
+    --form-desc-color: var(--color-text-muted);
+    --title-color: var(--color-text);
+
     br {
         display: none;
+    }
+
+    .frm_primary_label,
+    div.frm_description,
+    .frm-show-form > div.frm_description {
+        color: var(--color-text-muted);
+    }
+
+    label {
+        color: var(--color-text-muted);
+        font-family: var(--font-cond);
+        font-size: .875rem;
+        font-weight: 600;
+        letter-spacing: .1em;
+        text-transform: uppercase;
     }
 
     input[type="date"],
@@ -70,25 +150,48 @@
     input[type="text"],
     select,
     textarea {
-        background-color: $white-1;
-        border-color: $white-1;
-        border-radius: 4px;
-        border-style: none;
-        border-width: 0;
+        background-color: var(--color-bg-alt);
+        border: 1px solid var(--color-border-input);
+        border-radius: 0;
+        color: var(--color-text);
         width: 100%;
         line-height: 1.25;
+        min-height: 44px;
         padding: 12px 16px;
+
+        &::placeholder {
+            color: var(--color-text-subtle);
+        }
+
+        &:focus {
+            border-color: var(--color-accent);
+            outline: var(--focus-ring);
+            outline-offset: 1px;
+        }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        accent-color: var(--btc);
     }
 
     textarea {
         height: 100px;
     }
 
-    &:focus {
-        background-color: white;
-        border-color: #f56565;
-        outline: 1px solid transparent;
-        outline-offset: 1px;
+    // Errors: alert border plus alert-text message (borders/text, never fills).
+    .frm_blank_field {
+
+        input,
+        select,
+        textarea {
+            border-color: var(--color-danger);
+        }
+    }
+
+    .frm_error,
+    .frm_error_style {
+        color: var(--color-danger-text);
     }
 
     .form-field {
@@ -104,38 +207,38 @@
 
     .frm_submit {
         button {
-            border: 0;
-            border-radius: $border-radius;
+            border: 1px solid var(--color-accent);
+            border-radius: 0;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-family: $font-1;
+            gap: 8px;
+            font-family: var(--font-cond);
             font-size: 1rem;
-            line-height: 1;
+            line-height: 1.2;
             padding: 0.75rem 1.5rem;
             text-align: center;
             text-transform: uppercase;
             touch-action: manipulation;
-            transition: background 600ms ease-in-out, color 600ms ease-in-out; // Added color transition
+            transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
             user-select: none;
             vertical-align: middle;
             white-space: normal;
             text-decoration: none;
 
-            color: $black-1;
-            background: $color-1;
+            color: var(--color-on-accent);
+            background: var(--color-accent);
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: .14em;
 
             &:hover,
             &:active,
             &:focus {
-                color: white;
-                background: $black-1;
+                background: var(--color-accent-hover);
+                border-color: var(--color-accent-hover);
+                color: var(--color-on-accent);
             }
         }
     }
 }
-
-/// Error Styles
